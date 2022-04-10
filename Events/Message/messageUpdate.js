@@ -18,8 +18,8 @@ module.exports = {
         const Edited = newMessage.content.slice(0, Count) + (newMessage.content.length > 1950 ? " ..." : "");
     
         const Log = new MessageEmbed().setColor("#36393f")
-        .setDescription(`📘 A [message](${newMessage.url}) by ${newMessage.author} was **edited** in ${newMessage.channel}.\n
-        **Original**: \n ${Original} \n**Edited**:\n ${Edited}`.slice("0", "4096"))
+        .setDescription(`📘 [Сообщение](${newMessage.url}) от ${newMessage.author} было **изменено** в ${newMessage.channel}.\n
+        **Оригинал**: \n \`\`\`${Original}\`\`\` \n**Измененное**:\n \`\`\`${Edited}\`\`\``.slice("0", "4096"))
         .setFooter({text: `Member: ${newMessage.author.tag} | ID: ${newMessage.author.id}`}).setTimestamp();
 
         new WebhookClient({url: "https://discord.com/api/webhooks/928541928029577226/kthn1TMcG7wAxSunao2UwwlxbHteSHAlo-b6bXphEzXu_dGKO5GYXXA_mk_6a3Eivbkq"})
