@@ -1,0 +1,531 @@
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Buttons.js:12:23)
+[ 10.04.2022 ][ 01:25:13 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Buttons.js:12:23)
+[ 10.04.2022 ][ 01:27:21 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Buttons.js:12:23)
+[ 10.04.2022 ][ 01:31:36 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Buttons.js:12:23)
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:44:26 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:46:18 ][  DEBUG  ]: Provided token: OTYyNDU1NDQ1MTMyNDE5MTM0.YlHyew.***************************
+[ 10.04.2022 ][ 01:46:18 ][  DEBUG  ]: Preparing to connect to the gateway...
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Buttons.js:12:23)
+[ 10.04.2022 ][ 01:46:18 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 01:46:18 ][  DEBUG  ]: [WS => Manager] Fetched Gateway Information
+    URL: wss://gateway.discord.gg
+    Recommended Shards: 1
+[ 10.04.2022 ][ 01:46:18 ][  DEBUG  ]: [WS => Manager] Session Limit Information
+    Total: 1000
+    Remaining: 996
+[ 10.04.2022 ][ 01:46:18 ][  DEBUG  ]: [WS => Manager] Spawning shards: 0
+[ 10.04.2022 ][ 01:46:18 ][  DEBUG  ]: [WS => Shard 0] [CONNECT]
+    Gateway    : wss://gateway.discord.gg/
+    Version    : 9
+    Encoding   : json
+    Compression: none
+[ 10.04.2022 ][ 01:46:18 ][  DEBUG  ]: [WS => Shard 0] Setting a HELLO timeout for 20s.
+[ 10.04.2022 ][ 01:46:19 ][  DEBUG  ]: [WS => Shard 0] [CONNECTED] Took 213ms
+[ 10.04.2022 ][ 01:46:19 ][  DEBUG  ]: [WS => Shard 0] Clearing the HELLO timeout.
+[ 10.04.2022 ][ 01:46:19 ][  DEBUG  ]: [WS => Shard 0] Setting a heartbeat interval for 41250ms.
+[ 10.04.2022 ][ 01:46:19 ][  DEBUG  ]: [WS => Shard 0] [IDENTIFY] Shard 0/1 with intents: 32767
+[ 10.04.2022 ][ 01:46:19 ][  DEBUG  ]: [WS => Shard 0] [READY] Session 1301389a1a7b4dbd04172fbb2fdbea02.
+[ 10.04.2022 ][ 01:46:19 ][  DEBUG  ]: [WS => Shard 0] Shard received all its guilds. Marking as fully ready.
+[ 10.04.2022 ][ 01:46:19 ][  DEBUG  ]: [WS => Shard 0] [ReadyHeartbeat] Sending a heartbeat.
+[ 10.04.2022 ][ 01:46:19 ][  DEBUG  ]: [WS => Shard 0] Heartbeat acknowledged, latency of 136ms.
+[ 10.04.2022 ][ 01:47:00 ][  DEBUG  ]: [WS => Shard 0] [HeartbeatTimer] Sending a heartbeat.
+[ 10.04.2022 ][ 01:47:00 ][  DEBUG  ]: [WS => Shard 0] Heartbeat acknowledged, latency of 137ms.
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Buttons.js:12:23)
+[ 10.04.2022 ][ 02:01:23 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1001:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1210:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1001:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1210:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1001:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1210:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Buttons.js:12:23)
+[ 10.04.2022 ][ 02:17:29 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 02:38:08 ][  DEBUG  ]: Provided token: OTYyNDU1NDQ1MTMyNDE5MTM0.YlHyew.***************************
+[ 10.04.2022 ][ 02:38:08 ][  DEBUG  ]: Preparing to connect to the gateway...
+[ 10.04.2022 ][ 02:38:08 ][  DEBUG  ]: [WS => Manager] Fetched Gateway Information
+    URL: wss://gateway.discord.gg
+    Recommended Shards: 1
+[ 10.04.2022 ][ 02:38:08 ][  DEBUG  ]: [WS => Manager] Session Limit Information
+    Total: 1000
+    Remaining: 986
+[ 10.04.2022 ][ 02:38:08 ][  DEBUG  ]: [WS => Manager] Spawning shards: 0
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] [CONNECT]
+    Gateway    : wss://gateway.discord.gg/
+    Version    : 9
+    Encoding   : json
+    Compression: none
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] Setting a HELLO timeout for 20s.
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] [CONNECTED] Took 234ms
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] Clearing the HELLO timeout.
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] Setting a heartbeat interval for 41250ms.
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] [IDENTIFY] Shard 0/1 with intents: 32767
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] [READY] Session 3be9d80b6e4bbeefc26f057a4463c4c9.
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] [ReadyHeartbeat] Sending a heartbeat.
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] Shard received all its guilds. Marking as fully ready.
+[ 10.04.2022 ][ 02:38:09 ][  DEBUG  ]: [WS => Shard 0] Heartbeat acknowledged, latency of 127ms.
+[ 10.04.2022 ][ 03:00:39 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:00:39 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 03:00:39 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:00:39 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:00:39 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 03:00:39 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:02:15 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:02:15 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:02:15 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 03:02:15 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:02:15 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 03:02:15 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:02:32 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:02:32 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 03:02:32 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:02:32 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 03:02:32 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:02:32 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:03:15 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:03:15 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 03:03:15 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:03:15 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:03:15 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 03:03:15 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:05:15 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:05:15 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 03:05:15 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:05:15 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 03:05:15 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:05:15 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:05:59 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:05:59 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 03:05:59 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:05:59 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:05:59 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 03:05:59 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:07:45 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:07:45 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 03:07:45 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:09:40 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:09:40 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:24:23)
+[ 10.04.2022 ][ 03:09:40 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:09:40 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 03:09:40 ][ WARNING ]: TypeError: Cannot read properties of undefined (reading 'length')
+    at AsciiTable3.getColumnsWidth (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1053:63)
+    at AsciiTable3.toString (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ascii-table3\ascii-table3.js:1262:32)
+    at module.exports (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Commands.js:32:23)
+[ 10.04.2022 ][ 03:09:40 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 03:09:59 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:10:00 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 03:11:42 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:11:42 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 03:13:34 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:13:34 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 03:16:43 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:16:44 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 03:19:03 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:19:04 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 03:24:48 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:24:49 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 03:32:24 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:32:25 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 03:46:59 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:47:00 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 03:48:13 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 03:48:13 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 04:23:02 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 04:23:02 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 04:23:11 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 04:23:11 ][ WARNING ]: TypeError [EMOJI_TYPE]: Emoji must be a string or GuildEmoji/ReactionEmoji
+    at MessageManager.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\managers\MessageManager.js:191:23)
+    at Message.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\Message.js:768:33)
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\AutoReply\messageCreate.js:12:28)
+    at Client.<anonymous> (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:18:54)
+    at Client.emit (node:events:526:28)
+    at MessageCreateAction.handle (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\actions\MessageCreate.js:26:14)
+    at Object.module.exports [as MESSAGE_CREATE] (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\handlers\MESSAGE_CREATE.js:4:32)
+    at WebSocketManager.handlePacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketManager.js:351:31)
+    at WebSocketShard.onPacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketShard.js:444:22)
+    at WebSocketShard.onMessage (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketShard.js:301:10)
+[ 10.04.2022 ][ 04:23:11 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 04:26:12 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 04:26:13 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 04:26:15 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 04:26:15 ][ WARNING ]: TypeError [EMOJI_TYPE]: Emoji must be a string or GuildEmoji/ReactionEmoji
+    at MessageManager.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\managers\MessageManager.js:191:23)
+    at Message.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\Message.js:768:33)
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\AutoReply\messageCreate.js:12:28)
+    at Client.<anonymous> (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:18:54)
+    at Client.emit (node:events:526:28)
+    at MessageCreateAction.handle (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\actions\MessageCreate.js:26:14)
+    at Object.module.exports [as MESSAGE_CREATE] (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\handlers\MESSAGE_CREATE.js:4:32)
+    at WebSocketManager.handlePacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketManager.js:351:31)
+    at WebSocketShard.onPacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketShard.js:444:22)
+    at WebSocketShard.onMessage (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketShard.js:301:10)
+[ 10.04.2022 ][ 04:26:15 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 04:27:09 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 04:27:10 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 04:27:15 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 04:27:15 ][ WARNING ]: DiscordAPIError: Unknown Emoji
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async MessageManager.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\managers\MessageManager.js:198:5)
+    at async Message.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\Message.js:768:5)
+[ 10.04.2022 ][ 04:27:15 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 04:27:16 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 04:27:16 ][ WARNING ]: DiscordAPIError: Unknown Emoji
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async MessageManager.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\managers\MessageManager.js:198:5)
+    at async Message.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\Message.js:768:5)
+[ 10.04.2022 ][ 04:27:16 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 04:29:02 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 04:29:03 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 04:29:05 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 04:29:05 ][ WARNING ]: DiscordAPIError: Unknown Emoji
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async MessageManager.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\managers\MessageManager.js:198:5)
+    at async Message.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\Message.js:768:5)
+[ 10.04.2022 ][ 04:29:05 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 04:29:06 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 04:29:06 ][ WARNING ]: DiscordAPIError: Unknown Emoji
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async MessageManager.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\managers\MessageManager.js:198:5)
+    at async Message.react (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\Message.js:768:5)
+[ 10.04.2022 ][ 04:29:06 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 04:29:54 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 04:29:55 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 04:30:26 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 04:30:27 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 04:31:21 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 04:31:22 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 04:32:03 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 04:32:04 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 05:29:43 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 05:29:45 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 05:31:10 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 05:31:10 ][ WARNING ]: DiscordAPIError: Cannot send an empty message
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async CommandInteraction.reply (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\interfaces\InteractionResponses.js:99:5)
+[ 10.04.2022 ][ 05:31:10 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 05:31:34 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 05:31:34 ][ WARNING ]: DiscordAPIError: Cannot send an empty message
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async CommandInteraction.reply (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\interfaces\InteractionResponses.js:99:5)
+[ 10.04.2022 ][ 05:31:34 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 05:32:05 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 05:32:06 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 05:32:19 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 05:32:19 ][ WARNING ]: DiscordAPIError: Cannot send an empty message
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async CommandInteraction.reply (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\interfaces\InteractionResponses.js:99:5)
+[ 10.04.2022 ][ 05:32:19 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 05:33:54 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 05:33:55 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 05:34:08 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 05:34:08 ][ WARNING ]: DiscordAPIError: Cannot send an empty message
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async CommandInteraction.reply (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\interfaces\InteractionResponses.js:99:5)
+[ 10.04.2022 ][ 05:34:08 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 05:38:37 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 05:38:38 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 05:38:46 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 05:38:46 ][ WARNING ]: DiscordAPIError: Cannot send an empty message
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async CommandInteraction.reply (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\interfaces\InteractionResponses.js:99:5)
+[ 10.04.2022 ][ 05:38:46 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 05:42:13 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 05:42:13 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 05:42:21 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 05:42:21 ][ WARNING ]: DiscordAPIError: Cannot send an empty message
+    at RequestHandler.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:350:13)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async RequestHandler.push (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\rest\RequestHandler.js:51:14)
+    at async CommandInteraction.reply (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\structures\interfaces\InteractionResponses.js:99:5)
+[ 10.04.2022 ][ 05:42:21 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 05:43:32 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 05:43:33 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 05:43:56 ][  ERROR  ]: === UNCAUGHT EXCEPTION MONITOR ===
+[ 10.04.2022 ][ 05:43:56 ][  ERROR  ]: === UNCAUGHT EXCEPTION ===
+[ 10.04.2022 ][ 05:43:56 ][  ERROR  ]: TypeError: Cannot read properties of undefined (reading 'delete')
+    at Timeout._onTimeout (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Commands\Moderation\clear.js:48:42)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+[ 10.04.2022 ][ 05:43:56 ][  ERROR  ]: ===========================
+[ 10.04.2022 ][ 05:49:41 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 05:49:42 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 05:50:03 ][  ERROR  ]: === UNCAUGHT EXCEPTION MONITOR ===
+[ 10.04.2022 ][ 05:50:03 ][  ERROR  ]: === UNCAUGHT EXCEPTION ===
+[ 10.04.2022 ][ 05:50:03 ][  ERROR  ]: TypeError: Cannot read properties of undefined (reading 'delete')
+    at Timeout._onTimeout (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Commands\Moderation\clear.js:48:42)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+[ 10.04.2022 ][ 05:50:03 ][  ERROR  ]: ===========================
+[ 10.04.2022 ][ 05:51:34 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 05:51:35 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 06:15:19 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 06:15:20 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 06:15:28 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 06:15:28 ][ WARNING ]: TypeError: (intermediate value).setColor(...).setAuthor(...).setThumbnail(...).setDescription(...).setFooter(...).timestamp is not a function
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\Member\guildMemberAdd.js:24:46)
+    at Client.<anonymous> (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:18:54)
+    at Client.emit (node:events:526:28)
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Commands\Developer\emitt.js:28:24)
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\Interaction\interactionCreate.js:15:21)
+    at Client.<anonymous> (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:18:54)
+    at Client.emit (node:events:526:28)
+    at InteractionCreateAction.handle (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\actions\InteractionCreate.js:74:12)
+    at Object.module.exports [as INTERACTION_CREATE] (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\handlers\INTERACTION_CREATE.js:4:36)
+    at WebSocketManager.handlePacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketManager.js:351:31)
+[ 10.04.2022 ][ 06:15:28 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 06:17:42 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 06:17:43 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 06:17:53 ][ WARNING ]: === UNHANDLED REJECTION ===
+[ 10.04.2022 ][ 06:17:53 ][ WARNING ]: TypeError: (intermediate value).setColor(...).setAuthor(...).setThumbnail(...).setDescription(...).setFooter(...).timestamp is not a function
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\Member\guildMemberAdd.js:23:46)
+    at Client.<anonymous> (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:18:54)
+    at Client.emit (node:events:526:28)
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Commands\Developer\emitt.js:28:24)
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\Interaction\interactionCreate.js:15:21)
+    at Client.<anonymous> (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:18:54)
+    at Client.emit (node:events:526:28)
+    at InteractionCreateAction.handle (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\actions\InteractionCreate.js:74:12)
+    at Object.module.exports [as INTERACTION_CREATE] (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\handlers\INTERACTION_CREATE.js:4:36)
+    at WebSocketManager.handlePacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketManager.js:351:31)
+[ 10.04.2022 ][ 06:17:53 ][ WARNING ]: ===========================
+[ 10.04.2022 ][ 06:18:37 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 06:18:38 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 06:19:08 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 06:19:09 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 06:19:36 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 06:19:36 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 06:21:12 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 06:21:13 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 06:26:42 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 06:26:43 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:00:53 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:00:54 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:27:39 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:27:40 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:33:04 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:33:04 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:33:41 ][  ERROR  ]: DiscordAPIError: Invalid Form Body
+attachments[0]: Only dictionaries may be used in a ModelType
+[ 10.04.2022 ][ 07:35:01 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:35:02 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:35:18 ][  ERROR  ]: === UNCAUGHT EXCEPTION MONITOR ===
+[ 10.04.2022 ][ 07:35:18 ][  ERROR  ]: === UNCAUGHT EXCEPTION ===
+[ 10.04.2022 ][ 07:35:18 ][  ERROR  ]: TypeError: a.first is not a function
+    at C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\Message\messageDelete.js:18:80
+    at C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\@discordjs\collection\dist\index.js:1:3113
+    at Function.from (<anonymous>)
+    at Map.map (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\@discordjs\collection\dist\index.js:1:3053)
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\Message\messageDelete.js:18:69)
+    at Client.<anonymous> (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:18:54)
+    at Client.emit (node:events:526:28)
+    at MessageDeleteAction.handle (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\actions\MessageDelete.js:24:16)
+    at Object.module.exports [as MESSAGE_DELETE] (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\handlers\MESSAGE_DELETE.js:4:32)
+    at WebSocketManager.handlePacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketManager.js:351:31)
+[ 10.04.2022 ][ 07:35:18 ][  ERROR  ]: ===========================
+[ 10.04.2022 ][ 07:37:26 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:37:26 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:37:39 ][  ERROR  ]: DiscordAPIError: Invalid Form Body
+attachments[0]: List item values of ModelType are required
+[ 10.04.2022 ][ 07:39:04 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:39:05 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:39:16 ][  ERROR  ]: DiscordAPIError: Invalid Form Body
+attachments[0]: Only dictionaries may be used in a ModelType
+[ 10.04.2022 ][ 07:41:07 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:41:08 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:41:19 ][  ERROR  ]: DiscordAPIError: Invalid Form Body
+attachments[0]: Only dictionaries may be used in a ModelType
+[ 10.04.2022 ][ 07:42:51 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:42:52 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:43:02 ][  ERROR  ]: === UNCAUGHT EXCEPTION MONITOR ===
+[ 10.04.2022 ][ 07:43:02 ][  ERROR  ]: === UNCAUGHT EXCEPTION ===
+[ 10.04.2022 ][ 07:43:02 ][  ERROR  ]: TypeError: message.attachments.first(...).url is not a function
+    at Object.execute (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Events\Message\messageDelete.js:20:72)
+    at Client.<anonymous> (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\Structures\Handlers\Events.js:18:54)
+    at Client.emit (node:events:526:28)
+    at MessageDeleteAction.handle (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\actions\MessageDelete.js:24:16)
+    at Object.module.exports [as MESSAGE_DELETE] (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\handlers\MESSAGE_DELETE.js:4:32)
+    at WebSocketManager.handlePacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketManager.js:351:31)
+    at WebSocketShard.onPacket (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketShard.js:444:22)
+    at WebSocketShard.onMessage (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\discord.js\src\client\websocket\WebSocketShard.js:301:10)
+    at WebSocket.onMessage (C:\Users\leon7\Documents\GitHub\CodeMasterDiscordBotDB\node_modules\ws\lib\event-target.js:199:18)
+    at WebSocket.emit (node:events:526:28)
+[ 10.04.2022 ][ 07:43:02 ][  ERROR  ]: ===========================
+[ 10.04.2022 ][ 07:43:21 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:43:22 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:44:37 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:44:38 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:44:53 ][  ERROR  ]: RangeError [MESSAGE_CONTENT_TYPE]: Message content must be a non-empty string.
+[ 10.04.2022 ][ 07:46:27 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:46:28 ][ SUCCESS ]: The client is now connected to the database!
+[ 10.04.2022 ][ 07:46:40 ][  ERROR  ]: DiscordAPIError: Invalid Form Body
+attachments[0]: List item values of ModelType are required
+[ 10.04.2022 ][ 07:48:18 ][ SUCCESS ]: ✅ Запущен от имени бота: Cool Bot#8025!
+[ 10.04.2022 ][ 07:48:18 ][ SUCCESS ]: The client is now connected to the database!

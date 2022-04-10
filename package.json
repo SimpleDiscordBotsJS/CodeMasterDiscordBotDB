@@ -1,0 +1,26 @@
+{
+  "name": "code-master-discord-bot-db",
+  "version": "1.0.0",
+  "description": "Discord bot for the Code Master server",
+  "main": "./Structures/index.js",
+  "scripts": {
+    "start": "node ./Structures/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimpleDiscordBotsJS/CodeMasterDiscordBotDB.git"
+  },
+  "author": "LeonusDH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimpleDiscordBotsJS/CodeMasterDiscordBotDB/issues"
+  },
+  "homepage": "https://github.com/SimpleDiscordBotsJS/CodeMasterDiscordBotDB#readme",
+  "dependencies": {
+    "ascii-table3": "^0.7.4",
+    "canvas": "^2.9.1",
+    "discord.js": "^13.6.0",
+    "glob": "^7.2.0",
+    "mongoose": "^6.2.10"
+  }
+}
