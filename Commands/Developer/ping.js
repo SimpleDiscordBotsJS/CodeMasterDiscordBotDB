@@ -9,7 +9,7 @@ module.exports = {
      * @param {CommandInteraction} interaction 
      */
     execute(interaction) {
-        interaction.reply({content: "POING"});
+        interaction.reply({content: "POING", ephemeral: true});
         Logger.Info("PONG");
         Logger.Warning("PONG");
         Logger.Success("PONG");
