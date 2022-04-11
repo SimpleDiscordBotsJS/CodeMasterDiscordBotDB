@@ -18,7 +18,7 @@ module.exports = {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }).then(() => {
-            Success("The client is now connected to the database!");
+            Success("Теперь клиент подключен к базе данных!");
         }).catch((err) => {
             Error(err);
         });
