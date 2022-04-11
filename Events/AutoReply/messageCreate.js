@@ -8,7 +8,7 @@ module.exports = {
     async execute(message) {
         if(message.author.bot) return;
 
-        if(message.channelId == "914501548619464715") {
+        if(message.channelId == "962053378584752178") {
             await message.react("👍").then(() => message.react('👎'));
             return;
         }
