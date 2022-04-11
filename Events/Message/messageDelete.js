@@ -1,4 +1,5 @@
 const { MessageEmbed, Message, WebhookClient } = require("discord.js");
+const { WEBHOOKS } = require("../../Structures/config.json");
 const { Error } = require("../../Utilites/Logger");
 
 module.exports = {
@@ -14,10 +15,10 @@ module.exports = {
         **Удаленное сообщение:**\n \`\`\`${message.content ? message.content : "None"}\`\`\``.slice(0, 4096));
 
         if(message.attachments.size >= 1){
-            Log.addField(`Прикреплено`, `${message.attachments.map(a => a.url)}`, true);
+            Log.addField(`Прикреплено`, `${message.attachments.map(a => a.url).join(" ")}`, true);
         }
 
-        new WebhookClient({url: "https://discord.com/api/webhooks/928541928029577226/kthn1TMcG7wAxSunao2UwwlxbHteSHAlo-b6bXphEzXu_dGKO5GYXXA_mk_6a3Eivbkq"})
+        new WebhookClient({url: WEBHOOKS.MESSAGE_LOG.DELETE_URL})
         .send({embeds: [Log]}).catch((err) => Error(err));
     }
 }
