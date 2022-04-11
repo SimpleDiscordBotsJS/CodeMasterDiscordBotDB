@@ -1,4 +1,5 @@
 const { MessageEmbed, Message, WebhookClient } = require("discord.js");
+const { WEBHOOKS } = require("../../Structures/config.json");
 const { Error } = require("../../Utilites/Logger");
 
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
         **Оригинал**: \n \`\`\`${Original}\`\`\` \n**Измененное**:\n \`\`\`${Edited}\`\`\``.slice("0", "4096"))
         .setFooter({text: `Member: ${newMessage.author.tag} | ID: ${newMessage.author.id}`}).setTimestamp();
 
-        new WebhookClient({url: "https://discord.com/api/webhooks/928541928029577226/kthn1TMcG7wAxSunao2UwwlxbHteSHAlo-b6bXphEzXu_dGKO5GYXXA_mk_6a3Eivbkq"})
+        new WebhookClient({url: WEBHOOKS.MESSAGE_LOG.EDIT_URL})
         .send({embeds: [Log]}).catch((err) => Error(err));
     }
 }

@@ -1,4 +1,5 @@
 const { MessageEmbed, WebhookClient, GuildMember } = require("discord.js");
+const { WEBHOOKS } = require("../../Structures/config.json");
 
 module.exports = {
     name: "guildMemberAdd",
@@ -10,9 +11,7 @@ module.exports = {
 
         //member.roles.add("");
 
-        const Welcomer = new WebhookClient({
-            url: "https://discord.com/api/webhooks/928541928029577226/kthn1TMcG7wAxSunao2UwwlxbHteSHAlo-b6bXphEzXu_dGKO5GYXXA_mk_6a3Eivbkq"
-        });
+        const Welcomer = new WebhookClient({ url: WEBHOOKS.JOIN_EXIT.JOIN_URL });
 
         const Welcome = new MessageEmbed().setColor("AQUA")
         .setAuthor({ name: user.tag, iconURL: user.avatarURL({dynamic: true, size: 512}) })
