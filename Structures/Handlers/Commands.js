@@ -15,8 +15,8 @@ module.exports = async(client, PG, AsciiTable3) => {
         if(!command.name)
         return Table.addRow(file.split("/")[7], "🔸 FAILED", "Missing a name.");
 
-        if(!command.context && !command.description)
-        return Table.addRow(command.name, "🔸 FAILED", "Missing a description.");
+        if(command.type !== "USER" && !command.description) 
+        return Table.addRow(command.name, "🔸 FAILED", "missing a description.");
 
         if(command.permission) {
             if(Perms.includes(command.permission)) command.defaultPermission = false;
