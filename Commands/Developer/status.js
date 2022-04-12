@@ -13,7 +13,8 @@ module.exports = {
         const Response = new MessageEmbed().setColor("AQUA")
         .setDescription(`**Client**: \`🟢 ONLINE\` - \`${client.ws.ping}ms\`
         **Uptime**: <t:${parseInt(client.readyTimestamp / 1000)}:R>\n
-        **Database**: \`${switchTo(connection.readyState)}\``);
+        **Database**: \`${switchTo(connection.readyState)}\`\n
+        **Platform**: ${process.platform}`);
 
         interaction.reply({embeds: [Response]});
     }
