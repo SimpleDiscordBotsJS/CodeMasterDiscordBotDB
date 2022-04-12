@@ -22,5 +22,7 @@ module.exports = {
         }).catch((err) => {
             Error(err);
         });
+
+        require("../../Systems/ChatFilterSys")(client);
     }
 }
