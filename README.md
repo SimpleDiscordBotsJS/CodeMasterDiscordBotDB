@@ -1,10 +1,5 @@
 # Discord-DB-Template-Bot
-It's a template for discord bot
-
-Advantages:
- - It's a template...
- - Hendler's
- - MongoDB
+It's a discord bot
 
 # Instructions
 ## Customizing the Config.json File
@@ -16,14 +11,28 @@ Advantages:
  ```
  
  The bot token can be copied in the Bot section of [your application](https://discord.com/developers/applications)
- 
- # Attention!
- To get the guilds IDs, you must enable developer mode
 
 ## To run locally, you need Node.JS
- - [Download Node.JS](https://nodejs.org/en/)
+ - [Download Node.JS](https://nodejs.org/en/) - 16.14.2 or above
 
 ## Start
  ```sh
  node .
  ```
+
+# pm2
+## Install pm2
+ ```sh 
+ npm install --global pm2
+ ```
+
+## Startup
+ - [Check this](https://futurestud.io/tutorials/pm2-restart-processes-after-system-reboot)
+
+## Starting
+ ```sh
+ pm2 start . --name "Code bot" --watch
+ ```
+
+### If you want to use nodemon and pm2
+ - [Check this](https://stackoverflow.com/questions/69457892/nodemon-watch-vs-pm2-watch)
