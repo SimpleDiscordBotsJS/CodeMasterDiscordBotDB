@@ -10,11 +10,21 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        const Response = new MessageEmbed().setColor("AQUA")
-        .setDescription(`**Client**: \`🟢 ONLINE\` - \`${client.ws.ping}ms\`
-        **Uptime**: <t:${parseInt(client.readyTimestamp / 1000)}:R>\n
-        **Database**: \`${switchTo(connection.readyState)}\`\n
-        **Platform**: ${process.platform}`);
+        const getChannelTypeSize = (type) => client.channels.cache.filter((channel) => type.includes(channel.type)).size;
+
+        const Response = new MessageEmbed().setColor("AQUA").setThumbnail(client.user.displayAvatarURL({dynamic: true}))
+        .setTitle(`${client.user.tag} Status`).setDescription(`**Client**: \`🟢 ONLINE\` - \`${client.ws.ping}ms\`
+        **Database**: \`${switchTo(connection.readyState)}\`\n`).addFields(
+            { name: "👩🏻‍🔧 Client", value: client.user.tag, inline: true },
+            { name: "📆 Created", value: `<t:${parseInt(client.user.createdTimestamp / 1000)}:R>`, inline: true },
+            { name: "⏰ Up Since", value: `<t:${parseInt(client.readyTimestamp / 1000)}:R>`, inline: true },
+            { name: "💻 Platform", value: `${process.platform}`, inline: true },
+            { name: "💾 CPU Usage", value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}%`, inline: true },
+            { name: "🤹🏻‍♀️ Commands", value: `${client.commands.size}`, inline: true },
+            { name: "💬 Text Channels", value: `${getChannelTypeSize(["GUILD_TEXT", "GUILD_NEWS"])}`, inline: true },
+            { name: "🎤 Voice Channels", value: `${getChannelTypeSize(["GUILD_VOICE", "GUILD_STAGE_VOICE"])}`, inline: true },
+            { name: "🧵 Threads", value: `${getChannelTypeSize(["GUILD_THREAD", "GUILD_NEWS_THREAD", "GUILD_PUBLIC_THREAD", "GUILD_PRIVATE_THREAD"])}`, inline: true })
+        .setFooter({text: `Guild ID: ${interaction.guild.id}`}).setTimestamp();
 
         interaction.reply({embeds: [Response]});
     }
