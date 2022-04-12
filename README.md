@@ -34,5 +34,15 @@ It's a discord bot
  pm2 start . --name "Code bot" --watch
  ```
 
+## Base commands for Neophyte's
+ ```sh
+pm2 list - show all process
+
+pm2 stop (id) - stopping process
+
+pm2 logs (. or id) - show logs
+ ```
+more in `pm2 -h` or [this](https://pm2.keymetrics.io/docs/usage/quick-start/) and Google 😉
+
 ### If you want to use nodemon and pm2
  - [Check this](https://stackoverflow.com/questions/69457892/nodemon-watch-vs-pm2-watch)
