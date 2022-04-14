@@ -13,7 +13,7 @@ module.exports = {
     async execute(interaction) {
         const { guild, member } = interaction;
 
-        DB.findOne({GuildID: guild.id, MemberID: member.id}, async(err, data) => {
+        await DB.findOne({GuildID: guild.id, MemberID: member.id}, async(err, data) => {
             if(err) throw err;
             if(!data) {
                 DB.create({GuildID: guild.id, MemberID: member.id, Rating: 100});
