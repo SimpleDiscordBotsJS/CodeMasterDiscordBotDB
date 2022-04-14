@@ -24,5 +24,6 @@ module.exports = {
         });
 
         require("../../Systems/ChatFilterSys")(client);
+        require("../../Systems/AntiScamSys")(client);
     }
 }
