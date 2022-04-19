@@ -10,11 +10,12 @@ const { AsciiTable3 } = require("ascii-table3");
 //===========================================================
 
 client.commands = new Collection();
+client.buttons = new Collection();
 client.filters = new Collection();
 client.filtersLog = new Collection();
 client.scamlinksLog = new Collection();
 
-["Events", "Commands"].forEach(handler => {
+["Events", "Commands", "Buttons"].forEach(handler => {
     require(`./Handlers/${handler}`)(client, PG, AsciiTable3);
 });
 

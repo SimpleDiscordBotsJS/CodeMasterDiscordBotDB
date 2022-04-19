@@ -1,8 +1,7 @@
 const { CommandInteraction } = require("discord.js");
 const DB = require("../../Structures/Schemas/SocRatingDB");
 
-//TODO:
-//Переделать всё в Embed
+//TODO - Переделать всё в Embed
 
 module.exports = {
     name: "mod-rating",
