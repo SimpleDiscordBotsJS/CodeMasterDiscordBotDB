@@ -1,7 +1,5 @@
-const { CommandInteraction } = require("discord.js");
+const { CommandInteraction, MessageEmbed } = require("discord.js");
 const DB = require("../../Structures/Schemas/SocRatingDB");
-
-//TODO - Переделать всё в Embed
 
 module.exports = {
     name: "mod-rating",
@@ -23,8 +21,10 @@ module.exports = {
         const User = options.getMember("user");
         const Rating = options.getNumber("rating");
 
-        //Самому себе, нельзя.
-        //Заменить на: Администраторам, нельзя.
+        const Embed = new MessageEmbed().setColor("GOLD").setFooter({text: `Guild ID: ${guild.id}`})
+        .setTitle("**Социальный рейтинг**").setThumbnail(User.displayAvatarURL({dynamic: true, size: 512}));
+
+        //TODO - Самому себе, нельзя. Заменить на: Администраторам, нельзя.
         //if(User == member.id) return interaction.reply({content: "No!", ephemeral: true});
         
         switch(options.getString("options")) {
@@ -36,7 +36,9 @@ module.exports = {
                     data.Rating = (data.Rating + Rating);
                     data.save();
 
-                    interaction.reply({content: `Социальный рейтинг ${User} теперь ${data.Rating}`, ephemeral: true});
+                    interaction.reply({embeds: [Embed.setTimestamp().setDescription(
+                        `Пользователю ${User} было добавлено ${Rating} очков
+                        социального рейтинга!\n\nТеперь, его социальный рейтинг: ${data.Rating}`)], ephemeral: true});
                 });
             }
             break;
@@ -48,7 +50,9 @@ module.exports = {
                     data.Rating = (data.Rating - Rating);
                     data.save();
 
-                    interaction.reply({content: `Социальный рейтинг ${User} теперь ${data.Rating}`, ephemeral: true});
+                    interaction.reply({embeds: [Embed.setTimestamp().setDescription(
+                    `У пользователя ${User} было забрано ${Rating} очков
+                    социального рейтинга!\n\nТеперь, его социальный рейтинг: ${data.Rating}`)], ephemeral: true});
                 });
             }
             break;
