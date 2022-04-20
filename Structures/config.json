@@ -1,5 +1,5 @@
 {
-    "BOT_TOKEN": "OTYyNDU1NDQ1MTMyNDE5MTM0.YlHyew.4SeXrtZ3DVGX9skbJLaEy83AW1c",
+    "BOT_TOKEN": "ODMyMjk5NzkzNDQ2OTkzOTcw.YHhxlg.stbHvmX4tddG1Cqzg6PH-v-G4uk",
     "DATABASE": "mongodb+srv://LeonusDH:qwerty123@radio.iuqeu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 
     "WEBHOOKS": {
@@ -11,5 +11,9 @@
             "EDIT_URL": "https://discord.com/api/webhooks/962801990247796796/VEB4yUQdnL2Mdnuhi4j0OcOuWUdpvboHFrvGfpg9A5biYakC83Li22i1Byv7hKLmeZG0",
             "DELETE_URL": "https://discord.com/api/webhooks/962801990247796796/VEB4yUQdnL2Mdnuhi4j0OcOuWUdpvboHFrvGfpg9A5biYakC83Li22i1Byv7hKLmeZG0"
         }
-    }
+    },
+
+    "AUTORESPONDER": [
+        "962053378584752178"
+    ]
 }

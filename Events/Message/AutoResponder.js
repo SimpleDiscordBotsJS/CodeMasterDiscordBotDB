@@ -1,4 +1,5 @@
 const { Message } = require("discord.js");
+const { AUTORESPONDER } = require("../../Structures/config.json");
 
 module.exports = {
     name: "messageCreate",
@@ -8,9 +9,11 @@ module.exports = {
     async execute(message) {
         if(message.author.bot) return;
 
-        if(message.channelId == "962053378584752178") {
-            await message.react("👍").then(() => message.react('👎'));
-            return;
-        }
+        // TODO - Раз уж есть антикраш, пока пусть так, а вообще, надо бы проверять, есть ли канал в гилде. Потом сделаю.
+
+        await AUTORESPONDER.forEach((channels) => {
+            if(message.channel.id != channels) return;
+            message.react("👍").then(() => message.react("👎"));
+        });
     }
 }
