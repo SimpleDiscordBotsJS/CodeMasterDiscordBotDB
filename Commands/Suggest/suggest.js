@@ -6,6 +6,7 @@ const DB = require("../../Structures/Schemas/Suggest/SuggestDB");
 module.exports = {
     name: "suggest",
     description: "Предложить",
+    cooldown: 300000,
     options: [
         { name: "type", description: "Выберите тип предложения.",
             type: "STRING",

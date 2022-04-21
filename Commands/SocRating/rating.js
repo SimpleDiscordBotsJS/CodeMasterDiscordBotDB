@@ -3,6 +3,7 @@ const DB = require("../../Structures/Schemas/SocRatingDB");
 
 module.exports = {
     name: "rating",
+    cooldown: 10000,
     description: "Показывает ваш социальный рейтинг",
     /**
      * @param {CommandInteraction} interaction 

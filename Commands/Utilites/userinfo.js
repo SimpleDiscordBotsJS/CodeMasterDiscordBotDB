@@ -4,6 +4,7 @@ const RatingDB = require("../../Structures/Schemas/SocRatingDB");
 module.exports = {
     name: "userinfo",
     type: "USER",
+    cooldown: 5000,
     permission: "ADMINISTRATOR",
     /**
      * @param {ContextMenuInteraction} interaction 
