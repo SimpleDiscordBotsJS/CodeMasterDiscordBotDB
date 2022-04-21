@@ -35,12 +35,11 @@ module.exports = {
             const channelObject = guild.channels.cache.get(channelID);
             if(!channelObject) return;
 
-            const Embed = new MessageEmbed().setTitle("Scam detected").setColor("RED")
+            const Embed = new MessageEmbed().setTitle("Обнаружен SCAM").setColor("RED")
             .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`)
-            .setDescription(`Please don't send any scam messages. Thank you.`)
-            .addField("User:", `\`\`\`${author.tag} (${author.id})\`\`\``)
-            .addField("Message Content:", `\`\`\`${content}\`\`\``)
-            .setTimestamp();
+            .setDescription(`Пожалуйста, не отправляйте SCAM сообщения. Благодарю.`)
+            .addField("Пользователь:", `\`\`\`${author.tag} (${author.id})\`\`\``)
+            .addField("Контент:", `\`\`\`${content}\`\`\``).setTimestamp();
             
             await channelObject.send({embeds: [Embed]});
         }

@@ -35,12 +35,11 @@ module.exports = {
             const channelObject = guild.channels.cache.get(channelID);
             if(!channelObject) return;
             
-            const Embed = new MessageEmbed().setColor("RED")
+            const Embed = new MessageEmbed().setTitle("Использованы слова из чёрного списка").setColor("RED")
+            .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`).setTimestamp()
             .setAuthor({name: author.tag, iconURL: author.displayAvatarURL({dynamic: true})})
-            .setDescription([
-                `Used ${wordsUsed.length} blacklist word(s) in ${channel} => \n`,
-                `\`${wordsUsed.map((w) => w)}\``
-            ].join("\n"));
+            .addField("Количество:", `\`${wordsUsed.length}\``, true).addField("Канал:", `${channel}`, true)
+            .addField("Слова:", [`\`${wordsUsed.map((w) => w)}\``].join("\n"));
 
             channelObject.send({embeds: [Embed]});
         }
