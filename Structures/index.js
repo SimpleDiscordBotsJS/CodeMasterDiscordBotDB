@@ -1,7 +1,7 @@
-const { Client, Collection } = require("discord.js"); // Библиотека
-const client = new Client({ intents: 32767 }); // Создание клиента
-const Logger = require("../Utilites/Logger"); // Логгер
-const { BOT_TOKEN } = require("./config.json"); // Загрузка конфига
+const { Client, Collection } = require("discord.js");
+const client = new Client({ intents: 32767 });
+const Logger = require("../Utilites/Logger");
+const { BOT_TOKEN } = require("./config.json");
 const { promisify } = require("util");
 const { glob } = require("glob");
 const PG = promisify(glob);
@@ -61,7 +61,7 @@ process.on('multipleResolves', (type, promise, reason) => {
 //===========================================================
 
 //Подключение к боту и вывод ошибки в случае отсутствия токена, или если токен неверен.
-client.login(BOT_TOKEN).catch(() => Logger.Error("[BOT] Invalid Bot Login Token."));
+client.login(BOT_TOKEN).catch(() => Logger.Error("[BOT] Неверный токен для входа от имени бота."));
 
 //===========================================================
 
