@@ -1,4 +1,5 @@
 const { Client, MessageEmbed, CommandInteraction } = require("discord.js");
+const Package = require("../../package.json");
 const { connection } = require("mongoose");
 require("../../Events/Client/ready");
 
@@ -24,7 +25,7 @@ module.exports = {
             { name: "💬 Text Channels", value: `${getChannelTypeSize(["GUILD_TEXT", "GUILD_NEWS"])}`, inline: true },
             { name: "🎤 Voice Channels", value: `${getChannelTypeSize(["GUILD_VOICE", "GUILD_STAGE_VOICE"])}`, inline: true },
             { name: "🧵 Threads", value: `${getChannelTypeSize(["GUILD_THREAD", "GUILD_NEWS_THREAD", "GUILD_PUBLIC_THREAD", "GUILD_PRIVATE_THREAD"])}`, inline: true })
-        .setFooter({text: `Guild ID: ${interaction.guild.id}`}).setTimestamp();
+        .setFooter({text: `Version: ${Package.version}`}).setTimestamp();
 
         interaction.reply({embeds: [Response]});
     }
