@@ -23,6 +23,7 @@ module.exports = {
             Error(err);
         });
 
+        require("../../Systems/CooldownsSys")(client);
         require("../../Systems/ChatFilterSys")(client);
         require("../../Systems/AntiScamSys")(client);
     }
