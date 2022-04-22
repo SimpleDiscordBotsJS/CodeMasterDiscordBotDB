@@ -1,5 +1,5 @@
 const { MessageEmbed, GuildMember } = require("discord.js");
-const ms = require("ms")
+const ms = require("ms");
 const DB = require("../../Structures/Schemas/AntiMultiAccDB");
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
      */
     async execute(member) {
         if(member.user.bot) return;
-        if(member.user.createdTimestamp < ms("7 day")) {
+        if(member.user.createdTimestamp < ms('7 day')) {
             await member.kick("Account age is less than 7 day");
 
             const Data = await DB.findOne({GuildID: member.guild.id});
