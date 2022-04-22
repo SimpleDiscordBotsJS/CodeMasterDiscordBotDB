@@ -1,0 +1,145 @@
+const { CommandInteraction, MessageEmbed } = require("discord.js");
+const DB = require("../../Structures/Schemas/Moderation/WarningDB");
+
+module.exports = {
+    name: "warnings",
+    description: "Shows user warnings",
+    permission: "KICK_MEMBERS",
+    options: [
+        { name: "add", description: "Добавить предупреждение", type: "SUB_COMMAND", options: [
+                { name: "target", description: "Выберите цель", type: "USER", required: true },
+                { name: "reason", description: "Укажите причину", type: "STRING", required: true },
+                { name: "evidence", description: "Предоставьте доказательства", type: "STRING", required: false }
+            ]
+        },
+        { name: "check", description: "Проверить предупреждения", type: "SUB_COMMAND", options: [
+                { name: "target", description: "Выберите цель", type: "USER", required: true }
+            ]
+        },
+        { name: "remove", description: "Удалить предупреждение", type: "SUB_COMMAND", options: [
+                { name: "target", description: "Выберите цель", type: "USER", required: true },
+                { name: "warnid", description: "Укажите ID предупреждения", type: "NUMBER", required: true }
+            ]
+        },
+        { name: "clear", description: "Удалить все предупреждения", type: "SUB_COMMAND", options: [
+                { name: "target", description: "Выберите цель", type: "USER", required: true }
+            ]
+        }
+    ],
+    /**
+     * @param {CommandInteraction} interaction 
+     */
+    async execute(interaction) {
+        const { options, user, guild } = interaction;
+        const subCommand = options.getSubcommand();
+        const Target = options.getMember("target");
+        const Reason = options.getString("reason");
+        const Evidence = options.getString("evidence") || "Доказательств не предоставлено.";
+        const WarnID = options.getNumber("warnid") - 1;
+        const WarnDate = new Date(interaction.createdTimestamp).toLocaleDateString();
+
+        if(Target.user.bot)
+        return interaction.reply({embeds: [new MessageEmbed().setColor("RED")
+            .setDescription(`Нельзя выдавать предупреждения боту!`).setTimestamp()
+            ], ephemeral: true});;
+
+        switch(subCommand) {
+            case ("add") : {
+                DB.findOne({ GuildID: guild.id, UserID: Target.id }, async (err, data) => {
+                    if(err) throw err;
+                    if(!data){
+                        data = new DB({ GuildID: guild.id, UserID: Target.id, Content: [
+                                {
+                                    ExecuterID: user.id,
+                                    Reason: Reason,
+                                    Evidence: Evidence,
+                                    Date: WarnDate
+                                }
+                            ],
+                        });
+                    } else {
+                        const obj = {
+                            ExecuterID: user.id,
+                            Reason: Reason,
+                            Evidence: Evidence,
+                            Date: WarnDate
+                        }
+                        data.Content.push(obj);
+                    }
+                    data.save();
+                });
+    
+                interaction.reply({embeds: [new MessageEmbed().setTitle("Предупреждение добавлено").setColor("BLURPLE")
+                    .setDescription(`Добавлено __предупреждение__: ${Target.user.tag} \n**Причина**: ${Reason}\n**Доказательства**: ${Evidence}`)
+                    .setFooter({text: `ID: ${Target.id}`}).setTimestamp()
+                ], ephemeral: true});
+    
+                await Target.send({embeds: [new MessageEmbed().setColor("#00defa").setTitle("⚠️ WARNING").setTimestamp()
+                .setAuthor({name: Target.user.tag, iconURL: Target.user.avatarURL({dynamic: true, size: 512})})
+                .setDescription(`Вам было выдано __предупреждение__ по причине: \`\`\`${Reason}\`\`\` \nСервер: **${guild.name}**`)
+                .setFooter({text: `ID: ${Target.user.id}`})]});    
+            }
+            break;
+            case ("check") : {
+                DB.findOne({ GuildID: guild.id, UserID: Target.id }, async (err, data) => {
+                    if(err) throw err;
+                    if(data) {
+                        interaction.reply({embeds: [new MessageEmbed().setTitle("Предупреждения:").setColor("BLURPLE")
+                            .setAuthor({name: Target.user.tag, iconURL: Target.displayAvatarURL({dynamic: true})})
+                            .setThumbnail(Target.displayAvatarURL({dynamic: true, size: 512})).setTimestamp()
+                            .setDescription(`${data.Content.map(
+                                (w, i) => `**ID**: ${i + 1}
+                                **От**: <@${w.ExecuterID}>
+                                **Дата**: ${w.Date}
+                                **Причина**: ${w.Reason}
+                                **Доказательства**: ${w.Evidence}\n\n`
+                            ).join(" ")}`)
+                        ], ephemeral: true});
+                    } else {
+                        interaction.reply({embeds: [new MessageEmbed().setTitle("WARNING").setColor("BLURPLE")
+                            .setDescription(`${Target.user.tag} не имеет предупреждений.`)
+                            .setFooter({text: `ID: ${Target.id}`}).setTimestamp()
+                        ], ephemeral: true});
+                    }
+                });
+            }
+            break;
+            case ("remove") : {
+                DB.findOne({ GuildID: guild.id, UserID: Target.id }, async (err, data) => {
+                    if(err) throw err;
+                    if(data) {
+                        data.Content.splice(WarnID, 1);
+                        interaction.reply({embeds: [new MessageEmbed().setTitle("Удалено").setColor("BLURPLE").setTimestamp()
+                            .setDescription(`Предупреждение ${Target.user.tag} под ID: ${WarnID + 1} было удалено.`)
+                        ], ephemeral: true});
+                        data.save();
+                    } else {
+                        interaction.reply({embeds: [new MessageEmbed().setTitle("WARNING").setColor("BLURPLE")
+                            .setDescription(`${Target.user.tag} не имеет предупреждений.`)
+                            .setFooter({text: `ID: ${Target.id}`}).setTimestamp()
+                        ], ephemeral: true});
+                    }
+                });
+            }
+            break;
+            case ("clear") : {
+                DB.findOne({ GuildID: guild.id, UserID: Target.id }, async (err, data) => {
+                    if(err) throw err;
+                    if(data) {
+                        await DB.findOneAndDelete({ GuildID: guild.id, UserID: Target.id });
+                        interaction.reply({embeds: [new MessageEmbed().setTitle("WARNING").setColor("BLURPLE")
+                            .setDescription(`Предупреждения ${Target.user.tag} были удалены`)
+                            .setFooter({text: `ID: ${Target.id}`}).setTimestamp()
+                        ], ephemeral: true});
+                    } else {
+                        interaction.reply({embeds: [new MessageEmbed().setTitle("WARNING").setColor("BLURPLE")
+                            .setDescription(`${Target.user.tag} не имеет предупреждений.`)
+                            .setFooter({text: `ID: ${Target.id}`}).setTimestamp()
+                        ], ephemeral: true});
+                    }
+                });
+            }
+            break;
+        }
+    }
+}
