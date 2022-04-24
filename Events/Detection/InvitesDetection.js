@@ -3,9 +3,10 @@ const { Message, MessageEmbed } = require("discord.js");
 module.exports = {
     name: "messageCreate",
     /**
-     * @param {Message} message 
+     * @param {Message} message
      */
     async execute(message) {
+        if(message.channel.type == "DM") return;
         if(message.guild.ownerId == message.author.id) return;
 
         if(message.content.includes('discord.gg/'||'discordapp.com/invite/')) {
