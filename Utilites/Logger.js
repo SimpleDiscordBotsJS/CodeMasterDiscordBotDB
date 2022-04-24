@@ -1,6 +1,6 @@
 /* Logger by LeonusDH (aka RADIO) */
 
-/* Logger version 1.3.1 */
+/* Logger version 1.3.2 */
 
 //===========================================================//
 
