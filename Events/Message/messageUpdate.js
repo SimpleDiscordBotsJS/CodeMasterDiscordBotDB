@@ -19,8 +19,9 @@ module.exports = {
         const Edited = newMessage.content.slice(0, Count) + (newMessage.content.length > 1950 ? " ..." : "");
     
         const Log = new MessageEmbed().setColor("#36393f")
-        .setDescription(`📘 [Сообщение](${newMessage.url}) от ${newMessage.author} было **изменено** в ${newMessage.channel}.\n
+        .setDescription(`📘 [Сообщение](${newMessage.url}) было **изменено**.\n
         **Оригинал**: \n \`\`\`${Original}\`\`\` \n**Измененное**:\n \`\`\`${Edited}\`\`\``.slice("0", "4096"))
+        .addField(`**Автор**`, `${newMessage.author}`, true).addField(`**Канал**`, `<#${newMessage.channel.id}>`, true)
         .setFooter({text: `Member: ${newMessage.author.tag} | ID: ${newMessage.author.id}`}).setTimestamp();
 
         new WebhookClient({url: WEBHOOKS.MESSAGE_LOG.EDIT_URL})
