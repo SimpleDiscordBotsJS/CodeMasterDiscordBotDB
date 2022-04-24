@@ -37,6 +37,8 @@ module.exports = {
         
         message.channel.send({embeds: [Embed]}).then((m) => setTimeout(() => m.delete(), 10000));
 
+        message.member.timeout(172800000, "SCAM рассылка");
+
         if(wordsUsed.length) {
             const channelID = client.scamlinksLog.get(guild.id);
             if(!channelID) return;
