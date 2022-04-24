@@ -10,6 +10,13 @@ module.exports = {
     execute(message) {
         if(message.author.bot) return;
 
+        //Игнорируем, если сообщение, в юриздикции Anti-Scam
+        //Чтобы не было ненужного сообщения
+        const Filter = require(`../../Structures/Validation/ScamLinks.json`);
+        const ScamFilter = Filter.some((Word) => message.content.toLowerCase().split(" ").includes(Word.toLowerCase()));
+        if(ScamFilter) return;
+
+        //Всё остальное
         const Log = new MessageEmbed().setColor("#36393f")
         .setDescription(`📕 [Сообщение](${message.url}) было **удалено**.\n
         **Удаленное сообщение:**\n \`\`\`${message.content ? message.content : "None"}\`\`\``.slice(0, 4096))
