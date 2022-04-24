@@ -68,4 +68,4 @@ client.login(BOT_TOKEN).catch(() => {
 //===========================================================
 
 //Завершение работы
-process.on("SIGINT", () => { Success("SIGINT detected, exiting..."); process.exit(0); });
+process.on("SIGINT", () => { Success("SIGINT detected, exiting..."); process.exit(); });
