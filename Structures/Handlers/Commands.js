@@ -13,14 +13,14 @@ module.exports = async(client, PG, AsciiTable3) => {
         const command = require(file);
 
         if(!command.name)
-        return Table.addRow(file.split("/")[7], "🔸 FAILED", "Missing a name.");
+        return Table.addRow(file.split("/")[7], "✘ FAILED", "Missing a name.");
 
         if(command.type !== "USER" && !command.description) 
-        return Table.addRow(command.name, "🔸 FAILED", "missing a description.");
+        return Table.addRow(command.name, "✘ FAILED", "missing a description.");
 
         if(command.permission) {
             if(Perms.includes(command.permission)) command.defaultPermission = false;
-            else return Table.addRow(command.name, "🔸 FAILED", "Permission is invalid.");
+            else return Table.addRow(command.name, "✘ FAILED", "Permission is invalid.");
         }
 
         client.commands.set(command.name, command);
