@@ -21,8 +21,14 @@ module.exports = {
         const Log = new MessageEmbed().setColor("#36393f")
         .setDescription(`📘 [Сообщение](${newMessage.url}) было **изменено**.\n
         **Оригинал**: \n \`\`\`${Original}\`\`\` \n**Измененное**:\n \`\`\`${Edited}\`\`\``.slice("0", "4096"))
-        .addField(`**Автор**`, `${newMessage.author}`, true).addField(`**Канал**`, `<#${newMessage.channel.id}>`, true)
+        .addField(`**Автор**`, `${newMessage.author}`, true)
         .setFooter({text: `Member: ${newMessage.author.tag} | ID: ${newMessage.author.id}`}).setTimestamp();
+
+        if(newMessage.channel.isThread()) {
+            Log.addField(`**Ветка**`, `<#${newMessage.channel.id}>`, true);
+        } else {
+            Log.addField(`**Канал**`, `<#${newMessage.channel.id}>`, true);
+        }
 
         new WebhookClient({url: WEBHOOKS.MESSAGE_LOG.EDIT_URL})
         .send({embeds: [Log]}).catch((err) => Error(err));
