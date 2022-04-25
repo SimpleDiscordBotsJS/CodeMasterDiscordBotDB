@@ -1,5 +1,4 @@
 const { ContextMenuInteraction, MessageEmbed } = require("discord.js");
-const RatingDB = require("../../Structures/Schemas/SocRatingDB");
 
 module.exports = {
     name: "userinfo",
@@ -24,13 +23,10 @@ module.exports = {
 
             return `https://i.imgur.com/${statusType[status] || statusType["invisible"]}`;
         };
-
-        const Rating = await RatingDB.findOne({GuildID: interaction.guildId, MemberID: target.user.id});
     
         const Response = new MessageEmbed().setColor("AQUA").setThumbnail(target.user.avatarURL({ dynamic: true }))
         .setAuthor({ name: target.user.tag, iconURL: getPresence(target.presence?.status) }).addFields(
             { name: "ID", value: `${target.user.id}`, inline: true },
-            { name: "Rating", value: `${Rating.Rating}`, inline: true },
             { name: "Roles", value: target.roles.cache.map(r => r).sort((a, b) => b.position - a.position).join(" ").replace("@everyone", "") || "None" },
             { name: "Account Created", value: `<t:${parseInt(target.user.createdTimestamp / 1000)}:R>`, inline: true },
             { name: "Joined Server", value: `<t:${parseInt(target.joinedTimestamp / 1000)}:R>`, inline: true }
