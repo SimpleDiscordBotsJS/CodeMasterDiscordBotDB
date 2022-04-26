@@ -4,7 +4,7 @@ const DB = require("../../Structures/Schemas/AntiScamDB");
 module.exports = {
     name: "antiscam",
     description: "Setup Anti-Scam",
-    permission: "MANAGE_MESSAGES",
+    permission: "ADMINISTRATOR",
     options: [{ name: "setup", description: "Anti-Scam Settings", type: "SUB_COMMAND", options: [{
                 name: "logging", description: "Выберите канал логгирования.",
                 type: "CHANNEL", channelTypes: ["GUILD_TEXT"], required: true
