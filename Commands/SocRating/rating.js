@@ -19,9 +19,11 @@ module.exports = {
             if(err) throw err;
             if(!data) {
                 DB.create({GuildID: guild.id, MemberID: member.id, Rating: 100});
-            };
 
-            interaction.reply({embeds: [Embed.setTimestamp().setDescription(`Ваш социальный рейтинг: ${data.Rating}`)]});
+                interaction.reply({embeds: [Embed.setTimestamp().setDescription(`Ваш социальный рейтинг: 100`)]});
+            } else {
+                interaction.reply({embeds: [Embed.setTimestamp().setDescription(`Ваш социальный рейтинг: ${data.Rating}`)]});
+            };
         });
     }
 }
