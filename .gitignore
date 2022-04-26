@@ -4,5 +4,11 @@ node_modules
 #Логи
 Structures/Logs
 
+#То, что пока не добавлю
+Commands/Utilites/leaderboard.js
+
+Events/Cookie
+Structures/Schemas/CookieDB.js
+
 #То, что врятли использую, но зачем-то сохраняю
 Utilites/Functions.js
