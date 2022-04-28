@@ -22,7 +22,7 @@ module.exports = {
         .setDescription(`📘 [Сообщение](${newMessage.url}) было **изменено**.\n
         **Оригинал**: \n \`\`\`${Original}\`\`\` \n**Измененное**:\n \`\`\`${Edited}\`\`\``.slice("0", "4096"))
         .addField(`**Автор**`, `${newMessage.author}`, true)
-        .setFooter({text: `Member: ${newMessage.author.tag} | ID: ${newMessage.author.id}`}).setTimestamp();
+        .setFooter({text: `Пользователь: ${newMessage.author.tag} | ID: ${newMessage.author.id}`}).setTimestamp();
 
         if(newMessage.channel.isThread()) {
             Log.addField(`**Ветка**`, `<#${newMessage.channel.id}>`, true);

@@ -21,7 +21,7 @@ module.exports = {
         .setDescription(`📕 [Сообщение](${message.url}) было **удалено**.\n
         **Удаленное сообщение:**\n \`\`\`${message.content ? message.content : "None"}\`\`\``.slice(0, 4096))
         .addField(`**Автор**`, `${message.author}`, true)
-        .setFooter({text: `Member: ${message.author.tag} | ID: ${message.author.id}`}).setTimestamp();
+        .setFooter({text: `Пользователь: ${message.author.tag} | ID: ${message.author.id}`}).setTimestamp();
 
         if(message.channel.isThread()) {
             Log.addField(`**Ветка**`, `<#${message.channel.id}>`, true);
