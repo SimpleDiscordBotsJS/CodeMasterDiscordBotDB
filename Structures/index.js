@@ -45,6 +45,12 @@ process.on('beforeExit', (code) => { Warning(
     '==========================='.toUpperCase());
 });
 
+process.on('warning', (code) => { Warning(
+    '========= warning ========='.toUpperCase(),
+    'Code: ' + code,
+    '==========================='.toUpperCase());
+});
+
 process.on('exit', (code) => { Warning(
     '========== exit =========='.toUpperCase(), 
     'Code: ' + code,
