@@ -31,6 +31,11 @@ module.exports = {
         if(Target.id === interaction.member.id) 
         return interaction.reply({content: "Эй... Нельзя забанить самого себя", ephemeral: true});
 
+        await Target.send({embeds: [new MessageEmbed().setColor("RED").setTitle("🔨 **Великая** печать бана").setTimestamp()
+        .setAuthor({name: Target.user.tag, iconURL: Target.user.avatarURL({dynamic: true, size: 512})})
+        .setDescription(`Вы были __забанены__ по причине: \`\`\`${Reason}\`\`\` \nСервер: **${interaction.guild.name}**`)
+        .setFooter({text: `ID: ${Target.user.id}`})]});
+
         const Embed = new MessageEmbed().setTitle("Успешнное наложение **Великой** печати бана!")
         .setColor("RED").setThumbnail(Target.user.avatarURL({ dynamic: true }))
         .addFields(
@@ -43,11 +48,6 @@ module.exports = {
 
         interaction.reply({ embeds: [Embed] }).then(() => setTimeout(()=> interaction.deleteReply(), 10000));
         await Target.ban({ days: 0, reason: Reason});
-
-        await Target.send({embeds: [new MessageEmbed().setColor("RED").setTitle("🔨 **Великая** печать бана").setTimestamp()
-        .setAuthor({name: Target.user.tag, iconURL: Target.user.avatarURL({dynamic: true, size: 512})})
-        .setDescription(`Вы были __забанены__ по причине: \`\`\`${Reason}\`\`\` \nСервер: **${interaction.guild.name}**`)
-        .setFooter({text: `ID: ${Target.user.id}`})]});
 
         return;
     }
