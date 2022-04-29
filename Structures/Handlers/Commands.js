@@ -1,9 +1,5 @@
 const { Perms } = require("../Validation/Permissions");
-const { Client } = require("discord.js");
 
-/**
- * @param {Client} client
- */
 module.exports = async(client, PG, AsciiTable3) => {
     const Table = new AsciiTable3("Command Loaded");
 
@@ -53,7 +49,7 @@ module.exports = async(client, PG, AsciiTable3) => {
                     return [...accumulator, {id: r.id, permissions}]
                 }, []);
     
-                await g.commands.permissions.set({ fullPermissions });
+                //await g.commands.permissions.set({ fullPermissions });
             });
         });
     });
