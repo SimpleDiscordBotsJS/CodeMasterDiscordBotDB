@@ -33,7 +33,6 @@ module.exports = {
 
         const Embed = new MessageEmbed().setTitle("Успешнное наложение **Великой** печати бана!")
         .setColor("RED").setThumbnail(Target.user.avatarURL({ dynamic: true }))
-        .setImage(Target.user.bannerURL({ dynamic: true, size: 512 }) || "")
         .addFields(
             { name: "**Пользователь**:", value: `${Target.user}` },
             { name: "**Причина**:", value: `${Reason}` },
