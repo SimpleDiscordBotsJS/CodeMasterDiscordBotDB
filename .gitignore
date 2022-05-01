@@ -10,5 +10,7 @@ Commands/Utilites/leaderboard.js
 Events/Cookie
 Structures/Schemas/CookieDB.js
 
+Structures/Images/Rank/level-up.png
+
 #То, что врятли использую, но зачем-то сохраняю
 Utilites/Functions.js
