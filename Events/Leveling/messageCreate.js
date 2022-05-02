@@ -1,6 +1,7 @@
 const { Message, MessageEmbed } = require("discord.js");
 const LevelRewardDB = require("../../Structures/Schemas/Leveling/LevelRewardDB");
 const LevelDB = require("../../Structures/Schemas/Leveling/LevelingDB");
+const { getLevelExp } = require("../../Utilites/LevelFucntions");
 const { Info } = require("../../Utilites/Logger");
 
 module.exports = {
@@ -15,16 +16,16 @@ module.exports = {
         LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id }, async (err, result) => {
             if(err) throw err;
             if(!result) {
-                LevelDB.create({ GuildID: message.guild.id, UserID: message.author.id, XP: 0, Level: 0 });
+                LevelDB.create({ GuildID: message.guild.id, UserID: message.author.id, XP: 0, Level: 0, Cookies: 0 });
             }
         });
-
+        
         const rand = Math.round(Math.random() * 4);
         if(rand === 0) {
-            const give = Math.floor(Math.random() * 75);
+            const give = Math.floor(Math.random() * (25 - 15 + 1) + 15);
             const data = await LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id });
 
-            const requiredXp = data.Level * data.Level * 100 + 100;
+            const requiredXp = getLevelExp(data.Level);
             if(data.XP + give >= requiredXp) {
                 data.XP = 0 + (requiredXp - data.XP - give * (-1));
                 data.Level += 1;
@@ -36,10 +37,11 @@ module.exports = {
                 }).then((msg) => setTimeout(()=> msg.delete(), 15000));
 
                 Info(
-                    `=========== Level UP ===========`, 
+                    `====================== Level UP ======================`, 
                     `User: ${message.author.tag}`, 
                     `Level: ${data.Level}`,
-                    `================================`
+                    `Guild: ${message.guild.name}`,
+                    `======================================================`
                 );
             } else {
                 data.XP += give;

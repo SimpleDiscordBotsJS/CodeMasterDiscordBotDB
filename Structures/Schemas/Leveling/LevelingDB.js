@@ -5,5 +5,6 @@ module.exports = model("Level", new Schema({
     UserID: String,
     XP: Number,
     Level: Number,
+    Cookies: Number,
     Role: String
 }));

@@ -12,6 +12,7 @@ const { AsciiTable3 } = require("ascii-table3");
 client.commands = new Collection();
 client.buttons = new Collection();
 client.cooldowns = new Collection();
+client.cookiescooldowns = new Collection();
 client.filters = new Collection();
 client.filtersLog = new Collection();
 client.scamlinksLog = new Collection();
