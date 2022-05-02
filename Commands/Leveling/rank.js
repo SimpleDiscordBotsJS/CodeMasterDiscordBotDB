@@ -29,7 +29,7 @@ module.exports = {
         } else {
             interaction.deferReply();
 
-            const required = getLevelExp(UserLevel.Level);
+            const required = (await getLevelExp(UserLevel.Level)).valueOf();
 
             const totalRank = await LevelDB.find({ GuildID: interaction.guild.id }).sort({ XP: -1 });
             let ranking = totalRank.map(x => x.XP).indexOf(UserLevel.XP) + 1;
@@ -125,11 +125,17 @@ module.exports = {
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText("Ранг: " + ranking, 500, 50);
 
+            ctx.font = `30px Helvetica Bold`;
+            ctx.fillStyle = "#FFFFFF";
+            ctx.fillText("Печенье: " + UserLevel.Cookies, 285, 230);
+
             ctx.font = '30px Helvetica Bold';
             ctx.fillStyle = "#FFFFFF";
             ctx.textAlign = "start";
             ctx.fillText(`Опыт: ${UserLevel.XP} / ${required} `, 575, 230);
 
+            //Progress bar
+            //Пустой
             ctx.fillStyle = "#FFFFFF";
             ctx.arc(280 + 18.5, 207 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
             ctx.fill();
@@ -139,20 +145,31 @@ module.exports = {
 
             ctx.beginPath();
 
+            //Заполненный
             ctx.fillStyle = "#2ECC71";
             ctx.arc(280 + 18.5, 207 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
             ctx.fill();
-            ctx.fillRect(280 + 18.5, 207 + 36.25, ((100 / (required)) * UserLevel.XP) * 5.8 - 18.5 - 18.5, 37.5);
-            ctx.arc(280 - 18.5 + ((100 / (required)) * UserLevel.XP) * 5.8, 207 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
+            ctx.fillRect(280 + 18.5, 207 + 36.25, _calculateProgress(UserLevel.XP, required), 37.5);
+            ctx.arc(280 + 18.5 + _calculateProgress(UserLevel.XP, required), 207 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
             ctx.fill();
 
+            function _calculateProgress(cx, rx) {
+                if(rx <= 0) return 1;
+                if(cx > rx) return 583 - 18.5 - 18.5;
+
+                let width = (cx * 583) / rx;
+                if(width > 583 - 18.5 - 18.5) width = 583 - 18.5 - 18.5;
+                return width;
+            }
+
+            //Other
             /*ctx.fillStyle = "#2ECC71";
             ctx.globalAlpha = 0.6;
             ctx.fillRect(280, 216, ((100 / (required)) * UserLevel.XP) * 5.8, 65);
             ctx.fill();
-            ctx.globalAlpha = 1; */
+            ctx.globalAlpha = 1;
 
-            /*ctx.font = '30px Helvetica Bold';
+            ctx.font = '30px Helvetica Bold';
             ctx.textAlign = "center";
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText(`${UserLevel.XP} / ${required} XP`, 600, 260);*/
@@ -210,11 +227,6 @@ module.exports = {
             const buffer = await base.getBufferAsync(MIME_PNG);
 
             interaction.followUp({files: [new MessageAttachment(buffer, "profile.png")]});
-
-
-
-
-
             //return interaction.reply({files: [new MessageAttachment(canvas.toBuffer())]});
         }
     }
