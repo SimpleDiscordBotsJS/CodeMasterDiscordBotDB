@@ -1,5 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require('discord.js');
 const LevelDB = require('../../Structures/Schemas/Leveling/LevelingDB');
+const { getLevelExp } = require("../../Utilites/LevelFucntions");
 
 module.exports = {
     name: 'leaderboard',
@@ -20,7 +21,7 @@ module.exports = {
         for(let counter = 0; counter < results.length; ++counter) {
             const { UserID, Level = 0, XP } = results[counter];
 
-            const TotalXP = (Level - 1) * (Level - 1) * 100 + 100 + XP;
+            const TotalXP = getLevelExp(Level) + XP;
 
             const User = interaction.guild.members.cache.find(user => user.id === UserID);
 
