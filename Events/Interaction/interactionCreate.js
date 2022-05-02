@@ -14,6 +14,14 @@ module.exports = {
                 .setDescription("⛔ Произошла ошибка при выполнении этой команды.")
             ], ephemeral: true}) && client.commands.delete(interaction.commandName);
 
+            // PERMISSION CHECK //
+
+            if(command.permission && !interaction.member.permissions.has(command.permission)) {
+                return interaction.reply({embeds: [new MessageEmbed().setColor("RED")
+                    .setDescription(`У вас нет прав для использования этой команды: \`${interaction.commandName}\``)], 
+                ephemeral: true });
+            }
+
             // CHECK FOR COOLDOWNS COMMAND //
 
             const { user, guild, guildId } = interaction;
