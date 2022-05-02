@@ -1,6 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require('discord.js');
 const LevelDB = require('../../Structures/Schemas/Leveling/LevelingDB');
-const { getLevelExp, getRemainingExp } = require("../../Utilites/LevelFucntions");
+const { getLevelExp } = require("../../Utilites/LevelFucntions");
 
 module.exports = {
     name: 'leaderboard',
@@ -18,10 +18,12 @@ module.exports = {
 
         const results = await LevelDB.find({ GuildID: interaction.guild.id }).sort({ Level: -1 }).limit(10);
 
-        for(let counter = 0; counter < results.length; ++counter) {
+        for (let counter = 0; counter < results.length; ++counter) {
             const { UserID, Level = 0, XP } = results[counter];
 
-            const TotalXP = (await getRemainingExp((await getLevelExp(Level)).valueOf())).valueOf() + XP;
+            var TotalXP = 0;
+            if(Level == 0) TotalXP = XP;
+            else TotalXP = await getLevelExp(Level) + XP;
 
             const User = interaction.guild.members.cache.find(user => user.id === UserID);
 
