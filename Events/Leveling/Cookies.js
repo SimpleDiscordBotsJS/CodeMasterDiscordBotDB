@@ -22,7 +22,7 @@ module.exports = {
                 DB.findOne({ GuildID: guildId, UserID: author.id }, async (err, data) => {
                     if(err) throw new Error(err);
                     if(!data) {
-                        DB.create({ GuildID: reaction.message.guild.id, UserID: reaction.message.author.id, XP: 0, Level: 0, Cookies: 1 });
+                        DB.create({ GuildID: guildId, UserID: author.id, XP: 0, Level: 0, Cookies: 1 });
                     } else {
                         data.Cookies += 1;
                         data.save();
@@ -32,9 +32,7 @@ module.exports = {
                 client.cookiescooldowns.set(`${guildId}||${user.id}||${author.id}`, Date.now() + 60000);
             }
 
-            setTimeout(async () => {
-                client.cookiescooldowns.delete(`${guildId}||${user.id}||${author.id}`);
-            }, 60000);
+            setTimeout(async () => client.cookiescooldowns.delete(`${guildId}||${user.id}||${author.id}`), 60000);
         }
     }
 }
