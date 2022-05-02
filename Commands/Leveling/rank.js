@@ -1,8 +1,13 @@
 const { CommandInteraction, MessageEmbed, MessageAttachment } = require("discord.js");
 const LevelDB = require("../../Structures/Schemas/Leveling/LevelingDB");
+const { getLevelExp } = require("../../Utilites/LevelFucntions");
 const { read, AUTO, MIME_PNG, BLEND_MULTIPLY } = require("jimp");
 const { createCanvas, loadImage, registerFont } = require("canvas");
 //const { join } = require("path");
+
+//registerFont(`${process.cwd()}/Structures/Fonts/Roboto-Medium.ttf`, { family: `Roboto Medium` });
+registerFont(`${process.cwd()}/Structures/Fonts/Roboto-Black.ttf`, { family: `Roboto Black` });
+registerFont(`${process.cwd()}/Structures/Fonts/Helvetica-Bold.ttf`, { family: `Helvetica Bold` });
 
 module.exports = {
     name: "rank",
@@ -25,7 +30,7 @@ module.exports = {
         } else {
             interaction.deferReply();
 
-            const required = UserLevel.Level * UserLevel.Level * 100 + 100;
+            const required = getLevelExp(UserLevel.Level);
 
             const totalRank = await LevelDB.find({ GuildID: interaction.guild.id }).sort({ XP: -1 });
             let ranking = totalRank.map(x => x.XP).indexOf(UserLevel.XP) + 1;
@@ -83,21 +88,16 @@ module.exports = {
             
 
             //New canvas
-            let userName = Target.displayName
+            await Target.user.fetch();
+
+            let userName = Target.displayName;
 
             if(userName.length >= 13) userName = userName.substring(0, 12) + "..";
 
             const canvas = createCanvas(885, 303);
             const ctx = canvas.getContext("2d");
 
-            registerFont(`${__dirname}/../../Structures/Fonts/Roboto-Medium.ttf`, {
-                family: `Roboto-Medium`,
-            });
-            registerFont(`${__dirname}/../../Structures/Fonts/Roboto-Black.ttf`, {
-                family: `Roboto-Black`,
-            });
-
-            ctx.font = "50px Roboto-Black";
+            ctx.font = "50px Roboto Black";
             ctx.textAlign = "left";
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText(userName, 300, 155);
@@ -118,15 +118,15 @@ module.exports = {
             ctx.strokeRect(280, 216, 583, 65);
             ctx.stroke();*/
 
-            ctx.font = `30px Roboto-Medium`;
+            ctx.font = `30px Helvetica Bold`;
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText("Уровень: " + UserLevel.Level, 675, 50);
 
-            ctx.font = `30px Roboto-Medium`;
+            ctx.font = `30px Helvetica Bold`;
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText("Ранг: " + ranking, 500, 50);
 
-            ctx.font = '30px Roboto-Medium';
+            ctx.font = '30px Helvetica Bold';
             ctx.fillStyle = "#FFFFFF";
             ctx.textAlign = "start";
             ctx.fillText(`Опыт: ${UserLevel.XP} / ${required} `, 575, 230);
@@ -158,7 +158,7 @@ module.exports = {
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText(`${UserLevel.XP} / ${required} XP`, 600, 260);*/
 
-            let userAvatar = `${__dirname}/../../Structures/Images/Rank/userDefault.png`;
+            let userAvatar = Target.user.defaultAvatarURL;
 
             if(Target.user.avatarURL() != null) {
                 userAvatar = Target.user.avatarURL({ format: "png", size: 1024 });
@@ -166,35 +166,31 @@ module.exports = {
 
             let background = userAvatar
 
-            /*if(Target.user.bannerURL() !== null){
-                background = Target.user.bannerURL({format: "png", dynamic: false})
-            }*/
+            if(Target.user.bannerURL() !== null) {
+                background = Target.user.bannerURL({ format: "png", dynamic: false });
+            }
 
             const canvasJimp = await read(canvas.toBuffer());
-            const base = await read(`${__dirname}/../../Structures/Images/Rank/UserBase.png`);
-            const capa = await read(`${__dirname}/../../Structures/Images/Rank/UserProfile.png`);
-            const mask = await read(`${__dirname}/../../Structures/Images/Rank/mask.png`);
-            const mark = await read(`${__dirname}/../../Structures/Images/Rank/mark.png`);
+            const base = await read(`${process.cwd()}/Structures/Images/Rank/UserBase.png`);
+            const capa = await read(`${process.cwd()}/Structures/Images/Rank/UserProfile.png`);
+            const mask = await read(`${process.cwd()}/Structures/Images/Rank/mask.png`);
+            const mark = await read(`${process.cwd()}/Structures/Images/Rank/mark.png`);
 
-            const avatarBackground = await read(
-                background
-            );
-            const avatarProfile = await read(
-                userAvatar
-            );
+            const avatarBackground = await read(background);
+            const avatarProfile = await read(userAvatar);
 
 
-            /*if(Target.user.bannerURL() !== null){
+            if(Target.user.bannerURL() !== null) {
                 avatarBackground.resize(885, 303);
                 avatarBackground.opaque()
                 avatarBackground.blur(5);
                 base.composite(avatarBackground, 0, 0);
-            } else {*/
+            } else {
                 avatarBackground.resize(900, AUTO);
                 avatarBackground.opaque()
                 avatarBackground.blur(5);
                 base.composite(avatarBackground, 0, -345);
-            //}
+            }
 
 
             canvasJimp.shadow({ size: 1, opacity: 0.3, y: 3, x: 0, blur: 2 });
@@ -214,15 +210,7 @@ module.exports = {
 
             const buffer = await base.getBufferAsync(MIME_PNG);
 
-            //return buffer;
-
             interaction.followUp({files: [new MessageAttachment(buffer, "profile.png")]});
-
-
-
-
-
-
 
 
 
