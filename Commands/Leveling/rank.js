@@ -5,7 +5,7 @@ const { read, AUTO, MIME_PNG, BLEND_MULTIPLY } = require("jimp");
 const { createCanvas, loadImage, registerFont } = require("canvas");
 //const { join } = require("path");
 
-registerFont(`${process.cwd()}/Structures/Fonts/Roboto-Black.ttf`, { family: `Roboto` });
+registerFont(`${process.cwd()}/Structures/Fonts/Helvetica.ttf`, { family: `Helvetica Normal` });
 registerFont(`${process.cwd()}/Structures/Fonts/Helvetica-Bold.ttf`, { family: `Helvetica Bold` });
 
 module.exports = {
@@ -91,15 +91,15 @@ module.exports = {
 
             let userName = Target.displayName;
 
-            if(userName.length >= 13) userName = userName.substring(0, 12) + "..";
+            if(userName.length >= 19) userName = userName.substring(0, 18) + "..";
 
             const canvas = createCanvas(885, 303);
             const ctx = canvas.getContext("2d");
 
-            ctx.font = "50px Roboto Black";
+            ctx.font = "50px Helvetica Normal";
             ctx.textAlign = "left";
             ctx.fillStyle = "#FFFFFF";
-            ctx.fillText(userName, 300, 155);
+            ctx.fillText(userName, 300, 125);
 
             /*ctx.font = "60px Helvetica Bold";
             ctx.textAlign = "left";
@@ -118,21 +118,24 @@ module.exports = {
             ctx.stroke();*/
 
             ctx.font = `30px Helvetica Bold`;
+            ctx.textAlign = "left";
             ctx.fillStyle = "#FFFFFF";
-            ctx.fillText("Уровень: " + UserLevel.Level, 675, 50);
+            ctx.fillText("#" + ranking, 292.5, 197.5);
 
             ctx.font = `30px Helvetica Bold`;
+            ctx.textAlign = "left";
             ctx.fillStyle = "#FFFFFF";
-            ctx.fillText("Ранг: " + ranking, 500, 50);
+            ctx.fillText("Level: " + UserLevel.Level, 292.5, 230);
 
             ctx.font = `30px Helvetica Bold`;
+            ctx.textAlign = "left";
             ctx.fillStyle = "#FFFFFF";
-            ctx.fillText("Печенье: " + UserLevel.Cookies, 285, 230);
+            ctx.fillText("🍪: " + UserLevel.Cookies, 292.5 + 175, 230);
 
             ctx.font = '30px Helvetica Bold';
             ctx.fillStyle = "#FFFFFF";
-            ctx.textAlign = "start";
-            ctx.fillText(`Опыт: ${UserLevel.XP} / ${required} `, 575, 230);
+            ctx.textAlign = "right";
+            ctx.fillText(`XP: ${UserLevel.XP} / ${required} `, 852.5, 230);
 
             //Progress bar
             //Пустой
@@ -195,6 +198,16 @@ module.exports = {
             const avatarBackground = await read(background);
             const avatarProfile = await read(userAvatar);
 
+            const badges = [];
+
+            //Load badges
+            if(Target.user.displayAvatarURL({dynamic: true})?.endsWith(".gif")){
+                const nitro = await read(`${process.cwd()}/Structures/Images/Rank/Badges/NITRO.png`)
+                const boost = await read(`${process.cwd()}/Structures/Images/Rank/Badges/BOOST.png`)
+                badges.push(nitro, boost)
+            }
+            
+            const flags = (Target.user.flags || (await Target.user.fetchFlags())).toArray();
 
             if(Target.user.bannerURL() !== null) {
                 avatarBackground.resize(885, 303);
@@ -209,20 +222,39 @@ module.exports = {
             }
 
 
-            canvasJimp.shadow({ size: 1, opacity: 0.3, y: 3, x: 0, blur: 2 });
-            base.composite(capa, 0, 0);
-            base.composite(canvasJimp, 0, 0);
-            
+            //Load avatar
             avatarProfile.resize(225, 225);
             avatarProfile.opaque()
             avatarProfile.circle()
             avatarProfile.shadow({ size: 1, opacity: 0.3, y: 3, x: 0, blur: 2 });
             base.composite(avatarProfile, 47, 39);
 
+            //Load canvas
+            canvasJimp.shadow({ size: 1, opacity: 0.3, y: 3, x: 0, blur: 2 });
+            base.composite(capa, 0, 0);
+            base.composite(canvasJimp, 0, 0);
+
 
             mark.opacity(0.5)
             base.composite(mark, 0, 0, {mode: BLEND_MULTIPLY})
             base.mask(mask)
+
+            //Load badges
+            if(!Target.user.bot){
+                for (let i = 0; i < flags.length; i++) {
+                    let badge = await read(`${process.cwd()}/Structures/Images/Rank/Badges/${flags[i]}.png`);
+                    badges.push(badge);
+                }
+        
+                let x = 800;
+                for (let i = 0; i < badges.length; i++) {
+                    badges[i].resize(60, AUTO);
+                    badges[i].shadow({ size: 1, opacity: 0.3, y: 3, x: 0, blur: 2 });
+                    badges[i].opacity(0.9)
+                    base.composite(badges[i], x, 15);
+                    x -= 60;
+                }  
+            }
 
             const buffer = await base.getBufferAsync(MIME_PNG);
 
