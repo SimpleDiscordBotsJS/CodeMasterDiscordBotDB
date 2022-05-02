@@ -13,9 +13,9 @@ module.exports = {
         const Embed = new MessageEmbed().setColor("GREEN").setTitle("📜 Рейтинг участников")
         .setFooter({text: `Запросил: ${interaction.member.displayName}`});
 
-        if(interaction.guild.iconURL() == null) 
+        if(interaction.guild.iconURL() == null) {
             Embed.setThumbnail(interaction.client.user.avatarURL({dynamic: true, size: 256}));
-        else Embed.setThumbnail(interaction.guild.iconURL({dynamic: true, size: 256}));
+        } else Embed.setThumbnail(interaction.guild.iconURL({dynamic: true, size: 256}));
 
         //Embed.setAuthor({name: `Страница {} из {} - Всего участников: ${interaction.guild.members.fetch()}`});
 
