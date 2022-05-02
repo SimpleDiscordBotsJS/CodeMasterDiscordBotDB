@@ -22,7 +22,7 @@ module.exports = {
                 DB.findOne({ GuildID: guildId, UserID: author.id }, async (err, data) => {
                     if(err) throw new Error(err);
                     if(!data) {
-                        DB.create({ GuildID: message.guild.id, UserID: message.author.id, XP: 0, Level: 0, Cookies: 1 });
+                        DB.create({ GuildID: reaction.message.guild.id, UserID: reaction.message.author.id, XP: 0, Level: 0, Cookies: 1 });
                     } else {
                         data.Cookies += 1;
                         data.save();
