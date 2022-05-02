@@ -5,8 +5,7 @@ const { read, AUTO, MIME_PNG, BLEND_MULTIPLY } = require("jimp");
 const { createCanvas, loadImage, registerFont } = require("canvas");
 //const { join } = require("path");
 
-//registerFont(`${process.cwd()}/Structures/Fonts/Roboto-Medium.ttf`, { family: `Roboto Medium` });
-registerFont(`${process.cwd()}/Structures/Fonts/Roboto-Black.ttf`, { family: `Roboto Black` });
+registerFont(`${process.cwd()}/Structures/Fonts/Roboto-Black.ttf`, { family: `Roboto` });
 registerFont(`${process.cwd()}/Structures/Fonts/Helvetica-Bold.ttf`, { family: `Helvetica Bold` });
 
 module.exports = {
@@ -102,7 +101,7 @@ module.exports = {
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText(userName, 300, 155);
 
-            /*ctx.font = "60px Roboto Medium";
+            /*ctx.font = "60px Helvetica Bold";
             ctx.textAlign = "left";
             ctx.fillStyle = "#c7c7c7";
             ctx.fillText(`#${Target.user.discriminator}`, 300, 215);*/
@@ -153,7 +152,7 @@ module.exports = {
             ctx.fill();
             ctx.globalAlpha = 1; */
 
-            /*ctx.font = '30px Roboto Medium';
+            /*ctx.font = '30px Helvetica Bold';
             ctx.textAlign = "center";
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText(`${UserLevel.XP} / ${required} XP`, 600, 260);*/
