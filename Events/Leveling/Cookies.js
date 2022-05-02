@@ -11,6 +11,7 @@ module.exports = {
         if(user.bot) return;
         if(reaction.message.channel.type == "DM") return;
         if(reaction.message.author.bot) return;
+        if(reaction.message.author.id == user.id) return;
 
         if(reaction.emoji.name === "🍪") {
             const { guildId, author } = reaction.message;
