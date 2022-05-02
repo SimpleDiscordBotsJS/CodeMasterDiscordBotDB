@@ -1,6 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require('discord.js');
 const LevelDB = require('../../Structures/Schemas/Leveling/LevelingDB');
-const { getLevelExp } = require("../../Utilites/LevelFucntions");
+const { getLevelExp, getRemainingExp } = require("../../Utilites/LevelFucntions");
 
 module.exports = {
     name: 'leaderboard',
@@ -21,13 +21,14 @@ module.exports = {
         for(let counter = 0; counter < results.length; ++counter) {
             const { UserID, Level = 0, XP } = results[counter];
 
-            const TotalXP = getLevelExp(Level) + XP;
+            const TotalXP = (await getRemainingExp((await getLevelExp(Level)).valueOf())).valueOf() + XP;
 
             const User = interaction.guild.members.cache.find(user => user.id === UserID);
 
             Embed.addField(`**#${counter + 1}.** ${User.displayName}`, `**Уровень**: \`${Level}\` | **Опыт**: \`${TotalXP}\``);
         }
 
-        return interaction.reply({embeds: [Embed]});
+        if(Embed.fields.length <= 0) return interaction.reply({embeds: [Embed.setDescription("**На этом сервере, ещё нет лидеров!**")]});
+        else return interaction.reply({embeds: [Embed]});
     }
 }
