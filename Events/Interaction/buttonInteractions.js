@@ -11,10 +11,10 @@ module.exports = {
         if(!Button) return; 
 
         if(Button.permission && !interaction.member.permissions.has(Button.permission))
-        return interaction.reply({content: "You are missing permissions", ephemeral: true});
+        return interaction.reply({content: "У вас нет прав, для использования этой кнопки!", ephemeral: true});
 
         if(Button.ownerOnly && interaction.member.id !== interaction.guild.ownerId)
-        return interaction.reply({content: "You are not the owner.", ephemeral: true});
+        return interaction.reply({content: "Эта кнопка, только для влдельцев сервера!", ephemeral: true});
     
         Button.execute(interaction, client);
     }
