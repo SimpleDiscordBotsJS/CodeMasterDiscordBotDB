@@ -19,18 +19,18 @@ module.exports = {
 
         //Embed.setAuthor({name: `Страница {} из {} - Всего участников: ${interaction.guild.members.fetch()}`});
 
-        const results = await LevelDB.find({ GuildID: interaction.guild.id }).sort({ Level: -1 }).limit(10);
+        const results = await LevelDB.find({ GuildID: interaction.guild.id }).sort({ TotalXP: -1 }).limit(10);
 
         for (let counter = 0; counter < results.length; ++counter) {
-            const { UserID, Level = 0, XP } = results[counter];
-
-            var TotalXP = 0;
-            if(Level == 0) TotalXP = XP;
-            else TotalXP = await getLevelExp(Level) + XP;
+            const { UserID, Level = 0, TotalXP, Cookies } = results[counter];
 
             const User = interaction.guild.members.cache.find(user => user.id === UserID);
 
-            Embed.addField(`**#${counter + 1}.** ${User.displayName}`, `**Уровень**: \`${Level}\` | **Опыт**: \`${TotalXP}\``);
+            if(Cookies !== 0) {
+                Embed.addField(`**#${counter + 1}.** ${User.displayName}`, `**Уровень**: \`${Level}\` | **Опыт**: \`${TotalXP}\` | 🍪 \`${Cookies}\``);
+            } else {
+                Embed.addField(`**#${counter + 1}.** ${User.displayName}`, `**Уровень**: \`${Level}\` | **Опыт**: \`${TotalXP}\``);
+            }
         }
 
         if(Embed.fields.length <= 0) return interaction.reply({embeds: [Embed.setDescription("**На этом сервере, ещё нет лидеров!**")]});

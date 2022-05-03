@@ -16,7 +16,7 @@ module.exports = {
         LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id }, async (err, result) => {
             if(err) throw err;
             if(!result) {
-                LevelDB.create({ GuildID: message.guild.id, UserID: message.author.id, XP: 0, Level: 0, Cookies: 0 });
+                LevelDB.create({ GuildID: message.guild.id, UserID: message.author.id});
             }
         });
         
@@ -28,6 +28,7 @@ module.exports = {
             const requiredXp = getLevelExp(data.Level);
             if(data.XP + give >= requiredXp) {
                 data.XP = 0 + (requiredXp - data.XP - give * (-1));
+                data.TotalXP += give;
                 data.Level += 1;
                 data.save();
                 message.channel.send({embeds: [new MessageEmbed().setColor("GREEN").setTimestamp()
@@ -45,6 +46,7 @@ module.exports = {
                 );
             } else {
                 data.XP += give;
+                data.TotalXP += give;
                 data.save();
             }
 

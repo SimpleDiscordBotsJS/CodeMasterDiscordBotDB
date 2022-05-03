@@ -31,8 +31,8 @@ module.exports = {
 
             const required = (await getLevelExp(UserLevel.Level)).valueOf();
 
-            const totalRank = await LevelDB.find({ GuildID: interaction.guild.id }).sort({ XP: -1 });
-            let ranking = totalRank.map(x => x.XP).indexOf(UserLevel.XP) + 1;
+            const totalRank = await LevelDB.find({ GuildID: interaction.guild.id }).sort({ TotalXP: -1 });
+            let ranking = totalRank.map(x => x.TotalXP).indexOf(UserLevel.TotalXP) + 1;
 
             //Канвас
             //const canvas = createCanvas(1000, 333)
