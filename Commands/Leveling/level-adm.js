@@ -1,6 +1,7 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
 const LevelRewardDB = require("../../Structures/Schemas/Leveling/LevelRewardDB");
 const LevelDB = require("../../Structures/Schemas/Leveling/LevelingDB");
+const { getLevelExp } = require("../../Utilites/LevelFucntions");
 
 module.exports = {
     name: 'level-adm',
@@ -44,10 +45,14 @@ module.exports = {
     async execute(interaction) {
         switch(interaction.options.getSubcommand()) {
             case "view":
-                const rewards = await LevelRewardDB.find({ GuildID: interaction.guild.id })
+                const rewards = await LevelRewardDB.find({ GuildID: interaction.guild.id });
                 if(!rewards) {
-                    LevelRewardDB.create({ GuildID: interaction.guild.id })
-                    return interaction.reply({ content: "Я не смог найти этот сервер в базе данных. Пожалуйста, попробуйте еще раз", ephemeral: true })
+                    LevelRewardDB.create({ GuildID: interaction.guild.id });
+
+                    return interaction.reply({ 
+                        content: "Я не смог найти этот сервер в базе данных. Пожалуйста, попробуйте еще раз", 
+                        ephemeral: true 
+                    });
                 }
 
                 var description = `**Награду за уровень**\n`
@@ -58,24 +63,34 @@ module.exports = {
                 const embed = new MessageEmbed()
                 .setColor('GOLD')
                 .setTitle('Установки бота')
-                .setDescription(description)
-                interaction.reply({ embeds: [embed], ephemeral: true })
+                .setDescription(description);
+
+                interaction.reply({ embeds: [embed], ephemeral: true });
             break;
             case "add-reward":
                 LevelRewardDB.create({
                     GuildID: interaction.guild.id,
                     Level: interaction.options.getNumber('level'),
                     Role: interaction.options.getRole('reward')
-                })
-                interaction.reply({ content: `Уровень: ${interaction.options.getNumber('level')}, награда: ${interaction.options.getRole('reward')}`, ephemeral: true })
+                });
+
+                interaction.reply({ 
+                    content: `Уровень: ${interaction.options.getNumber('level')}, награда: ${interaction.options.getRole('reward')}`, 
+                    ephemeral: true
+                });
             break;
             case "remove-reward":
-                const result = await LevelRewardDB.findOne({ GuildID: interaction.guild.id, Role: interaction.options.getRole('role') })
+                const result = await LevelRewardDB.findOne({ GuildID: interaction.guild.id, Role: interaction.options.getRole('role') });
+
                 if (!result) {
-                    return interaction.reply({ content: `Не удалось найти награду за уровень с этой ролью`, ephemeral: true })
+                    return interaction.reply({ 
+                        content: `Не удалось найти награду за уровень с этой ролью`, 
+                        ephemeral: true
+                    });
                 }
-                result.delete()
-                interaction.reply({ content: `Удалена награда за уровень`, ephemeral: true })
+                result.delete();
+
+                interaction.reply({ content: `Удалена награда за уровень`, ephemeral: true });
             break;
             case "manage" : {
                 const user = interaction.options.getUser("user");
@@ -90,17 +105,17 @@ module.exports = {
                                 let BeforeLevel;
             
                                 if(!data) {
-                                    const newData = await LevelDB.create({
-                                        GuildID: interaction.guild.id, UserID: user.id, XP: 0, Level: 0, Cookies: 0
-                                    });
-                        
+                                    const newData = await LevelDB.create({ GuildID: interaction.guild.id, UserID: user.id });
                                     newData.save();
                                 } else {
                                     BeforeLevel = data.Level;
                                     data.Level += amountAdd;
+                                    for (let counter = BeforeLevel; counter < data.Level; ++counter) {
+                                        data.TotalXP += (await getLevelExp(counter)).valueOf();
+                                    }
                                     data.save();
                                 }
-              
+
                                 const embed = new MessageEmbed()
                                     .setTitle(`${user.username}'s level`)
                                     .setFields(
@@ -118,14 +133,20 @@ module.exports = {
                                 let BeforeLevel;
             
                                 if(!data) {
-                                    const newData = await LevelDB.create({
-                                        GuildID: interaction.guild.id, UserID: user.id, XP: 0, Level: 0, Cookies: 0
-                                    });
-                    
+                                    const newData = await LevelDB.create({ GuildID: interaction.guild.id, UserID: user.id });
                                     newData.save();
                                 } else {
                                     BeforeLevel = data.Level;
                                     data.Level = amountAdd;
+                                    if(BeforeLevel > data.Level) {
+                                        for (let counter = BeforeLevel; counter > data.Level; --counter) {
+                                            data.TotalXP -= (await getLevelExp(counter - 1)).valueOf();
+                                        }
+                                    } else if(BeforeLevel < data.Level) {
+                                        for (let counter = BeforeLevel; counter < data.Level; ++counter) {
+                                            data.TotalXP += (await getLevelExp(counter)).valueOf();
+                                        }
+                                    }
                                     data.save();
                                 }
                     
@@ -151,14 +172,12 @@ module.exports = {
                                 let BeforeXP;
               
                                 if(!data) {
-                                    const newData = await LevelDB.create({
-                                        GuildID: interaction.guild.id, UserID: user.id, XP: 0, Level: 0, Cookies: 0
-                                    });
-              
+                                    const newData = await LevelDB.create({ GuildID: interaction.guild.id, UserID: user.id });
                                     newData.save();
                                 } else {
                                     BeforeXP = data.XP;
                                     data.XP += amountAdd;
+                                    data.TotalXP += amountAdd;
                                     data.save();
                                 }
               
@@ -179,14 +198,13 @@ module.exports = {
                                 let BeforeXP;
             
                                 if(!data) {
-                                    const newData = await LevelDB.create({
-                                        GuildID: interaction.guild.id, UserID: user.id, XP: 0, Level: 0, Cookies: 0
-                                    });
-            
+                                    const newData = await LevelDB.create({ GuildID: interaction.guild.id, UserID: user.id });
                                     newData.save();
                                 } else {
                                     BeforeXP = data.XP;
                                     data.XP = amountAdd;
+                                    if(BeforeXP > data.XP) data.TotalXP -= (BeforeXP - data.XP);
+                                    else if(BeforeXP < data.XP) data.TotalXP += (data.XP - BeforeXP);
                                     data.save();
                                 }
               
