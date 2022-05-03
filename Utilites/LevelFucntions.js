@@ -2,6 +2,7 @@
 
 //Расчёт опыта для получаения нового уровня
 exports.getLevelExp = getLevelExp;
+/** @param {Number} Level */
 async function getLevelExp(Level) {
     return (5 * (Level * Level) + (50 * Level) + 100);
     //return (Level * Level) * 100 + 100 // old func
@@ -9,6 +10,7 @@ async function getLevelExp(Level) {
 
 //Расчёт всего опыта по уровню
 exports.getLevelTotalExp = getLevelTotalExp;
+/** @param {Number} Level */
 async function getLevelTotalExp(Level) {
     let Exp = 0;
     for (var i = 0; i < Level; i++) {
@@ -20,6 +22,7 @@ async function getLevelTotalExp(Level) {
 
 //
 exports.getLevelFromExp = getLevelFromExp;
+/** @param {Number} Exp */
 async function getLevelFromExp(Exp) {
     let Level = 0;
     while (Exp >= getLevelExp(Level)) {
@@ -32,6 +35,7 @@ async function getLevelFromExp(Exp) {
 
 //Всего опыта
 exports.getRemainingExp = getRemainingExp;
+/** @param {Number} TotalExp */
 async function getRemainingExp(TotalExp) {
     let Remaining = TotalExp;
     for (var i = 0; i < getLevelFromExp(TotalExp); i++) {
