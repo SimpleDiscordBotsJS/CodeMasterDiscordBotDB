@@ -1,7 +1,8 @@
 # Discord-DB-Template-Bot
 It's a discord bot
 
-# Instructions
+---
+> # Instructions
 ## Customizing the Config.json File
  ```js
  {
@@ -20,7 +21,8 @@ It's a discord bot
  node .
  ```
 
-# pm2
+---
+> # pm2
 ## Install pm2
  ```sh 
  npm install --global pm2
@@ -44,5 +46,6 @@ pm2 logs (. or id) - show logs
  ```
 more in `pm2 -h` or [this](https://pm2.keymetrics.io/docs/usage/quick-start/) and Google 😉
 
-### If you want to use nodemon and pm2
+---
+> ### If you want to use nodemon and pm2
  - [Check this](https://stackoverflow.com/questions/69457892/nodemon-watch-vs-pm2-watch)
