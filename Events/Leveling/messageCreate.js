@@ -53,7 +53,7 @@ module.exports = {
             const nextRoleCheck = await LevelRewardDB.findOne({ GuildID: message.guild.id, Level: data.Level });
             if(nextRoleCheck) {
                 const levelRole = nextRoleCheck.Role.replace(/[<@!&>]/g, '');
-                const userLevel = await LevelRewardDB.findOne({ GuildID: message.guild.id, UserID: message.author.id});
+                const userLevel = await LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id});
                 const prevRoleId = userLevel.Role;
                 if(message.member.roles.cache.has(levelRole)) {
                     return;
