@@ -1,6 +1,6 @@
 {
   "name": "code-master-discord-bot-db",
-  "version": "1.6.1",
+  "version": "1.7.1",
   "description": "Discord bot for the Code Master server",
   "main": "./Structures/index.js",
   "scripts": {
