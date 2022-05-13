@@ -1,14 +1,13 @@
-const { MessageEmbed, Message, WebhookClient } = require("discord.js");
-const { WEBHOOKS } = require("../../Structures/config.json");
-const { Error } = require("../../Utilites/Logger");
+const { MessageEmbed, Message, Client } = require("discord.js");
 
 module.exports = {
     name: "messageUpdate",
     /**
      * @param {Message} oldMessage 
      * @param {Message} newMessage 
+     * @param {Client} client
      */
-    execute(oldMessage, newMessage) {
+    execute(oldMessage, newMessage, client) {
         if(oldMessage.author.bot) return;
 
         if(oldMessage.content === newMessage.content) return;
@@ -30,7 +29,20 @@ module.exports = {
             Log.addField(`**Канал**`, `<#${newMessage.channel.id}>`, true);
         }
 
-        new WebhookClient({url: WEBHOOKS.MESSAGE_LOG.EDIT_URL})
-        .send({embeds: [Log]}).catch((err) => Error(err));
+        const channelID = client.AuditEditLog.get(newMessage.guild.id);
+        if(!channelID) return;
+        const channelObject = newMessage.guild.channels.cache.get(channelID);
+        if(!channelObject) return;
+        createAndDeleteWebhook(channelObject, Log);
+
+        async function createAndDeleteWebhook(channelID, embedName) {
+            await channelID.createWebhook("Logs", {
+                avatar: client.user.avatarURL({ format: "png" })
+            }).then(webhook => {
+                webhook.send({
+                    embeds: [embedName]
+                }).then(() => webhook.delete().catch(() => {}))
+            });
+        }
     }
 }

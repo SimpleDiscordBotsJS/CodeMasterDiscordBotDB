@@ -1,5 +1,5 @@
 const { Message } = require("discord.js");
-const { AUTORESPONDER } = require("../../Structures/config.json");
+const DB = require("../../Structures/Schemas/GuildSettingsDB");
 
 module.exports = {
     name: "messageCreate",
@@ -9,10 +9,19 @@ module.exports = {
     async execute(message) {
         if(message.author.bot) return;
 
-        AUTORESPONDER.forEach((channels) => {
-            if(!message.guild.channels.cache.get(channels)) return;
-            if(message.channel.id != channels) return;
-            await message.react("👍").then(() => message.react("👎"));
+        DB.findOne({GuildID: message.guild.id}, async(err, data) => {
+            if(err) throw err;
+            if(!data) {
+                DB.create({GuildID: message.guild.id});
+            } else {
+                for(var i = 0; i < data.AutoResponderChannelsID[i]; ++i) {
+                    if(message.guild.channels.cache.get(data.AutoResponderChannelsID[i])) {
+                        if(message.channel.id == data.AutoResponderChannelsID[i]) {
+                            await message.react("👍").then(() => message.react("👎"));
+                        }
+                    }
+                }
+            }
         });
     }
 }

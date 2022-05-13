@@ -1,4 +1,4 @@
-const DB = require("../../Structures/Schemas/Suggest/SuggestDB");
+const DB = require("../../Structures/Schemas/SuggestDB");
 
 module.exports = {
     id: "suggest-accept",

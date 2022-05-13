@@ -1,5 +1,5 @@
 const { CommandInteraction, Client } = require("discord.js");
-const DB = require("../../Structures/Schemas/AntiScamDB");
+const DB = require("../../Structures/Schemas/GuildSettingsDB");
 
 module.exports = {
     name: "antiscam",
@@ -25,11 +25,11 @@ module.exports = {
 
                 await DB.findOneAndUpdate(
                     { GuildID: guild.id }, 
-                    { ChannelID: loggingChannel },
+                    { AntiScamChannelID: loggingChannel },
                     { new: true, upsert: true }
                 );
 
-                client.scamlinksLog.set(guild.id, loggingChannel);
+                client.AntiScamLog.set(guild.id, loggingChannel);
 
                 interaction.reply({ content: `Канал логгирования AntiScam системы, установлен на <#${loggingChannel}>`, ephemeral: true });
             }

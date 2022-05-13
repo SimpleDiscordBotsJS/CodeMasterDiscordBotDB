@@ -1,5 +1,5 @@
 const { ThreadChannel } = require("discord.js");
-const { DELETE_THREAD_TO_CHANNELS } = require("../../Structures/config.json");
+const DB = require("../../Structures/Schemas/GuildSettingsDB");
 
 module.exports = {
     name: "threadCreate",
@@ -7,11 +7,19 @@ module.exports = {
      * @param {ThreadChannel} thread 
      */
     async execute(thread) {
-        DELETE_THREAD_TO_CHANNELS.forEach(async (channel) => {
-            if(!thread.guild.channels.cache.get(channel)) return;
-            if(thread.parent.id != channel) return;
-
-            await thread.delete();
+        DB.findOne({GuildID: thread.guild.id}, async(err, data) => {
+            if(err) throw err;
+            if(!data) {
+                DB.create({GuildID: thread.guild.id});
+            } else {
+                for(var i = 0; i < data.AutoThreadDeleteChannelsID[i]; ++i) {
+                    if(thread.guild.channels.cache.get(data.AutoThreadDeleteChannelsID[i])) {
+                        if(thread.parent.id == data.AutoThreadDeleteChannelsID[i]) {
+                            await thread.delete();
+                        }
+                    }
+                }
+            }
         });
     }
 }

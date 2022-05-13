@@ -1,5 +1,5 @@
 const { MessageEmbed, CommandInteraction } = require("discord.js");
-const DB = require("../../Structures/Schemas/Suggest/SuggestSetupDB");
+const DB = require("../../Structures/Schemas/GuildSettingsDB");
 
 module.exports = {
     name: "suggest-setup",
@@ -36,7 +36,7 @@ module.exports = {
                         .setDescription(`✅ Этот канал был установлен как канал предложений.`)]}).then(async() => { 
                             await DB.findOneAndUpdate(
                                 { GuildID: interaction.guild.id }, 
-                                { ChannelID: channel.id }, 
+                                { SuggestChannelID: channel.id }, 
                                 { new: true, upsert: true }
                             );
                         interaction.reply({embeds: [new MessageEmbed().setColor("GOLD")
@@ -61,7 +61,7 @@ module.exports = {
                     .setDescription(`❌ Этот сервер не настроил систему предложений.`)]});
 
                 return interaction.reply({embeds: [new MessageEmbed().setColor("AQUA")
-                    .setDescription(`В настоящее время, каналом предложений является <#${suggestion.ChannelID}>`)]});
+                    .setDescription(`В настоящее время, каналом предложений является <#${suggestion.SuggestChannelID}>`)]});
             }
             break;
         }

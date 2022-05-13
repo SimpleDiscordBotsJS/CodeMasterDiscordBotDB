@@ -8,14 +8,28 @@ const PG = promisify(glob);
 const { AsciiTable3 } = require("ascii-table3");
 
 //===========================================================
+//Прочее
 
 client.commands = new Collection();
 client.buttons = new Collection();
 client.cooldowns = new Collection();
 client.cookiescooldowns = new Collection();
 client.filters = new Collection();
+
+//===========================================================
+//Каналы
+
 client.filtersLog = new Collection();
-client.scamlinksLog = new Collection();
+client.JoinChannel = new Collection();
+client.ExitChannel = new Collection();
+client.AntiScamLog = new Collection();
+client.AntiMultiAccLog = new Collection();
+client.SuggestChannel = new Collection();
+client.AuditEditLog = new Collection();
+client.AuditDeleteLog = new Collection();
+client.NewsThreadChannel = new Collection();
+
+//===========================================================
 
 ["Events", "Commands", "Buttons"].forEach(handler => {
     require(`./Handlers/${handler}`)(client, PG, AsciiTable3);

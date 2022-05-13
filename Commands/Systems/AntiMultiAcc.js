@@ -1,5 +1,5 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
-const DB = require("../../Structures/Schemas/AntiMultiAccDB");
+const DB = require("../../Structures/Schemas/GuildSettingsDB");
 
 module.exports = {
     name: "anti-mult",
@@ -19,7 +19,7 @@ module.exports = {
         const { guild, options } = interaction;
         const LogChannel = options.getChannel("channel");
 
-        await DB.findOneAndUpdate({ GuildID: guild.id }, { LogsChannel: LogChannel.id }, { new: true, upsert: true })
+        await DB.findOneAndUpdate({ GuildID: guild.id }, { AntiMultiAccLog: LogChannel.id }, { new: true, upsert: true })
         .catch((err) => console.log(err));
 
         await interaction.reply({embeds: [new MessageEmbed().setColor("GOLD").addField("Канал", LogChannel)

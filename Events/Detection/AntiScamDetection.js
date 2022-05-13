@@ -40,7 +40,7 @@ module.exports = {
         message.member.timeout(48 * 60 * 60 * 1000, "SCAM рассылка");
 
         if(wordsUsed.length) {
-            const channelID = client.scamlinksLog.get(guild.id);
+            const channelID = client.AntiScamLog.get(guild.id);
             if(!channelID) return;
             const channelObject = guild.channels.cache.get(channelID);
             if(!channelObject) return;
