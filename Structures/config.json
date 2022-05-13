@@ -17,5 +17,13 @@
 
     "AUTORESPONDER": [
         "962053378584752178"
+    ],
+
+    "CREATE_THREAD_TO_CHANNELS": [
+        ""
+    ],
+
+    "DELETE_THREAD_TO_CHANNELS": [
+        ""
     ]
 }
