@@ -12,7 +12,7 @@ module.exports = {
         AUTORESPONDER.forEach((channels) => {
             if(!message.guild.channels.cache.get(channels)) return;
             if(message.channel.id != channels) return;
-            message.react("👍").then(() => message.react("👎"));
+            await message.react("👍").then(() => message.react("👎"));
         });
     }
 }
