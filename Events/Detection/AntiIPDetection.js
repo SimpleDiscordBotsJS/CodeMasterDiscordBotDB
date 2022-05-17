@@ -18,7 +18,7 @@ module.exports = {
 
             message.delete().catch(() => {})
 
-            const Embed = new MessageEmbed().setTitle("Обнаружен IP адрес").setColor("RED")
+            const Embed = new MessageEmbed().setTitle("__**Обнаружен IP адрес!**__").setColor("RED")
             .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`)
             .setDescription(`Пожалуйста, не отправляйте IP адреса!`).setTimestamp()
             .addField("Нарушитель:", `\`\`\`${author.tag} (${author.id})\`\`\``);

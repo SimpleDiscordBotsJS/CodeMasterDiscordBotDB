@@ -29,11 +29,10 @@ module.exports = {
         if(shouldDelete) message.delete().catch(() => {});
         else return;
 
-        const Embed = new MessageEmbed().setTitle("Обнаружен SCAM").setColor("RED")
-            .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`)
+        const Embed = new MessageEmbed().setTitle("__**Обнаружено SCAM сообщение!**__").setColor("RED")
+            .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`).setTimestamp()
             .setDescription(`Пожалуйста, не отправляйте SCAM сообщения!`)
-            .addField("Пользователь:", `\`\`\`${author.tag} (${author.id})\`\`\``)
-            .addField("Контент:", `\`\`\`${content}\`\`\``).setTimestamp();
+            .addField("Пользователь:", `\`\`\`${author.tag} (${author.id})\`\`\``);
         
         message.channel.send({embeds: [Embed]}).then((m) => setTimeout(() => m.delete(), 10000));
 
@@ -45,7 +44,7 @@ module.exports = {
             const channelObject = guild.channels.cache.get(channelID);
             if(!channelObject) return;
 
-            const LogEmbed = new MessageEmbed().setTitle("Удалено SCAM сообщение").setColor("RED")
+            const LogEmbed = new MessageEmbed().setTitle("__**Удалено SCAM сообщение!**__").setColor("RED")
             .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`)
             .addField("Пользователь:", `\`\`\`${author.tag} (${author.id})\`\`\``)
             .addField("Контент:", `\`\`\`${content}\`\`\``).setTimestamp();

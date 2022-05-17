@@ -12,8 +12,10 @@ module.exports = {
         if(message.content.includes('discord.gg/'||'discordapp.com/invite/')) {
             message.delete();
 
-            const Embed = new MessageEmbed().setTitle("**Обнаружено приглашение на другой сервер!**").setColor("RED")
-            .setDescription(`**${message.author}, пожалуйста, не отправляйте приглашения!**`).setTimestamp();
+            const Embed = new MessageEmbed().setTitle("__**Обнаружено приглашение на другой сервер!**__").setColor("RED")
+            .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`)
+            .setDescription(`Пожалуйста, не отправляйте приглашения!`).setTimestamp()
+            .addField("Нарушитель:", `\`\`\`${author.tag} (${author.id})\`\`\``);
         
             await message.channel.send({embeds: [Embed]}).then((m) => setTimeout(() => m.delete(), 7000));
         }

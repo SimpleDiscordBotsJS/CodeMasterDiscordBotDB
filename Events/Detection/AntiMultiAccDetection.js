@@ -17,7 +17,7 @@ module.exports = {
             const ChannelID = member.guild.channels.cache.get(Data.ChannelID);
             if(!ChannelID) return;
     
-            const Embed = new MessageEmbed().setColor("RED").setTitle("Мульти аккаунт!")
+            const Embed = new MessageEmbed().setColor("RED").setTitle("__**Мульти аккаунт!**__")
             .setAuthor({name: member.user.tag, iconURL: member.user.displayAvatarURL({dynamic: true})})
             .addField("**Пользователь**", `\`${member.user.tag}\` (${member.id})`)
             .addField("**Действие**", `Kick (Automatic)`, true)
