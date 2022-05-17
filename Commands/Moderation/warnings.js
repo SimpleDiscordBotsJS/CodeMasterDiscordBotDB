@@ -3,7 +3,13 @@ const DB = require("../../Structures/Schemas/Moderation/WarningDB");
 
 module.exports = {
     name: "warnings",
-    description: "Показать предупреждения",
+    nameLocalizations: {
+        "ru": "преды"
+    },
+    description: "Show warnings",
+    descriptionLocalizations: {
+        "ru": "Показать предупреждения"
+    },
     cooldown: 10000, 
     options: [{ name: "target", description: "Выберите пользователя", type: "USER", required: false }],
     /**
@@ -29,8 +35,7 @@ module.exports = {
                         (w, i) => `**ID**: ${i + 1}
                         **Выдал**: <@${w.ExecuterID}>
                         **Дата выдачи**: ${w.Date}
-                        **Причина**: ${w.Reason}
-                        **Доказательства**: ${w.Evidence}\n\n`
+                        **Причина**: ${w.Reason}\n\n`
                     ).join(" ")}`)
                 ], ephemeral: true});
             } else {

@@ -3,13 +3,18 @@ const DB = require("../../Structures/Schemas/Moderation/WarningDB");
 
 module.exports = {
     name: "warn",
-    description: "Предупреждения",
+    nameLocalizations: {
+        "ru": "пред"
+    },
+    description: "Warnings",
+    descriptionLocalizations: {
+        "ru": "Предупреждения"
+    },
     permission: "KICK_MEMBERS",
     options: [
         { name: "add", description: "Добавить предупреждение", type: "SUB_COMMAND", options: [
                 { name: "target", description: "Выберите цель", type: "USER", required: true },
-                { name: "reason", description: "Укажите причину", type: "STRING", required: true },
-                { name: "evidence", description: "Предоставьте доказательства", type: "STRING", required: false }
+                { name: "reason", description: "Укажите причину", type: "STRING", required: true }
             ]
         },
         { name: "remove", description: "Удалить предупреждение", type: "SUB_COMMAND", options: [
@@ -30,7 +35,6 @@ module.exports = {
         const subCommand = options.getSubcommand();
         const Target = options.getMember("target");
         const Reason = options.getString("reason");
-        const Evidence = options.getString("evidence") || "Доказательств не предоставлено.";
         const WarnID = options.getNumber("warnid") - 1;
         const WarnDate = new Date(interaction.createdTimestamp).toLocaleDateString();
 
@@ -47,7 +51,6 @@ module.exports = {
                         data = new DB({ GuildID: guild.id, UserID: Target.id, Content: [{
                                     ExecuterID: user.id,
                                     Reason: Reason,
-                                    Evidence: Evidence,
                                     Date: WarnDate
                                 }
                             ],
@@ -56,7 +59,6 @@ module.exports = {
                         const obj = {
                             ExecuterID: user.id,
                             Reason: Reason,
-                            Evidence: Evidence,
                             Date: WarnDate
                         }
                         data.Content.push(obj);
@@ -65,7 +67,7 @@ module.exports = {
                 });
     
                 interaction.reply({embeds: [new MessageEmbed().setTitle("Предупреждение добавлено").setColor("BLURPLE")
-                    .setDescription(`Добавлено __предупреждение__: ${Target.user} \n**Причина**: ${Reason}\n**Доказательства**: ${Evidence}`)
+                    .setDescription(`Добавлено __предупреждение__: ${Target.user} \n**Причина**: ${Reason}`)
                     .setFooter({text: `ID: ${Target.id}`}).setTimestamp()
                 ], ephemeral: true});
     
