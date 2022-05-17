@@ -7,7 +7,7 @@
     "WEBHOOKS": {
         "JOIN_EXIT": {
             "JOIN_URL": "https://discord.com/api/webhooks/962801410578202635/wxGXf1ixcaLl9z3qnxX9TcvnPl61jztXP7yVr_lRFunSrCF7cn2NICy7QwS1M6Sds-tN",
-            "EXIT_URL": "https://discord.com/api/webhooks/962801410578202635/wxGXf1ixcaLl9z3qnxX9TcvnPl61jztXP7yVr_lRFunSrCF7cn2NICy7QwS1M6Sds-tN"
+            "EXIT_URL": "https://discord.com/api/webhooks/976184633865666600/MBRqyNWjYi06dOA92VFlwiEkSaApXsItHfFHvQX5qZrawJVH9ZPt80tjfKb1bFtcKQvB"
         },
         "MESSAGE_LOG": {
             "EDIT_URL": "https://discord.com/api/webhooks/962801990247796796/VEB4yUQdnL2Mdnuhi4j0OcOuWUdpvboHFrvGfpg9A5biYakC83Li22i1Byv7hKLmeZG0",
@@ -28,6 +28,6 @@
     ],
 
     "NEWS_THREAD_CREATE_TO_CHANNELS": [
-        ""
+        "962053378584752178"
     ]
 }
