@@ -3,7 +3,13 @@ const DB = require("../../Structures/Schemas/PollDB");
 
 module.exports = {
     name: "poll",
-    description: "Создать или управлять опросом",
+    nameLocalizations: {
+        "ru": "опрос"
+    },
+    description: "Create the poll",
+    descriptionLocalizations: {
+        "ru": "Создать или управлять опросом"
+    },
     permission: "MANAGE_GUILD",
     options: [
         {

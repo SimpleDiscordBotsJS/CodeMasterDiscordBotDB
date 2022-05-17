@@ -4,7 +4,13 @@ const { getLevelExp } = require("../../Utilites/LevelFucntions");
 
 module.exports = {
     name: 'leaderboard',
-    description: 'Показать лидеров',
+    nameLocalizations: {
+        "ru": "лидеры"
+    },
+    description: 'Show leaderboard',
+    descriptionLocalizations: {
+        "ru": "Показать лидеров"
+    },
     cooldown: 10000,
     /**
      * @param {CommandInteraction} interaction

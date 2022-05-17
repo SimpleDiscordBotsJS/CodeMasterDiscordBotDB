@@ -5,7 +5,13 @@ const DB = require("../../Structures/Schemas/Suggest/SuggestDB");
 
 module.exports = {
     name: "suggest",
-    description: "Предложить",
+    nameLocalizations: {
+        "ru": "предложить"
+    },
+    description: "Suggest",
+    descriptionLocalizations: {
+        "ru": "Предложить"
+    },
     cooldown: 300000,
     options: [
         { name: "type", description: "Выберите тип предложения.",

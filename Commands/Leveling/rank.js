@@ -2,15 +2,20 @@ const { CommandInteraction, MessageEmbed, MessageAttachment } = require("discord
 const LevelDB = require("../../Structures/Schemas/Leveling/LevelingDB");
 const { getLevelExp } = require("../../Utilites/LevelFucntions");
 const { read, AUTO, MIME_PNG, BLEND_MULTIPLY } = require("jimp");
-const { createCanvas, loadImage, registerFont } = require("canvas");
-//const { join } = require("path");
+const { createCanvas, registerFont } = require("canvas");
 
 registerFont(`${process.cwd()}/Structures/Fonts/Helvetica.ttf`, { family: `Helvetica Normal` });
 registerFont(`${process.cwd()}/Structures/Fonts/Helvetica-Bold.ttf`, { family: `Helvetica Bold` });
 
 module.exports = {
     name: "rank",
-    description: "Показать ранг",
+    nameLocalizations: {
+        "ru": "ранг"
+    },
+    description: "Show rank",
+    descriptionLocalizations: {
+        "ru": "Показать ранг"
+    },
     cooldown: 10000,
     options: [{ name: "target", description: "Выберите пользователя", type: "USER", required: false }],
     /**
@@ -35,58 +40,6 @@ module.exports = {
             let ranking = totalRank.map(x => x.TotalXP).indexOf(UserLevel.TotalXP) + 1;
 
             //Канвас
-            //const canvas = createCanvas(1000, 333)
-            //const ctx = canvas.getContext("2d");
-            //const background = await loadImage(join(__dirname, "..", "..", "Structures", "Images", "wallpaper.png"));
-            /*ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-            ctx.beginPath();
-            ctx.lineWidth = 4;
-            ctx.strokeStyle = "#A3A3A3"
-            ctx.globalAlpha = 0.2;
-            ctx.fillStyle = "#000000"
-            ctx.fillRect(180, 216, 775, 65);
-            ctx.fill();
-            ctx.globalAlpha = 1;
-            ctx.strokeRect(180, 216, 775, 65);
-            ctx.stroke();
-            
-            ctx.fillStyle = "#2ECC71";
-            ctx.globalAlpha = 0.6;
-            ctx.fillRect(200, 216, ((100 / (required)) * UserLevel.XP) * 7.5, 65);
-            ctx.fill();
-            ctx.globalAlpha = 1; 
-
-            ctx.font = '30px sans-serif';
-            ctx.textAlign = "center";
-            ctx.fillStyle = "#beb1b1";
-            ctx.fillText(`${UserLevel.XP} / ${required} XP`, 600, 260);
-
-            ctx.font = '35px sans-serif';
-            ctx.textAlign = "left";
-            ctx.fillText(Target.displayName, 325, 125);
-
-            ctx.font = '40px sans-serif';
-            ctx.fillText("Level: ", 350, 170);
-            ctx.fillText(UserLevel.Level, 500, 170);
-
-            ctx.font = '40px sans-serif';
-            ctx.fillText("Rank: ", 700, 170);
-            ctx.fillText(ranking, 830, 170);
-
-            ctx.arc(170, 160, 120, 0, Math.PI * 2, true);
-            ctx.lineWidth = 6;
-            ctx.strokeStyle = "#A3A3A3"
-            ctx.stroke();
-            ctx.closePath();
-            ctx.clip();
-            const avatar = await loadImage(Target.user.displayAvatarURL({dynamic: true, format: "png"}));
-            ctx.drawImage(avatar, 40, 40, 250, 250);*/
-
-
-            
-
-            //New canvas
             await Target.user.fetch();
 
             let userName = Target.displayName;
@@ -100,22 +53,6 @@ module.exports = {
             ctx.textAlign = "left";
             ctx.fillStyle = "#FFFFFF";
             ctx.fillText(userName, 300, 125);
-
-            /*ctx.font = "60px Helvetica Bold";
-            ctx.textAlign = "left";
-            ctx.fillStyle = "#c7c7c7";
-            ctx.fillText(`#${Target.user.discriminator}`, 300, 215);*/
-
-            /*ctx.beginPath();
-            ctx.lineWidth = 4;
-            ctx.strokeStyle = "#A3A3A3"
-            ctx.globalAlpha = 0.2;
-            ctx.fillStyle = "#000000"
-            ctx.fillRect(280, 216, 583, 65);
-            ctx.fill();
-            ctx.globalAlpha = 1;
-            ctx.strokeRect(280, 216, 583, 65);
-            ctx.stroke();*/
 
             ctx.font = `30px Helvetica Bold`;
             ctx.textAlign = "left";
@@ -164,18 +101,6 @@ module.exports = {
                 if(width > 583 - 18.5 - 18.5) width = 583 - 18.5 - 18.5;
                 return width;
             }
-
-            //Other
-            /*ctx.fillStyle = "#2ECC71";
-            ctx.globalAlpha = 0.6;
-            ctx.fillRect(280, 216, ((100 / (required)) * UserLevel.XP) * 5.8, 65);
-            ctx.fill();
-            ctx.globalAlpha = 1;
-
-            ctx.font = '30px Helvetica Bold';
-            ctx.textAlign = "center";
-            ctx.fillStyle = "#FFFFFF";
-            ctx.fillText(`${UserLevel.XP} / ${required} XP`, 600, 260);*/
 
             let userAvatar = Target.user.defaultAvatarURL;
 
@@ -259,7 +184,6 @@ module.exports = {
             const buffer = await base.getBufferAsync(MIME_PNG);
 
             interaction.followUp({files: [new MessageAttachment(buffer, "profile.png")]});
-            //return interaction.reply({files: [new MessageAttachment(canvas.toBuffer())]});
         }
     }
 }

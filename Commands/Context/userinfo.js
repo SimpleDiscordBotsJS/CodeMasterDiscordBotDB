@@ -2,6 +2,9 @@ const { ContextMenuInteraction, MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "userinfo",
+    nameLocalizations: {
+        "ru": "пользователь"
+    },
     type: "USER",
     cooldown: 5000,
     /**

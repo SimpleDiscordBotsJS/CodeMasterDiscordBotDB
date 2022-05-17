@@ -2,7 +2,13 @@ const { CommandInteraction, MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "clear",
-    description: "Очистить чат.",
+    nameLocalizations: {
+        "ru": "очистить-чат"
+    },
+    description: "Clear chat.",
+    descriptionLocalizations: {
+        "ru": "Очистить чат."
+    },
     permission: "MANAGE_MESSAGES",
     options: [
         { name: "amount", description: "Количество сообщений, которое вы хотите удалить.",

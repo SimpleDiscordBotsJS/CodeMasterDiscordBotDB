@@ -5,7 +5,13 @@ require("../../Events/Client/ready");
 
 module.exports = {
     name: "status",
+    nameLocalizations: {
+        "ru": "статус"
+    },
     description: "Displays the status of the client and database connection.",
+    descriptionLocalizations: {
+        "ru": "Показать статус бота"
+    },
     permission: "ADMINISTRATOR",
     /**
      * @param {CommandInteraction} interaction 
