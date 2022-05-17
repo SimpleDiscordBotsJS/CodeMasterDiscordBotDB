@@ -14,7 +14,13 @@ module.exports = {
     options: [
         {
             name: "create",
-            description: "Создать опрос",
+            nameLocalizations: {
+                "ru": "создать"
+            },
+            description: "Create poll",
+            descriptionLocalizations: {
+                "ru": "Создать опрос"
+            },
             type: "SUB_COMMAND",
             options: [
                 { name: "title", description: "Дайте название опросу", type: "STRING", required: true },
@@ -28,7 +34,13 @@ module.exports = {
         },
         {
             name: "results",
-            description: "Показать результаты опроса",
+            nameLocalizations: {
+                "ru": "результат"
+            },
+            description: "Show result to the poll",
+            descriptionLocalizations: {
+                "ru": "Показать результаты опроса"
+            },
             type: "SUB_COMMAND",
             options: [
                 { name: "message_id", description: "Укажите messageID опроса", type: "STRING", required: true }
@@ -95,11 +107,11 @@ module.exports = {
                 }
 
                 const Embed = new MessageEmbed()
-                .setTitle(`${Title}`)
+                .setTitle("__**Опрос:**__")
                 .setFooter({text: `Опрос от ${user.tag}`})
                 .setColor("NOT_QUITE_BLACK")
                 .setTimestamp()
-                .setDescription(Choices.join("\n\n"));
+                .setDescription(`**${Title}**\n` + Choices.join("\n\n"));
 
                 try {
                     const M = await Channel.send({embeds: [Embed], components: [Row], fetch: true});
