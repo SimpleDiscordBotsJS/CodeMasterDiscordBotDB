@@ -73,7 +73,7 @@ process.on('multipleResolves', (type, promise, reason) => { Warning(
 
 //===========================================================
 
-//Подключение к боту и вывод ошибки в случае отсутствия токена, или если токен неверен.
+
 client.login(BOT_TOKEN).catch(() => {
     Error("[BOT] Неверный токен для входа от имени бота.");
     process.exit();
@@ -81,5 +81,8 @@ client.login(BOT_TOKEN).catch(() => {
 
 //===========================================================
 
-//Завершение работы
-process.on("SIGINT", () => { Success("SIGINT detected, exiting..."); process.exit(); });
+
+process.on("SIGINT", () => { 
+    Success("SIGINT detected, exiting..."); 
+    process.exit(); 
+});
