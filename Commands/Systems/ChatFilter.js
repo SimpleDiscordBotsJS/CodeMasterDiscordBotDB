@@ -1,5 +1,4 @@
 const { CommandInteraction, Client } = require("discord.js");
-const GuildSettingsSchema = require("../../Structures/Schemas/GuildSettingsDB");
 const Schema = require("../../Structures/Schemas/FilterDB");
 
 module.exports = {
@@ -73,9 +72,9 @@ module.exports = {
             case "settings" : {
                 const loggingChannel = options.getChannel("logging").id;
 
-                await GuildSettingsSchema.findOneAndUpdate(
+                await Schema.findOneAndUpdate(
                     { Guild: guild.id }, 
-                    { FilterLogChannelID: loggingChannel },
+                    { Log: loggingChannel },
                     { new: true, upsert: true }
                 );
 
@@ -93,7 +92,7 @@ module.exports = {
                         Schema.findOne({Guild: guild.id}, async (err, data) => {
                             if(err) throw err;
                             if(!data) {
-                                await Schema.create({Guild: guild.id, Words: Words})
+                                await Schema.create({Guild: guild.id, Log: null, Words: Words})
                                 
                                 client.filters.set(guild.id, Words);
 

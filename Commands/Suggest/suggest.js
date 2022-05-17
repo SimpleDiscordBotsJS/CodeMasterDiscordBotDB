@@ -1,7 +1,7 @@
 const { CommandInteraction, MessageEmbed,  MessageActionRow, MessageButton } = require("discord.js");
 const { Error } = require("../../Utilites/Logger");
-const SetupDB = require("../../Structures/Schemas/GuildSettingsDB");
-const DB = require("../../Structures/Schemas/SuggestDB");
+const SetupDB = require("../../Structures/Schemas/Suggest/SuggestSetupDB");
+const DB = require("../../Structures/Schemas/Suggest/SuggestDB");
 
 module.exports = {
     name: "suggest",
@@ -49,11 +49,11 @@ module.exports = {
 
         const SuggestSetupDB = await SetupDB.findOne({GuildID: guildId});
 
-        if(SuggestSetupDB.SuggestChannelID == null) return interaction.reply({embeds: [new MessageEmbed().setColor("RED")
+        if(!SuggestSetupDB) return interaction.reply({embeds: [new MessageEmbed().setColor("RED")
             .setDescription("Этот сервер не настроил систему предложений.")], ephemeral: true});
 
         try {
-            const M = await interaction.guild.channels.cache.get(SuggestSetupDB.SuggestChannelID).send({embeds: [Embed], components: [Buttons], fetchReply: true});
+            const M = await interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID).send({embeds: [Embed], components: [Buttons], fetchReply: true});
             M.react('✅').then(() => M.react('⛔'));
         
             await DB.create({GuildID: guildId, MessageID: M.id, Details: [
@@ -64,7 +64,7 @@ module.exports = {
                 }
             ]});
             interaction.reply({embeds: [new MessageEmbed().setColor("GOLD")
-                .setDescription(`✅ Ваше [предложение](${M.url}) было добавлено в ${interaction.guild.channels.cache.get(SuggestSetupDB.SuggestChannelID)}`).setTimestamp()], ephemeral: true});
+                .setDescription(`✅ Ваше [предложение](${M.url}) было добавлено в ${interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID)}`).setTimestamp()], ephemeral: true});
         } catch (err) {
             Error(err);
         }

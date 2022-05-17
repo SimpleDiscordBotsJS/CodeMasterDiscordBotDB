@@ -20,14 +20,7 @@ client.filters = new Collection();
 //Каналы
 
 client.filtersLog = new Collection();
-client.JoinChannel = new Collection();
-client.ExitChannel = new Collection();
 client.AntiScamLog = new Collection();
-client.AntiMultiAccLog = new Collection();
-client.SuggestChannel = new Collection();
-client.AuditEditLog = new Collection();
-client.AuditDeleteLog = new Collection();
-client.NewsThreadChannel = new Collection();
 
 //===========================================================
 

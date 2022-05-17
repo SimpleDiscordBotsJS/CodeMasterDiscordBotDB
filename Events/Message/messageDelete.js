@@ -1,12 +1,12 @@
-const { MessageEmbed, Message, Client } = require("discord.js");
+const { MessageEmbed, Message, WebhookClient } = require("discord.js");
+const { WEBHOOKS } = require("../../Structures/config.json");
 
 module.exports = {
     name: "messageDelete",
     /**
      * @param {Message} message
-     * @param {Client} client
      */
-    execute(message, client) {
+    execute(message) {
         if(message.author.bot) return;
 
         //Игнорируем, если сообщение, в юриздикции Anti-Scam
@@ -32,20 +32,6 @@ module.exports = {
             Log.addField(`Прикреплено`, `${message.attachments.map(a => a.url).join(" ")}`, true);
         }
 
-        const channelID = client.AuditDeleteLog.get(message.guild.id);
-        if(!channelID) return;
-        const channelObject = message.guild.channels.cache.get(channelID);
-        if(!channelObject) return;
-        createAndDeleteWebhook(channelObject, Log);
-
-        async function createAndDeleteWebhook(channelID, embedName) {
-            await channelID.createWebhook("Logs", {
-                avatar: client.user.avatarURL({ format: "png" })
-            }).then(webhook => {
-                webhook.send({
-                    embeds: [embedName]
-                }).then(() => webhook.delete().catch(() => {}))
-            });
-        }
+        new WebhookClient({url: WEBHOOKS.MESSAGE_LOG.DELETE_URL}).send({embeds: [Log]});
     }
 }

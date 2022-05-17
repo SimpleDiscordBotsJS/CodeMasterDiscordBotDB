@@ -1,5 +1,5 @@
 const { CommandInteraction, Client } = require("discord.js");
-const DB = require("../../Structures/Schemas/GuildSettingsDB");
+const DB = require("../../Structures/Schemas/AntiScamDB");
 
 module.exports = {
     name: "antiscam",
@@ -25,7 +25,7 @@ module.exports = {
 
                 await DB.findOneAndUpdate(
                     { GuildID: guild.id }, 
-                    { AntiScamChannelID: loggingChannel },
+                    { ChannelID: loggingChannel },
                     { new: true, upsert: true }
                 );
 
