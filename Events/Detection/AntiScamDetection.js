@@ -31,7 +31,7 @@ module.exports = {
 
         const Embed = new MessageEmbed().setTitle("Обнаружен SCAM").setColor("RED")
             .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`)
-            .setDescription(`Пожалуйста, не отправляйте SCAM сообщения. Благодарю.`)
+            .setDescription(`Пожалуйста, не отправляйте SCAM сообщения!`)
             .addField("Пользователь:", `\`\`\`${author.tag} (${author.id})\`\`\``)
             .addField("Контент:", `\`\`\`${content}\`\`\``).setTimestamp();
         
