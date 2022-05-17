@@ -10,7 +10,7 @@ module.exports = {
     async execute(member) {
         if(member.user.bot) return;
         if(member.user.createdTimestamp < ms('7 day')) {
-            await member.kick("Account age is less than 7 day");
+            await member.kick("Возраст аккаунта менее семи дней");
 
             const Data = await DB.findOne({GuildID: member.guild.id});
             if(!Data) return;
@@ -21,7 +21,7 @@ module.exports = {
             .setAuthor({name: member.user.tag, iconURL: member.user.displayAvatarURL({dynamic: true})})
             .addField("**Пользователь**", `\`${member.user.tag}\` (${member.id})`)
             .addField("**Действие**", `Kick (Automatic)`, true)
-            .addField("**Прчина**", `Account age is less than 7 day`, true)
+            .addField("**Прчина**", `Возраст аккаунта менее семи дней!`, true)
             .setFooter({text: `Guild ID: ${member.user.id}`}).setTimestamp();
     
             await ChannelID.send({embeds: [Embed]});
