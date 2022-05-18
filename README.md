@@ -17,6 +17,12 @@ It's a discord bot
 ## To run locally, you need Node.JS
  - [Download Node.JS](https://nodejs.org/en/) - 16.14.2 or above
 
+## Install to VPS/VDS dependencies
+Debian/Ubuntu
+```sh
+apt-get install ttf-mscorefonts-installer
+```
+
 ## Start
  ```sh
  node .
