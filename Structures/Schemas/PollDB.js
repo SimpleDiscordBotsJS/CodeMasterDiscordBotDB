@@ -6,7 +6,7 @@ module.exports = model("Poll", new Schema({
     MessageID: String,
     CreatedBy: String,
     Users: [String],
-    Title: String,
+    Theme: String,
     Button1: Number,
     Button2: Number,
     Button3: Number,

@@ -37,7 +37,7 @@ module.exports = {
                 { 
                     name: "choice1",
                     nameLocalizations: {
-                        "ru": "вариант-1"
+                        "ru": "вариант1"
                     },
                     description: "What is the first choice for the poll",
                     descriptionLocalizations: {
@@ -48,7 +48,7 @@ module.exports = {
                 { 
                     name: "choice2", 
                     nameLocalizations: {
-                        "ru": "вариант-2"
+                        "ru": "вариант2"
                     },
                     description: "What is the second choice for the poll",
                     descriptionLocalizations: {
@@ -59,7 +59,7 @@ module.exports = {
                 { 
                     name: "choice3",
                     nameLocalizations: {
-                        "ru": "вариант-3"
+                        "ru": "вариант3"
                     },
                     description: "What is the third choice for the poll",
                     descriptionLocalizations: {
@@ -70,7 +70,7 @@ module.exports = {
                 { 
                     name: "choice4",
                     nameLocalizations: {
-                        "ru": "вариант-4"
+                        "ru": "вариант4"
                     },
                     description: "What is the fourth choice for the poll",
                     descriptionLocalizations: {
@@ -81,7 +81,7 @@ module.exports = {
                 { 
                     name: "choice5",
                     nameLocalizations: {
-                        "ru": "вариант-5"
+                        "ru": "вариант5"
                     },
                     description: "What is the fifth choice for the poll",
                     descriptionLocalizations: {
@@ -116,7 +116,7 @@ module.exports = {
                 { 
                     name: "message_id",
                     nameLocalizations: {
-                        "ru": "messageID опроса"
+                        "ru": "message_id"
                     },
                     description: "Provide the messageID of the poll", 
                     descriptionLocalizations: {
@@ -136,7 +136,7 @@ module.exports = {
 
         switch(SubCommand) {
             case "create": {
-                const Title = options.getString("title");
+                const Theme = options.getString("theme");
                 const Choice1 = options.getString("choice1");
                 const Choice2 = options.getString("choice2");
                 const Choice3 = options.getString("choice3");
@@ -191,7 +191,7 @@ module.exports = {
                 .setFooter({text: `Опрос от ${user.tag}`})
                 .setColor("NOT_QUITE_BLACK")
                 .setTimestamp()
-                .setDescription(`**${Title}**\n` + Choices.join("\n\n"));
+                .setDescription(`**Тема опроса**:\n\`\`\`${Theme}\`\`\`\n` + Choices.join("\n\n"));
 
                 try {
                     const M = await Channel.send({embeds: [Embed], components: [Row], fetch: true});
@@ -200,7 +200,7 @@ module.exports = {
                         ChannelID: Channel.id,
                         MessageID: M.id,
                         CreatedBy: user.id,
-                        Title: Title,
+                        Theme: Theme,
                         Button1: 0,
                         Button2: 0,
                         Button3: Choice3 ? 0 : null,
