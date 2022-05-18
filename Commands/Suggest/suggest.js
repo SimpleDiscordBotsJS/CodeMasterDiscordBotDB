@@ -14,7 +14,15 @@ module.exports = {
     },
     cooldown: 300000,
     options: [
-        { name: "type", description: "Выберите тип предложения.",
+        {   
+            name: "type",
+            nameLocalizations: {
+                "ru": "тип"
+            },
+            description: "Select type.",
+            descriptionLocalizations: {
+                "ru": "Выберите тип предложения."
+            },
             type: "STRING",
             required: true,
             choices: [
@@ -22,9 +30,17 @@ module.exports = {
                 { name: "Дискорд бот", value: "Дискорд бот" },
                 { name: "Другое", value: "Другое" }
             ]
-        },
-        { name: "suggestion", description: "Опишите ваше ппредложение.",
-            type: "STRING", required: true
+        }, {
+            name: "suggestion",
+            nameLocalizations: {
+                "ru": "предложение"
+            },
+            description: "Опишите ваше ппредложение.",
+            descriptionLocalizations: {
+                "ru": "Опишите ваше ппредложение."
+            },
+            type: "STRING",
+            required: true
         }
     ],
     /**
@@ -60,14 +76,11 @@ module.exports = {
 
         try {
             const M = await interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID).send({embeds: [Embed], components: [Buttons], fetchReply: true});
-            M.react('✅').then(() => M.react('⛔'));
+            await M.react('✅').then(() => M.react('⛔'));
+            await M.startThread({ name: `${Suggestion.substring(0, 50)}...`});
         
             await DB.create({GuildID: guildId, MessageID: M.id, Details: [
-                {
-                    MemberID: member.id,
-                    Type: Type,
-                    Suggestion: Suggestion
-                }
+                { MemberID: member.id, Type: Type, Suggestion: Suggestion }
             ]});
             interaction.reply({embeds: [new MessageEmbed().setColor("GOLD")
                 .setDescription(`✅ Ваше [предложение](${M.url}) было добавлено в ${interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID)}`).setTimestamp()], ephemeral: true});
