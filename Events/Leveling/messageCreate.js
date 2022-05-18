@@ -2,7 +2,6 @@ const { Message, MessageEmbed } = require("discord.js");
 const LevelRewardDB = require("../../Structures/Schemas/Leveling/LevelRewardDB");
 const LevelDB = require("../../Structures/Schemas/Leveling/LevelingDB");
 const { getLevelExp } = require("../../Utilites/LevelFucntions");
-const { Info } = require("../../Utilites/Logger");
 
 module.exports = {
     name: "messageCreate",
@@ -19,6 +18,8 @@ module.exports = {
                 LevelDB.create({ GuildID: message.guild.id, UserID: message.author.id});
             }
         });
+
+        //TODO: Исправить баг, с излишком опыта.
         
         const rand = Math.round(Math.random() * 4);
         if(rand === 0) {
@@ -36,14 +37,6 @@ module.exports = {
                     .setDescription(`${message.author} получил новый уровень!\nТеперь его уровень: \`${data.Level}\``)
                     .setFooter({text: `ID: ${message.author.id}`})]
                 }).then((msg) => setTimeout(()=> msg.delete(), 15000));
-
-                Info(
-                    `====================== Level UP ======================`, 
-                    `User: ${message.author.tag}`, 
-                    `Level: ${data.Level}`,
-                    `Guild: ${message.guild.name}`,
-                    `======================================================`
-                );
             } else {
                 data.XP += give;
                 data.TotalXP += give;
