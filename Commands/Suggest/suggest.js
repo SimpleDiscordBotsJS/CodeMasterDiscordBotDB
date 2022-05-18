@@ -19,23 +19,41 @@ module.exports = {
             nameLocalizations: {
                 "ru": "тип"
             },
-            description: "Select type.",
+            description: "Select a type.",
             descriptionLocalizations: {
                 "ru": "Выберите тип предложения."
             },
             type: "STRING",
             required: true,
             choices: [
-                { name: "Сервер", value: "Сервер" },
-                { name: "Дискорд бот", value: "Дискорд бот" },
-                { name: "Другое", value: "Другое" }
+                { 
+                    name: "Сервер",
+                    nameLocalizations: {
+                        "en-US": "Server"
+                    },
+                    value: "Сервер" 
+                },
+                { 
+                    name: "Дискорд бот",
+                    nameLocalizations: {
+                        "en-US": "Discord Bot"
+                    },
+                    value: "Дискорд бот" 
+                },
+                { 
+                    name: "Другое",
+                    nameLocalizations: {
+                        "en-US": "Other"
+                    },
+                    value: "Другое" 
+                }
             ]
         }, {
             name: "suggestion",
             nameLocalizations: {
                 "ru": "предложение"
             },
-            description: "Опишите ваше ппредложение.",
+            description: "Describe your suggestion.",
             descriptionLocalizations: {
                 "ru": "Опишите ваше ппредложение."
             },
