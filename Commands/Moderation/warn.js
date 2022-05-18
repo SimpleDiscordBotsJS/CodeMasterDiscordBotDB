@@ -12,17 +12,44 @@ module.exports = {
     },
     permission: "KICK_MEMBERS",
     options: [
-        { name: "add", description: "Добавить предупреждение", type: "SUB_COMMAND", options: [
+        {
+            name: "add",
+            nameLocalizations: {
+                "ru": "добавить"
+            },
+            description: "Добавить предупреждение",
+            descriptionLocalizations: {
+                "ru": "Добавить предупреждение"
+            },
+            type: "SUB_COMMAND", options: [
                 { name: "target", description: "Выберите цель", type: "USER", required: true },
                 { name: "reason", description: "Укажите причину", type: "STRING", required: true }
             ]
         },
-        { name: "remove", description: "Удалить предупреждение", type: "SUB_COMMAND", options: [
+        {
+            name: "remove",
+            nameLocalizations: {
+                "ru": "удалить"
+            },
+            description: "Удалить предупреждение",
+            descriptionLocalizations: {
+                "ru": "Удалить предупреждение"
+            },
+            type: "SUB_COMMAND", options: [
                 { name: "target", description: "Выберите цель", type: "USER", required: true },
                 { name: "warnid", description: "Укажите ID предупреждения", type: "NUMBER", required: true }
             ]
         },
-        { name: "clear", description: "Удалить все предупреждения", type: "SUB_COMMAND", options: [
+        {
+            name: "clear",
+            nameLocalizations: {
+                "ru": "очистить"
+            },
+            description: "Удалить все предупреждения",
+            descriptionLocalizations: {
+                "ru": "Удалить все предупреждения"
+            },
+            type: "SUB_COMMAND", options: [
                 { name: "target", description: "Выберите цель", type: "USER", required: true }
             ]
         }
