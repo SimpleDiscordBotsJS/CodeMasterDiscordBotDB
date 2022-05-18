@@ -17,19 +17,89 @@ module.exports = {
             nameLocalizations: {
                 "ru": "создать"
             },
-            description: "Create poll",
+            description: "Create a poll",
             descriptionLocalizations: {
                 "ru": "Создать опрос"
             },
             type: "SUB_COMMAND",
             options: [
-                { name: "title", description: "Дайте название опросу", type: "STRING", required: true },
-                { name: "choice1", description: "Какой первый вариант для опроса", type: "STRING", required: true },
-                { name: "choice2", description: "Какой второй вариант для опроса", type: "STRING", required: true },
-                { name: "choice3", description: "Какой третий вариант для опроса", type: "STRING" },
-                { name: "choice4", description: "Какой четвертый вариант для опроса", type: "STRING" },
-                { name: "choice5", description: "Какой пятый вариант для опроса", type: "STRING" },
-                { name: "channel", description: "Выберите канал, для отправки в него опроса", type: "CHANNEL", channelTypes: ["GUILD_TEXT"] }
+                { 
+                    name: "theme",
+                    nameLocalizations: {
+                        "ru": "тема"
+                    },
+                    description: "Specify the topic of the survey",
+                    descriptionLocalizations: {
+                        "ru": "Укажите тему опроса"
+                    },
+                    type: "STRING", required: true 
+                },
+                { 
+                    name: "choice1",
+                    nameLocalizations: {
+                        "ru": "вариант-1"
+                    },
+                    description: "What is the first choice for the poll",
+                    descriptionLocalizations: {
+                        "ru": "Укажите первый вариант ответа"
+                    },
+                    type: "STRING", required: true 
+                },
+                { 
+                    name: "choice2", 
+                    nameLocalizations: {
+                        "ru": "вариант-2"
+                    },
+                    description: "What is the second choice for the poll",
+                    descriptionLocalizations: {
+                        "ru": "Укажите второй вариант ответа"
+                    },
+                    type: "STRING", required: true 
+                },
+                { 
+                    name: "choice3",
+                    nameLocalizations: {
+                        "ru": "вариант-3"
+                    },
+                    description: "What is the third choice for the poll",
+                    descriptionLocalizations: {
+                        "ru": "Укажите третий вариант ответа"
+                    },
+                    type: "STRING" 
+                },
+                { 
+                    name: "choice4",
+                    nameLocalizations: {
+                        "ru": "вариант-4"
+                    },
+                    description: "What is the fourth choice for the poll",
+                    descriptionLocalizations: {
+                        "ru": "Укажите четвертый вариант ответа"
+                    },
+                    type: "STRING" 
+                },
+                { 
+                    name: "choice5",
+                    nameLocalizations: {
+                        "ru": "вариант-5"
+                    },
+                    description: "What is the fifth choice for the poll",
+                    descriptionLocalizations: {
+                        "ru": "Укажите пятый вариант ответа"
+                    },
+                    type: "STRING" 
+                },
+                { 
+                    name: "channel",
+                    nameLocalizations: {
+                        "ru": "канал"
+                    },
+                    description: "Select a channel to send a poll",
+                    descriptionLocalizations: {
+                        "ru": "Выберите канал, для отправки в него опроса"
+                    },
+                    type: "CHANNEL", channelTypes: ["GUILD_TEXT"]
+                }
             ]
         },
         {
@@ -37,13 +107,23 @@ module.exports = {
             nameLocalizations: {
                 "ru": "результат"
             },
-            description: "Show result to the poll",
+            description: "Show the results of a poll",
             descriptionLocalizations: {
                 "ru": "Показать результаты опроса"
             },
             type: "SUB_COMMAND",
             options: [
-                { name: "message_id", description: "Укажите messageID опроса", type: "STRING", required: true }
+                { 
+                    name: "message_id",
+                    nameLocalizations: {
+                        "ru": "messageID опроса"
+                    },
+                    description: "Provide the messageID of the poll", 
+                    descriptionLocalizations: {
+                        "ru": "Укажите messageID опроса"
+                    },
+                    type: "STRING", required: true
+                }
             ]
         }
     ],
