@@ -1,0 +1,25 @@
+{
+    "DEBUG_EVENT": false,
+
+    "ANTI_FLOOD": {
+        "MESSAGE_LIMIT": 5,
+        "DIFFERENCE": 5000,
+        "TIME_CHECK": 10000
+    },
+
+    "AUTORESPONDER": [
+        "962053378584752178"
+    ],
+
+    "CREATE_THREAD_TO_CHANNELS": [
+        "974587124462551050"
+    ],
+
+    "DELETE_THREAD_TO_CHANNELS": [
+        ""
+    ],
+
+    "NEWS_THREAD_CREATE_TO_CHANNELS": [
+        "962053378584752178"
+    ]
+}

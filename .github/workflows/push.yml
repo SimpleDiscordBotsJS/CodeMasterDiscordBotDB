@@ -1,0 +1,27 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code update and deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_SERVER_IP }}
+          port: ${{ secrets.SSH_SERVER_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ secrets.BOT_DIR }}
+            git checkout master
+            git reset --hard
+            git pull
+            npm i
+            pm2 delete -s bot || ':'
+            npm run start:pm2
