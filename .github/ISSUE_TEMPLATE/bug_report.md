@@ -1,28 +1,28 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: "[BUG] Title"
+about: Создайте отчет, чтобы помочь нам стать лучше
+title: "[BUG] Заголовок"
 labels: bug
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Опишите баг**
+Четкое и краткое описание ошибки.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**Воспроизвести**
+Шаги для воспроизведения поведения:
+1. Перейдите к «...»
+2. Нажмите «….»
+3. Прокрутите вниз до «….»
+4. См. ошибку
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Скриншоты**
+Если применимо, добавьте снимки экрана, чтобы объяснить вашу проблему.
 
-**Host (please complete the following information):**
+**Хост (пожалуйста, заполните следующую информацию):**
  - OS: [e.g. Ubuntu 20.04]
  - NodeJS: [e.g. v16.15.0]
 
-**Additional context**
-Add any other context about the problem here.
+**Дополнительный контекст**
+Добавьте любой другой контекст проблемы здесь.
