@@ -27,7 +27,7 @@ module.exports = {
             const give = Math.floor(Math.random() * (25 - 15 + 1) + 15);
             const data = await LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id });
 
-            const requiredXp = getLevelExp(data.Level);
+            const requiredXp = await getLevelExp(data.Level);
             
             data.XP += give;
             data.TotalXP += give;
