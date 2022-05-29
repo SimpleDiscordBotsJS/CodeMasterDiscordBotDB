@@ -70,6 +70,7 @@ exports.Success = Success;
 exports.Warning = Warning;
 
 //===========================================================//
+/*
 function writeFile(content) {
     var newContent = content;
     var path = logFilePath + '/' + logFileName;
@@ -96,7 +97,7 @@ function writeFile(content) {
         if(err) return Error(err);
     });
 }
-
+*/
 //===========================================================//
 function construct(str) {
     const time = new Date().toLocaleTimeString();
