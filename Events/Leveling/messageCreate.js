@@ -2,7 +2,7 @@ const { Message, MessageEmbed } = require("discord.js");
 const LevelRewardDB = require("../../Structures/Schemas/Leveling/LevelRewardDB");
 const LevelDB = require("../../Structures/Schemas/Leveling/LevelingDB");
 const { Warning } = require("../../Utilities/Logger");
-const { getLevelExp, getLevelFromExp, getRemainingExp } = require("../../Utilities/LevelFunctions");
+const { getLevelExp } = require("../../Utilities/LevelFunctions");
 
 module.exports = {
     name: "messageCreate",
@@ -34,8 +34,8 @@ module.exports = {
 
             //Level UP
             if(data.XP >= requiredXp) {
-                data.XP = await getRemainingExp(data.XP);
-                data.Level = await getLevelFromExp(data.TotalXP);
+                data.XP -= requiredXp;
+                data.Level += 1;
                 message.channel.send({embeds: [new MessageEmbed().setColor("GREEN").setTimestamp()
                     .setThumbnail(message.author.avatarURL({dynamic: true, size: 256})).setTitle("**Новый уровень!**")
                     .setDescription(`${message.author} получил новый уровень!\nТеперь его уровень: \`${data.Level}\``)
