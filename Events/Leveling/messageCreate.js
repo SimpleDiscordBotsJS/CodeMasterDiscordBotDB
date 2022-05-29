@@ -13,10 +13,10 @@ module.exports = {
         if(message.channel.type === 'DM') return;
         if(message.author.bot) return;
 
-        await LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id }, async (err, result) => {
+        LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id }, async (err, result) => {
             if(err) throw err;
             if(!result) {
-                LevelDB.create({ GuildID: message.guild.id, UserID: message.author.id});
+                await LevelDB.create({ GuildID: message.guild.id, UserID: message.author.id});
             }
         });
 
@@ -25,7 +25,7 @@ module.exports = {
         const rand = Math.round(Math.random() * 4);
         if(rand === 0) {
             const give = Math.floor(Math.random() * (25 - 15 + 1) + 15);
-            await LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id }, async (err, data) => {
+            LevelDB.findOne({ GuildID: message.guild.id, UserID: message.author.id }, async (err, data) => {
                 if(err) return Error(err);
                 if(data) {
                     const requiredXp = await getLevelExp(data.Level);
