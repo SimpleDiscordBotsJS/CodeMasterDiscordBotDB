@@ -16,7 +16,7 @@ const logFileName = "Latest.log";
 function Debug() {
     for(var i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;35m[  DEBUG  ]: ` + arguments[i]);
-        writeFile(`[  DEBUG  ]: ` + arguments[i]);
+        //writeFile(`[  DEBUG  ]: ` + arguments[i]);
     }
 }
 
@@ -24,7 +24,7 @@ function Debug() {
 function Error() {
     for(var i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;31m[  ERROR  ]: ` + arguments[i]);
-        writeFile(`[  ERROR  ]: ` + arguments[i]);
+        //writeFile(`[  ERROR  ]: ` + arguments[i]);
     }
 }
 
@@ -32,7 +32,7 @@ function Error() {
 function Info() {
     for(var i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;32m[  INFO  ]:  ` + arguments[i]);
-        writeFile(`[  INFO  ]:  ` + arguments[i]);
+        //writeFile(`[  INFO  ]:  ` + arguments[i]);
     }
 }
 
@@ -40,7 +40,7 @@ function Info() {
 function Message() {
     for(var i = 0; i < arguments.length; i++) {
         construct(`\x1b[0m[ MESSAGE ]: ` + arguments[i]);
-        writeFile(`[ MESSAGE ]: ` + arguments[i]);
+        //writeFile(`[ MESSAGE ]: ` + arguments[i]);
     }
 }
 
@@ -48,7 +48,7 @@ function Message() {
 function Success() {
     for(var i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;36m[ SUCCESS ]: ` + arguments[i]);
-        writeFile(`[ SUCCESS ]: ` + arguments[i]);
+        //writeFile(`[ SUCCESS ]: ` + arguments[i]);
     }
 }
 
@@ -56,7 +56,7 @@ function Success() {
 function Warning() {
     for(var i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;33m[ WARNING ]: ` + arguments[i]);
-        writeFile(`[ WARNING ]: ` + arguments[i]);
+        //writeFile(`[ WARNING ]: ` + arguments[i]);
     }
 }
 
