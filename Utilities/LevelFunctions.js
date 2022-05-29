@@ -1,7 +1,7 @@
 //Формулы взяты из JuniperBot
+module.exports = { getLevelExp, getLevelTotalExp, getLevelFromExp, getRemainingExp };
 
 //Расчёт опыта для получения нового уровня
-exports.getLevelExp = getLevelExp;
 /** @param {number} Level */
 async function getLevelExp(Level) {
     return (5 * (Level * Level) + (50 * Level) + 100);
@@ -9,7 +9,6 @@ async function getLevelExp(Level) {
 }
 
 //Расчёт всего опыта по уровню
-exports.getLevelTotalExp = getLevelTotalExp;
 /** @param {number} Level */
 async function getLevelTotalExp(Level) {
     let Exp = 0;
@@ -20,8 +19,7 @@ async function getLevelTotalExp(Level) {
     return Exp;
 }
 
-//
-exports.getLevelFromExp = getLevelFromExp;
+//Получаем уровень из кол-ва опыта
 /** @param {number} Exp */
 async function getLevelFromExp(Exp) {
     let Level = 0;
@@ -33,8 +31,7 @@ async function getLevelFromExp(Exp) {
 }
 
 
-//Всего опыта
-exports.getRemainingExp = getRemainingExp;
+//Получаем остаток
 /** @param {number} TotalExp */
 async function getRemainingExp(TotalExp) {
     let Remaining = TotalExp;
