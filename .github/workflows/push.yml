@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ secrets.BOT_DIR }}
-            git checkout master
+            git checkout origin/main
             git reset --hard
             git pull
             npm i
