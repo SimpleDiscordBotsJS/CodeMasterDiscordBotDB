@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "dev": "node --inspect .",
-    "start:pm2": "pm2 start npm --watch --name=bot -- run start"
+    "start:pm2": "pm2 start npm --name=bot -- run start"
   },
   "repository": {
     "type": "git",
