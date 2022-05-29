@@ -37,11 +37,11 @@ module.exports = {
                     if(data.XP >= requiredXp) {
                         data.XP -= requiredXp;
                         data.Level += 1;
-                        message.channel.send({embeds: [new MessageEmbed().setColor("GREEN").setTimestamp()
+                        await message.channel.send({embeds: [new MessageEmbed().setColor("GREEN").setTimestamp()
                             .setThumbnail(message.author.avatarURL({dynamic: true, size: 256})).setTitle("**Новый уровень!**")
                             .setDescription(`${message.author} получил новый уровень!\nТеперь его уровень: \`${data.Level}\``)
                             .setFooter({text: `ID: ${message.author.id}`})]
-                        }).then((msg) => setTimeout(()=> msg.delete(), 15000));
+                        }).then((msg) => setTimeout(()=> msg.delete(), 1000 * 20));
                     }
 
                     data.save();

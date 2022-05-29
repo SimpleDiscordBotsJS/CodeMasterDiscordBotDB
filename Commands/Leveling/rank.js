@@ -3,6 +3,7 @@ const LevelDB = require("../../Structures/Schemas/Leveling/LevelingDB");
 const { getLevelExp } = require("../../Utilities/LevelFunctions");
 const { read, AUTO, MIME_PNG, BLEND_MULTIPLY } = require("jimp");
 const { createCanvas, registerFont } = require("canvas");
+const { Error } = require("../../Utilities/Logger");
 
 registerFont(`${process.cwd()}/Structures/Fonts/Helvetica.ttf`, { family: `Helvetica Normal` });
 registerFont(`${process.cwd()}/Structures/Fonts/Helvetica-Bold.ttf`, { family: `Helvetica Bold` });
@@ -32,7 +33,7 @@ module.exports = {
 
             return interaction.reply({embeds: [balEmbed], ephemeral: true});
         } else {
-            interaction.deferReply();
+            await interaction.deferReply();
 
             const required = (await getLevelExp(UserLevel.Level)).valueOf();
 
@@ -183,7 +184,9 @@ module.exports = {
 
             const buffer = await base.getBufferAsync(MIME_PNG);
 
-            await interaction.followUp({files: [new MessageAttachment(buffer, "profile.png")]});
+            (interaction.followUp({files: [new MessageAttachment(buffer, "profile.png")]})).catch(err => {
+                Error(err);
+            });
         }
     }
 }
