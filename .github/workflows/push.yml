@@ -23,5 +23,5 @@ jobs:
             git reset --hard
             git pull
             npm i
-            pm2 delete -s CodeBot || ':'
+            pm2 delete -s bot || ':'
             npm run start:pm2
