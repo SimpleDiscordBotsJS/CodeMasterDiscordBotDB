@@ -12,7 +12,8 @@ module.exports = {
         if(oldMessage.content === newMessage.content) return;
 
         //Проверка на наличие вебхука
-        if(!process.env.WEBHOOK_MESSAGE_EDIT) return;
+        const logChannel = new WebhookClient({url: process.env.WEBHOOK_MESSAGE_EDIT});
+        if(!logChannel) return;
 
         const Count = 1950;
 
@@ -31,6 +32,6 @@ module.exports = {
             Log.addField(`**Канал**`, `<#${newMessage.channel.id}>`, true);
         }
 
-        new WebhookClient({url: process.env.WEBHOOK_MESSAGE_EDIT}).send({embeds: [Log]});
+        return logChannel.send({embeds: [Log]});
     }
 }

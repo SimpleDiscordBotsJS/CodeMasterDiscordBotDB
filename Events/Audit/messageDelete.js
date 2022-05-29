@@ -15,7 +15,8 @@ module.exports = {
         if(ScamFilter) return;
 
         //Проверка на наличие вебхука
-        if(!process.env.WEBHOOK_MESSAGE_DELETE) return;
+        const logChannel = new WebhookClient({url: process.env.WEBHOOK_MESSAGE_DELETE});
+        if(!logChannel) return;
 
         //Всё остальное
         const Log = new MessageEmbed().setColor("#36393f")
@@ -34,6 +35,6 @@ module.exports = {
             Log.addField(`Прикреплено`, `${message.attachments.map(a => a.url).join(" ")}`, true);
         }
 
-        new WebhookClient({url: process.env.WEBHOOK_MESSAGE_DELETE}).send({embeds: [Log]});
+        return logChannel.send({embeds: [Log]});
     }
 }
