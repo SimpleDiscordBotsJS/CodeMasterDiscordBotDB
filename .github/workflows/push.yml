@@ -16,10 +16,10 @@ jobs:
           host: ${{ secrets.SSH_SERVER_IP }}
           port: ${{ secrets.SSH_SERVER_PORT }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ secrets.BOT_DIR }}
-            git checkout master
+            git checkout origin/main
             git reset --hard
             git pull
             npm i
