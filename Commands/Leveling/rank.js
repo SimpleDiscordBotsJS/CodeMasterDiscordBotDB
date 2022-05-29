@@ -183,7 +183,7 @@ module.exports = {
 
             const buffer = await base.getBufferAsync(MIME_PNG);
 
-            interaction.followUp({files: [new MessageAttachment(buffer, "profile.png")]});
+            await interaction.followUp({files: [new MessageAttachment(buffer, "profile.png")]});
         }
     }
 }
