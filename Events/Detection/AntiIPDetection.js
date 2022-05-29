@@ -9,7 +9,6 @@ module.exports = {
     async execute(message) {
         if(message.channel.type === "DM") return;
         if(message.guild.ownerId == message.author.id) return;
-        if(message.member.permissions.has(["ADMINISTRATOR"])) return;
         if(message.member.permissions.has(["MANAGE_MESSAGES"])) return;
         
         const { author, content } = message;

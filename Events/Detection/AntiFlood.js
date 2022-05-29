@@ -12,7 +12,6 @@ module.exports = {
      */
     async execute(message) {
         if(message.author.bot) return;
-        if(message.member.permissions.has(["ADMINISTRATOR"])) return;
         if(message.member.permissions.has(["MANAGE_MESSAGES"])) return;
 
         const Messages = await message.channel.messages.fetch();
