@@ -36,8 +36,15 @@ module.exports = {
         }
         
         // ============================================================ //
+        const protocol = '(?:(?:http|https)://)?';
+        const subdomain = '(?:www.)?';
+        const domain = '(?:disco|discord|discordapp).(?:com|gg|io|li|me|net|org)';
+        const path = '(?:/(?:invite))?/([a-z0-9-.]+)';
 
-        if(content.includes('discord.gg/'||'discordapp.com/invite/')) {
+        const inviteRegex = `(${protocol}${subdomain}(${domain}${path}))`;
+        //или: /((?:(?:http|https):\/\/)?(?:www.)?((?:disco|discord|discordapp).(?:com|gg|io|li|me|net|org)(?:\/(?:invite))?\/([a-z0-9-.]+)))/i
+
+        if(content.match(new RegExp(inviteRegex, "i"))) {
             if(message.guild.me.permissionsIn(message.channel).has(["SEND_MESSAGES", "MANAGE_MESSAGES"])) {
                 message.delete();
 
