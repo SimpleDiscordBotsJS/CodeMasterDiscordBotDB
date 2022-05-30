@@ -13,7 +13,7 @@ async function getLevelExp(Level) {
 async function getLevelTotalExp(Level) {
     let Exp = 0;
     for (var i = 0; i < Level; i++) {
-        Exp + getLevelExp(i);
+        Exp + await getLevelExp(i);
     }
 
     return Exp;
@@ -23,8 +23,8 @@ async function getLevelTotalExp(Level) {
 /** @param {number} Exp */
 async function getLevelFromExp(Exp) {
     let Level = 0;
-    while (Exp >= getLevelExp(Level)) {
-        Exp -= getLevelExp(Level);
+    while (Exp >= await getLevelExp(Level)) {
+        Exp -= await getLevelExp(Level);
         Level++;
     }
     return Level;
@@ -35,8 +35,8 @@ async function getLevelFromExp(Exp) {
 /** @param {number} TotalExp */
 async function getRemainingExp(TotalExp) {
     let Remaining = TotalExp;
-    for (var i = 0; i < getLevelFromExp(TotalExp); i++) {
-        Remaining - getLevelExp(i);
+    for (var i = 0; i < await getLevelFromExp(TotalExp); i++) {
+        Remaining - await getLevelExp(i);
     }
 
     return Remaining;
