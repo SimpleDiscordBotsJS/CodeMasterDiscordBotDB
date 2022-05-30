@@ -6,6 +6,7 @@ module.exports = {
      * @param {Message} message
      */
     async execute(message) {
+        if(message.author.bot) return;
         if(message.channel.type == "DM") return;
         if(message.guild.ownerId == message.author.id) return;
         if(message.member.permissions.has(["MANAGE_MESSAGES"])) return;
