@@ -33,7 +33,7 @@ module.exports = {
 
             return interaction.reply({embeds: [balEmbed], ephemeral: true});
         } else {
-            await interaction.deferReply();
+            interaction.deferReply();
 
             const required = (await getLevelExp(UserLevel.Level)).valueOf();
 
