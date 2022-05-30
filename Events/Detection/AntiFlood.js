@@ -1,5 +1,5 @@
 const { Message } = require("discord.js");
-const { addWarning, Timeout } = require("../../Utilities/ModFunctions");
+const { addWarning } = require("../../Utilities/ModFunctions");
 const { Warning } = require("../../Utilities/Logger");
 const { ANTI_FLOOD } = require("../../Structures/config.json");
 
@@ -14,10 +14,12 @@ module.exports = {
         if(message.author.bot) return;
         if(message.member.permissions.has(["MANAGE_MESSAGES"])) return;
 
-        const Messages = await message.channel.messages.fetch();
+        const { author, channel, guild, member } = message;
 
-        if(usersMap.has(message.author.id)) {
-            const userData = usersMap.get(message.author.id);
+        const Messages = await channel.messages.fetch();
+
+        if(usersMap.has(author.id)) {
+            const userData = usersMap.get(author.id);
             const { lastMessage, timer } = userData;
             const difference = message.createdTimestamp - lastMessage.createdTimestamp;
             let msgCount = userData.msgCount;
@@ -27,37 +29,37 @@ module.exports = {
                 userData.msgCount = 1;
                 userData.lastMessage = message;
                 userData.timer = setTimeout(() => {
-                    usersMap.delete(message.author.id);
+                    usersMap.delete(author.id);
                 }, ANTI_FLOOD.TIME_CHECK);
-                usersMap.set(message.author.id, userData)
+                usersMap.set(author.id, userData)
             } else {
                 ++msgCount;
                 if(parseInt(msgCount) === ANTI_FLOOD.MESSAGE_LIMIT) {
-                    if(message.guild.me.permissionsIn(message.channel).has(["SEND_MESSAGES", "MANAGE_MESSAGES"])) {
+                    if(guild.me.permissionsIn(channel).has(["SEND_MESSAGES", "MANAGE_MESSAGES"])) {
                         let i = 0;
                         const ToDelete = [];
                         (await Messages).filter((m) => {
-                            if(m.author.id === message.author.id && ANTI_FLOOD.MESSAGE_LIMIT > i) {
+                            if(m.author.id === author.id && ANTI_FLOOD.MESSAGE_LIMIT > i) {
                                 ToDelete.push(m);
                                 i++;
                             }
                         });
-                        message.channel.bulkDelete(ToDelete, true);
+                        channel.bulkDelete(ToDelete, true);
     
-                        addWarning(message.guild, message.member, message.client.user, "Флуд");
-                        if(message.member.timeout() == null) Timeout(message.member, 1000 * 60 * 60, "Флуд");
+                        await addWarning(guild, member, message.client.user, "Флуд");
+                        if(member.timeout() == null) member.timeout(1000 * 60 * 60, "Флуд");
                     } else {
                         Warning("У бота отсутствуют в канале необходимые права: SEND_MESSAGES & MANAGE_MESSAGES");
                     }
                 } else {
                     userData.msgCount = msgCount;
-                    usersMap.set(message.author.id, userData);
+                    usersMap.set(author.id, userData);
                 }
             }
         } else {
-            let remove = setTimeout(() => usersMap.delete(message.author.id), ANTI_FLOOD.TIME_CHECK);
+            let remove = setTimeout(() => usersMap.delete(author.id), ANTI_FLOOD.TIME_CHECK);
 
-            usersMap.set(message.author.id, {
+            usersMap.set(author.id, {
                 msgCount: 1,
                 lastMessage: message,
                 timer: remove
