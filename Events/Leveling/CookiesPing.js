@@ -14,7 +14,8 @@ module.exports = {
 
         //TODO: Переделать, обязательно!
 
-        if(content.startsWith("<@") && content.endsWith("🍪")) {
+        const regex = /<((@!?\d+)|(:.+?:\d+))>/g; //Думаю, так правильней. С другой стороны, весь код требует доработки.
+        if(content.match(regex) && content.endsWith("🍪")) {
             var userID = content.substring(2, 20);
             if(userID.startsWith('!')) {
                 userID = userID.slice(1);
