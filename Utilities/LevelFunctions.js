@@ -5,7 +5,6 @@ module.exports = { getLevelExp, getLevelTotalExp, getLevelFromExp, getRemainingE
 /** @param {number} Level */
 async function getLevelExp(Level) {
     return (5 * (Level * Level) + (50 * Level) + 100);
-    //return (Level * Level) * 100 + 100 // old func
 }
 
 //Расчёт всего опыта по уровню
