@@ -1,12 +1,8 @@
 const { CommandInteraction, MessageEmbed, MessageAttachment } = require("discord.js");
 const LevelDB = require("../../Structures/Schemas/Leveling/LevelingDB");
-const { getLevelExp } = require("../../Utilities/LevelFunctions");
 const { read, AUTO, MIME_PNG, BLEND_MULTIPLY } = require("jimp");
-const { createCanvas, registerFont } = require("canvas");
+const { rackCardCanvas } = require("../../Utilities/rankCard");
 const { Error } = require("../../Utilities/Logger");
-
-registerFont(`${process.cwd()}/Structures/Fonts/Helvetica.ttf`, { family: `Helvetica Normal` });
-registerFont(`${process.cwd()}/Structures/Fonts/Helvetica-Bold.ttf`, { family: `Helvetica Bold` });
 
 module.exports = {
     name: "rank",
@@ -35,73 +31,10 @@ module.exports = {
         } else {
             interaction.deferReply();
 
-            const required = (await getLevelExp(UserLevel.Level)).valueOf();
-
-            const totalRank = await LevelDB.find({ GuildID: interaction.guild.id }).sort({ TotalXP: -1 });
-            let ranking = totalRank.map(x => x.TotalXP).indexOf(UserLevel.TotalXP) + 1;
-
-            //Канвас
             await Target.user.fetch();
 
-            let userName = Target.displayName;
-
-            if(userName.length >= 19) userName = userName.substring(0, 18) + "..";
-
-            const canvas = createCanvas(885, 303);
-            const ctx = canvas.getContext("2d");
-
-            ctx.font = "50px Helvetica Normal";
-            ctx.textAlign = "left";
-            ctx.fillStyle = "#FFFFFF";
-            ctx.fillText(userName, 300, 125);
-
-            ctx.font = `30px Helvetica Bold`;
-            ctx.textAlign = "left";
-            ctx.fillStyle = "#FFFFFF";
-            ctx.fillText("#" + ranking, 292.5, 197.5);
-
-            ctx.font = `30px Helvetica Bold`;
-            ctx.textAlign = "left";
-            ctx.fillStyle = "#FFFFFF";
-            ctx.fillText("Level: " + UserLevel.Level, 292.5, 230);
-
-            ctx.font = `30px Helvetica Bold`;
-            ctx.textAlign = "left";
-            ctx.fillStyle = "#FFFFFF";
-            ctx.fillText("🍪: " + UserLevel.Cookies, 292.5 + 175, 230);
-
-            ctx.font = '30px Helvetica Bold';
-            ctx.fillStyle = "#FFFFFF";
-            ctx.textAlign = "right";
-            ctx.fillText(`XP: ${UserLevel.XP} / ${required} `, 852.5, 230);
-
-            //Progress bar
-            //Пустой
-            ctx.fillStyle = "#FFFFFF";
-            ctx.arc(280 + 18.5, 207 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
-            ctx.fill();
-            ctx.fillRect(280 + 18.5, 207 + 36.25, 583 - 18.5 - 18.5, 37.5);
-            ctx.arc(280 + 583 - 18.5, 207 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
-            ctx.fill();
-
-            ctx.beginPath();
-
-            //Заполненный
-            ctx.fillStyle = "#2ECC71";
-            ctx.arc(280 + 18.5, 207 + 18.5 + 36.25, 18.5, 1.5 * Math.PI, 0.5 * Math.PI, true);
-            ctx.fill();
-            ctx.fillRect(280 + 18.5, 207 + 36.25, _calculateProgress(UserLevel.XP, required), 37.5);
-            ctx.arc(280 + 18.5 + _calculateProgress(UserLevel.XP, required), 207 + 18.5 + 36.25, 18.75, 1.5 * Math.PI, 0.5 * Math.PI, false);
-            ctx.fill();
-
-            function _calculateProgress(cx, rx) {
-                if(rx <= 0) return 1;
-                if(cx > rx) return 583 - 18.5 - 18.5;
-
-                let width = (cx * 583) / rx;
-                if(width > 583 - 18.5 - 18.5) width = 583 - 18.5 - 18.5;
-                return width;
-            }
+            // Грузим канвас
+            const canvas = await rackCardCanvas(Target, UserLevel);
 
             let userAvatar = Target.user.defaultAvatarURL;
 
@@ -115,7 +48,7 @@ module.exports = {
                 background = Target.user.bannerURL({ format: "png", dynamic: false });
             }
 
-            const canvasJimp = await read(canvas.toBuffer());
+            const canvasJimp = await read(canvas);
             const base = await read(`${process.cwd()}/Structures/Images/Rank/UserBase.png`);
             const capa = await read(`${process.cwd()}/Structures/Images/Rank/UserProfile.png`);
             const mask = await read(`${process.cwd()}/Structures/Images/Rank/mask.png`);
