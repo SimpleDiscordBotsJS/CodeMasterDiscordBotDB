@@ -7,5 +7,6 @@ module.exports = model("Level", new Schema({
     Level: { type: Number, default: 0 },
     TotalXP: { type: Number, default: 0 },
     Cookies: { type: Number, default: 0 },
+    lastUpdated: { type: Date, default: new Date() },
     Role: String
 }));
