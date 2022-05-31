@@ -33,7 +33,7 @@ module.exports = {
 
             await Target.user.fetch();
 
-            // Грузим канвас
+            // Грузим canvas
             const canvas = await rackCardCanvas(Target, UserLevel);
 
             let userAvatar = Target.user.defaultAvatarURL;
