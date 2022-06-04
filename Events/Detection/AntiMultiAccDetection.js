@@ -21,7 +21,7 @@ module.exports = {
             .setAuthor({name: member.user.tag, iconURL: member.user.displayAvatarURL({dynamic: true})})
             .addField("**Пользователь**", `\`${member.user.tag}\` (${member.id})`)
             .addField("**Действие**", `Kick (Automatic)`, true)
-            .addField("**Прчина**", `Возраст аккаунта менее семи дней!`, true)
+            .addField("**Причина**", `Возраст аккаунта менее семи дней!`, true)
             .setFooter({text: `Guild ID: ${member.user.id}`}).setTimestamp();
     
             await ChannelID.send({embeds: [Embed]});
