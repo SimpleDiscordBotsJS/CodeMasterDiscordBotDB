@@ -2,7 +2,7 @@ const { CommandInteraction, Client } = require("discord.js");
 const DB = require("../../Structures/Schemas/AntiScamDB");
 
 module.exports = {
-    name: "antiscam",
+    name: "anti-scam",
     description: "Setup Anti-Scam",
     permission: "ADMINISTRATOR",
     options: [{ name: "setup", description: "Anti-Scam Settings", type: "SUB_COMMAND", options: [{
