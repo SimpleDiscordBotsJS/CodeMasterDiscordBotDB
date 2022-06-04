@@ -19,8 +19,6 @@ module.exports = {
                 await LevelDB.create({ GuildID: message.guild.id, UserID: message.author.id});
             }
         });
-
-        //TODO: Исправить баг, с излишком опыта.
         
         const rand = Math.round(Math.random() * 4);
         if(rand === 0) {
@@ -32,6 +30,9 @@ module.exports = {
 
                     data.XP += give;
                     data.TotalXP += give;
+
+                    // TODO: Исправить баг, когда фиксируется нулевой уровень
+                    // TODO: Понять, с чем он вообще связан...
 
                     //Level UP
                     if(data.XP >= requiredXp) {
