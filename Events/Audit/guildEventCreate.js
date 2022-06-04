@@ -11,10 +11,10 @@ module.exports = {
         
         const Embed = new MessageEmbed().setColor("#70ec46").setTitle("🎊 __**Ивент создан**__ 🎊")
         .setDescription(`**${guildScheduledEvent.name}** был успешно создан: ${guildScheduledEvent.description}`)
-        .addField("Тип ивента", `${guildScheduledEvent.type}`, true)
+        .addField("Тип ивента", `\`${guildScheduledEvent.type}\``, true)
         .addField("Создатель", `${guildScheduledEvent.creator}`, true)
-        .addField("Начало", `${guildScheduledEvent.scheduledStartAt}`, true)
-        .addField("Окончание", `${guildScheduledEvent.scheduledEndAt ? guildScheduledEvent.scheduledEndAt : "None"}`, true)
+        .addField("Начало", `<t:${parseInt(guildScheduledEvent.scheduledStartAt / 1000)}:R>`, true)
+        .addField("Окончание", `${guildScheduledEvent.scheduledEndAt ? ("<t:" + parseInt(guildScheduledEvent.scheduledEndAt / 1000) + ":R>") : "\`None\`"}`, true)
         .setTimestamp();
 
         if(guildScheduledEvent.channel) {

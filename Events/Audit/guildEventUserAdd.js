@@ -12,7 +12,7 @@ module.exports = {
 
         const Embed = new MessageEmbed().setColor("#70ec46").setTitle("🎊 __**Пользователь добавлен в ивент**__ 🎊")
         .setDescription(`**${guildScheduledEvent.name}** Пользователь успешно добавлен в ивент`)
-        .addField("Ивент", `${guildScheduledEvent.name}`, true)
+        .addField("Ивент", `\`${guildScheduledEvent.name}\``, true)
         .addField("Пользователь", `${user}`, true)
         .setTimestamp();
 

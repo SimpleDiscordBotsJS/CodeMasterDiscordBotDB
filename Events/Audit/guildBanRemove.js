@@ -14,7 +14,7 @@ module.exports = {
         .setTitle("🔨 __**Пользователь разбанен**__ 🔨")
         .setDescription(`**${ban.user.tag}** был успешно разбанен`)
         .addField(`Пользователь`, `${ban.user}`, true)
-        .addField(`Причина`, `${ban.reason ? ban.reason : "Не указана"}`, true)
+        .addField(`Причина`, `\`${ban.reason ? ban.reason : "Не указана"}\``, true)
         .setTimestamp();
 
         channel.send({embeds: [Embed]});

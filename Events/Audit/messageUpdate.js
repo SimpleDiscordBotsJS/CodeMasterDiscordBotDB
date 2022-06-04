@@ -1,5 +1,7 @@
 const { MessageEmbed, Message, WebhookClient } = require("discord.js");
 
+// TODO: Обновить лог изменения сообщения
+
 module.exports = {
     name: "messageUpdate",
     /**

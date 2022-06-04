@@ -12,7 +12,7 @@ module.exports = {
 
         const Embed = new MessageEmbed().setColor("#ea4e4e").setTitle("🎊 __**Пользователь удалён из ивента**__ 🎊")
         .setDescription(`**${guildScheduledEvent.name}** Пользователь успешно удалён из ивента`)
-        .addField("Ивент", `${guildScheduledEvent.name}`, true)
+        .addField("Ивент", `\`${guildScheduledEvent.name}\``, true)
         .addField("Пользователь", `${user}`, true)
         .setTimestamp();
 

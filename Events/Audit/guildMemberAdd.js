@@ -14,7 +14,7 @@ module.exports = {
         .setTitle("🙂 __**Новый пользователь**__ 🙂")
         .setDescription(`${member} присоединился к серверу`)
         .addField("Пользователь", `${member}`, true)
-        .addField("Создан", `${member.user.createdAt}`, true)
+        .addField("Создан", `<t:${parseInt(member.user.createdAt / 1000)}:R>`, true)
         .setTimestamp();
 
         logChannel.send({embeds: [Embed]});

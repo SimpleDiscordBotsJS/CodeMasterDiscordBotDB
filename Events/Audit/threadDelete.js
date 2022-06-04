@@ -14,7 +14,7 @@ module.exports = {
         const Embed = new MessageEmbed()
         .setColor("#ea4e4e").setTitle("🌳 __**Ветка удалена**__ 🌳")
         .setDescription(`**${thread.name}** была успешно удалена`)
-        .addField(`Ветка`, `${thread.name}`, true)
+        .addField(`Ветка`, `\`${thread.name}\``, true)
         .setTimestamp();
 
         logChannel.send({embeds: [Embed]});

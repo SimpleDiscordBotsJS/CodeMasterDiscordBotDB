@@ -13,7 +13,7 @@ module.exports = {
         .setColor("#ea4e4e").setTitle("🚬 __**Роль удалена**__ 🚬")
         .setDescription(`**${role.name}** была успешно удалена`)
         .addField("Роль", `${role.name}`, true)
-        .addField("Создана", `${role.createdAt}`, true)
+        .addField("Создана", `<t:${parseInt(role.createdAt / 1000)}:R>`, true)
         .setTimestamp();
 
         logChannel.send({embeds: [Embed]});

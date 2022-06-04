@@ -13,8 +13,8 @@ module.exports = {
         if(oldEvent.name !== newEvent.name) {
             const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Имя ивента было обновлено`)
-            .addField("Старое имя", oldEvent.name, true)
-            .addField("Новое имя", newEvent.name, true)
+            .addField("Старое имя", `\`${oldEvent.name}\``, true)
+            .addField("Новое имя", `\`${newEvent.name}\``, true)
             .setTimestamp()
 
             logChannel.send({embeds: [Embed]});
@@ -33,8 +33,8 @@ module.exports = {
         if(oldEvent.scheduledStartAt !== newEvent.scheduledStartAt) {
             const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Дата начала ивента была обновлена`)
-            .addField("Старая дата",`${oldEvent.scheduledStartAt ? oldEvent.scheduledStartAt : "None"}`, true)
-            .addField("Новая дата", `${newEvent.scheduledStartAt ? newEvent.scheduledStartAt : "None"}`, true)
+            .addField("Старая дата", `${oldEvent.scheduledStartAt ? ("<t:" + parseInt(oldEvent.scheduledStartAt / 1000) + ":R>") : "None"}`, true)
+            .addField("Новая дата", `${newEvent.scheduledStartAt ? ("<t:" + parseInt(newEvent.scheduledStartAt / 1000) + ":R>") : "None"}`, true)
             .setTimestamp()
 
             logChannel.send({embeds: [Embed]});
@@ -43,8 +43,8 @@ module.exports = {
         if(oldEvent.scheduledEndAt !== newEvent.scheduledEndAt) {
             const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Дата окончания ивента была обновлена`)
-            .addField("Старая дата", `${oldEvent.scheduledEndAt ? oldEvent.scheduledEndAt : "None"}`, true)
-            .addField("Новая дата", `${newEvent.scheduledEndAt ? newEvent.scheduledEndAt : "None"}`, true)
+            .addField("Старая дата", `${oldEvent.scheduledEndAt ? ("<t:" + parseInt(oldEvent.scheduledEndAt / 1000) + ":R>") : "None"}`, true)
+            .addField("Новая дата", `${newEvent.scheduledEndAt ? ("<t:" + parseInt(newEvent.scheduledEndAt / 1000) + ":R>") : "None"}`, true)
             .setTimestamp()
 
             logChannel.send({embeds: [Embed]});
@@ -73,8 +73,8 @@ module.exports = {
         if(oldEvent.entityType !== newEvent.entityType) {
             const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Тип ивента был обновлён`)
-            .addField("Старый тип", `${oldEvent.entityType}`, true)
-            .addField("Новый тип", `${newEvent.entityType}`, true)
+            .addField("Старый тип", `\`${oldEvent.entityType}\``, true)
+            .addField("Новый тип", `\`${newEvent.entityType}\``, true)
             .setTimestamp()
 
             logChannel.send({embeds: [Embed]});

@@ -41,8 +41,8 @@ module.exports = {
             const Embed = new MessageEmbed().setColor("#3ccffa")
             .setTitle("🧔 __**Пользователь обновлён**__ 🧔")
             .setDescription(`${newMember} | Никнейм пользователя было изменено`)
-            .addField("Старый никнейм", `${oldMember.nickname ? oldMember.nickname : "None"}`)
-            .addField("Новый никнейм", `${newMember.nickname ? newMember.nickname : "None"}`)
+            .addField("Старый никнейм", `\`${oldMember.nickname ? oldMember.nickname : "None"}\``)
+            .addField("Новый никнейм", `\`${newMember.nickname ? newMember.nickname : "None"}\``)
             .setTimestamp();
 
             logChannel.send({embeds: [Embed]});
@@ -63,8 +63,8 @@ module.exports = {
             const Embed = new MessageEmbed().setColor("#3ccffa")
             .setTitle("🧔 __**Пользователь обновлён**__ 🧔")
             .setDescription(`${newMember} | Имя пользователя было изменено`)
-            .addField("Старое имя", `${oldMember.user.username}`)
-            .addField("Новое имя", `${newMember.user.username}`)
+            .addField("Старое имя", `\`${oldMember.user.username}\``)
+            .addField("Новое имя", `\`${newMember.user.username}\``)
             .setTimestamp();
 
             logChannel.send({embeds: [Embed]});

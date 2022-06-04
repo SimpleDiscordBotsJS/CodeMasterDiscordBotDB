@@ -17,7 +17,7 @@ module.exports = {
         const Embed = new MessageEmbed().setColor("#e15050")
         .setTitle("🔰 __**Канал удалён**__ 🔰")
         .setDescription(`**${channel.name}** был успешно удалён`)
-        .addField(`Канал`, `${channel.name}`, true)
+        .addField(`Канал`, `\`${channel.name}\``, true)
         .setTimestamp();
 
         logChannel.send({embeds: [Embed]});

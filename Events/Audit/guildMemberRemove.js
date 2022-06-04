@@ -14,7 +14,7 @@ module.exports = {
         .setTitle("🙁 __**Пользователь покинул нас**__ 🙁")
         .setDescription(`${member} покинул сервер`)
         .addField("Пользователь", `${member}`, true)
-        .addField("Создан", `${member.user.createdAt}`, true)
+        .addField("Создан", `<t:${parseInt(member.user.createdAt / 1000)}:R>`, true)
         .setTimestamp();
 
         logChannel.send({embeds: [Embed]});

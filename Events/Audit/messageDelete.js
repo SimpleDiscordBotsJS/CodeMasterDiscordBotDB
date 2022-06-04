@@ -1,5 +1,7 @@
 const { MessageEmbed, Message, WebhookClient } = require("discord.js");
 
+// TODO: Обновить лог удаления сообщения
+
 module.exports = {
     name: "messageDelete",
     /**

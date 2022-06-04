@@ -14,8 +14,8 @@ module.exports = {
             const Embed = new MessageEmbed()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
             .setDescription(`${newRole} | Имя роли было обновлено`)
-            .addField("Старое имя", `${oldRole.name}`)
-            .addField("Новое имя", `${newRole.name}`)
+            .addField("Старое имя", `\`${oldRole.name}\``)
+            .addField("Новое имя", `\`${newRole.name}\``)
             .setTimestamp();
 
             logChannel.send({embeds: [Embed]});
@@ -24,8 +24,8 @@ module.exports = {
             const Embed = new MessageEmbed()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
             .setDescription(`${newRole} | Цвет роли был обновлён`)
-            .addField("Старый цвет", `${oldRole.hexColor}`)
-            .addField("Новый цвет", `${newRole.hexColor}`)
+            .addField("Старый цвет", `\`${oldRole.hexColor}\``)
+            .addField("Новый цвет", `\`${newRole.hexColor}\``)
             .setTimestamp();
 
             logChannel.send({embeds: [Embed]});
@@ -54,8 +54,8 @@ module.exports = {
             const Embed = new MessageEmbed()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
             .setDescription(`${newRole} | Параметр упоминания был обновлён`)
-            .addField("Старый параметр", `${oldRole.mentionable}`)
-            .addField("Новый параметр", `${newRole.mentionable}`)
+            .addField("Старый параметр", `\`${oldRole.mentionable}\``)
+            .addField("Новый параметр", `\`${newRole.mentionable}\``)
             .setTimestamp();
 
             logChannel.send({embeds: [Embed]});
@@ -64,8 +64,8 @@ module.exports = {
             const Embed = new MessageEmbed()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
             .setDescription(`${newRole} | Позиция роли была обновлена`)
-            .addField("Старая позиция", `${oldRole.position}`)
-            .addField("Новая позиция", `${newRole.position}`)
+            .addField("Старая позиция", `\`${oldRole.position}\``)
+            .addField("Новая позиция", `\`${newRole.position}\``)
             .setTimestamp();
 
             logChannel.send({embeds: [Embed]});
