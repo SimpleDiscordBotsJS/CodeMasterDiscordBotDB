@@ -10,7 +10,7 @@
 	},
 	"rules": {
         "arrow-spacing": ["warn", { "before": true, "after": true }],
-		"brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+		"brace-style": ["error", "1tbs", { "allowSingleLine": true }],
 		"comma-dangle": ["error", "always-multiline"],
 		"comma-spacing": "error",
 		"comma-style": "error",
@@ -18,10 +18,22 @@
 		"dot-location": ["error", "property"],
 		"handle-callback-err": "off",
 		"indent": ["error", "tab"],
-		"keyword-spacing": "error",
+		"keyword-spacing": [2, { "overrides": {
+			"if": {
+				"after": false
+			},
+			"else": {
+				"before": true,
+				"after": true
+			},
+			"for": {
+				"after": false
+			}
+		}}],
 		"max-nested-callbacks": ["error", { "max": 4 }],
 		"max-statements-per-line": ["error", { "max": 2 }],
 		"no-console": "off",
+		"no-constant-condition": "off",
 		"no-empty-function": "error",
 		"no-floating-decimal": "error",
 		"no-inline-comments": "error",
@@ -34,7 +46,7 @@
 		"object-curly-spacing": ["error", "always"],
 		"prefer-const": "error",
 		"prettier/prettier": "error",
-		"quotes": ["error", "single"],
+		"quotes": "off",
 		"semi": ["error", "always"],
 		"space-before-blocks": "error",
 		"space-before-function-paren": ["error", {
