@@ -22,7 +22,7 @@ ENV WEBHOOK_AUDIT_ROLE=
 ENV WEBHOOK_AUDIT_THREAD= 
 
 
-RUN apk add  --no-cache git
+RUN apk add --no-cache git
 
 # Install font
 RUN apk update
@@ -36,10 +36,10 @@ RUN apk add --no-cache python3
 RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
 
 
-RUN mkdir -p /usr/codebot
-WORKDIR /usr/codebot
+RUN mkdir -p /home/codebot
+WORKDIR /home/codebot
 
-COPY package.json /usr/codebot
+COPY package.json /home/codebot
 RUN npm install --build-from-source
-COPY . /usr/codebot
+COPY . /home/codebot
 CMD ["node", "."]
