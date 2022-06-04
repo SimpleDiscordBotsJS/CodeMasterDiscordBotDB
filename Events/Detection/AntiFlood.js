@@ -1,9 +1,11 @@
 const { Message } = require("discord.js");
-const { addWarning } = require("../../Utilities/ModFunctions");
+const { addWarning, Timeout } = require("../../Utilities/ModFunctions");
 const { Warning } = require("../../Utilities/Logger");
 const { ANTI_FLOOD } = require("../../Structures/config.json");
 
 const usersMap = new Map();
+
+// TODO: Прокачать систему, ну или вынести в отдельного бота, на более подходящем языке.
 
 module.exports = {
     name: "messageCreate",
@@ -47,7 +49,7 @@ module.exports = {
                         channel.bulkDelete(ToDelete, true);
     
                         await addWarning(guild, member, message.client.user, "Флуд");
-                        if(member.timeout() == null) member.timeout(1000 * 60 * 60, "Флуд");
+                        if(member.timeout() == null) Timeout(member, 1000 * 60 * 60, "Флуд");
                     } else {
                         Warning("У бота отсутствуют в канале необходимые права: SEND_MESSAGES & MANAGE_MESSAGES");
                     }

@@ -44,7 +44,6 @@ module.exports = {
 
             await guild.systemChannel.send({embeds: [Thankyou], files: [attachment]}).catch((err) => Error(err));
 
-            Thankyou.setDescription(`Спасибо большое, за буст сервера!`);
             newMember.send({embeds: [Thankyou]});
         }
     }
