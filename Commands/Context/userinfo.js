@@ -29,9 +29,9 @@ module.exports = {
         const Response = new MessageEmbed().setColor("AQUA").setThumbnail(target.user.avatarURL({ dynamic: true }))
         .setAuthor({ name: target.user.tag, iconURL: getPresence(target.presence?.status) }).addFields(
             { name: "ID", value: `${target.user.id}`, inline: true },
-            { name: "Roles", value: target.roles.cache.map(r => r).sort((a, b) => b.position - a.position).join(" ").replace("@everyone", "") || "None" },
-            { name: "Account Created", value: `<t:${parseInt(target.user.createdTimestamp / 1000)}:R>`, inline: true },
-            { name: "Joined Server", value: `<t:${parseInt(target.joinedTimestamp / 1000)}:R>`, inline: true }
+            { name: "Роли", value: target.roles.cache.map(r => r).sort((a, b) => b.position - a.position).join(" ").replace("@everyone", "") || "None" },
+            { name: "Аккаунт создан", value: `<t:${parseInt(target.user.createdTimestamp / 1000)}:R>`, inline: true },
+            { name: "Присоединился", value: `<t:${parseInt(target.joinedTimestamp / 1000)}:R>`, inline: true }
         );
 
         return interaction.reply({embeds: [Response], ephemeral: true});
