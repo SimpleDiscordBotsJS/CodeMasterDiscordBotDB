@@ -1,5 +1,4 @@
 const { GuildMember, MessageEmbed, WebhookClient } = require("discord.js");
-const ms = require("ms");
 
 module.exports = {
     name: "guildMemberUpdate",
@@ -21,7 +20,7 @@ module.exports = {
             .setAuthor({name:`${newMember.user.username} ${newMember.nickname ? `(${newMember.nickname})` : ""}`, iconURL: `${newMember.user.avatarURL()}`})
             .setTitle("⌛ __**Мьют**__ ⌛")
             .setDescription(`${newMember} был __замьючен__`)
-            .addField("До", `<t:${ms(newTimeOut)}:R>`)
+            .addField("До", `<t:${parseInt(newTimeOut / 1000)}:R>`)
             .setTimestamp();
 
             logChannel.send({embeds: [Embed]});
