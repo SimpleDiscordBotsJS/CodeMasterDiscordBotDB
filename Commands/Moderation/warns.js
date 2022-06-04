@@ -2,7 +2,7 @@ const { CommandInteraction, MessageEmbed } = require("discord.js");
 const DB = require("../../Structures/Schemas/Moderation/WarningDB");
 
 module.exports = {
-    name: "warnings",
+    name: "warns",
     nameLocalizations: {
         "ru": "преды"
     },
