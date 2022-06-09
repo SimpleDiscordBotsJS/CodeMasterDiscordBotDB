@@ -37,15 +37,19 @@ module.exports = {
         }
         
         // ============================================================ //
+        /* Часть старой версии регулярного выражения
         const protocol = '(?:(?:http|https)://)?';
         const subdomain = '(?:www.)?';
         const domain = '(?:disco|discord|discordapp).(?:com|gg|io|li|me|net|org)';
-        const path = '(?:/(?:invite))?/([a-z0-9-.]+)';
+        const path = '(?:/(?:invite))?/([a-z0-9-.]+)'; */
 
-        const inviteRegex = `(${protocol}${subdomain}(${domain}${path}))`;
-        //или: /((?:(?:http|https):\/\/)?(?:www.)?((?:disco|discord|discordapp).(?:com|gg|io|li|me|net|org)(?:\/(?:invite))?\/([a-z0-9-.]+)))/i
+        const inviteRegex = /(http|https?:\/\/)?(www\.|canary\.|ptb\.)?discord(\.gg|(app)?\.com\/invite|\.(me|io|li|net|org))\/([a-z0-9-.]+)\/?/gi;
+        // До модификации: /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(\.gg|(app)?\.com\/invite|\.me)\/([^ ]+)\/?/gi - не самая выгодная реализация
 
-        if(content.match(new RegExp(inviteRegex, "i"))) {
+        // const inviteRegex = `(${protocol}${subdomain}(${domain}${path}))`; // Старое регулярное выражение
+        // или: /((?:(?:http|https):\/\/)?(?:www.)?((?:disco|discord|discordapp).(?:com|gg|io|li|me|net|org)(?:\/(?:invite))?\/([a-z0-9-.]+)))/i
+
+        if(content.match(inviteRegex)) {
             if(message.guild.me.permissionsIn(message.channel).has(["SEND_MESSAGES", "MANAGE_MESSAGES"])) {
                 message.delete();
 
