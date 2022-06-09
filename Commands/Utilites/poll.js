@@ -2,6 +2,8 @@ const { CommandInteraction, MessageEmbed, MessageActionRow, MessageButton } = re
 const { Error } = require("../../Utilities/Logger");
 const DB = require("../../Structures/Schemas/PollDB");
 
+// TODO: Обновить систему опросов.
+
 module.exports = {
     name: "poll",
     nameLocalizations: {

@@ -2,6 +2,8 @@ const { CommandInteraction, MessageEmbed } = require('discord.js');
 const LevelDB = require('../../Structures/Schemas/Leveling/LevelingDB');
 //const { getLevelExp } = require("../../Utilities/LevelFunctions");
 
+// TODO: Прикрутить страницы
+
 module.exports = {
     name: 'leaderboard',
     nameLocalizations: {
