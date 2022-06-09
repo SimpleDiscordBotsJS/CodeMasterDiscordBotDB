@@ -21,8 +21,8 @@ module.exports = {
         const getChannelTypeSize = (type) => client.channels.cache.filter((channel) => type.includes(channel.type)).size;
 
         const Response = new MessageEmbed().setColor("AQUA").setThumbnail(client.user.displayAvatarURL({dynamic: true}))
-        .setTitle(`${client.user.tag} Status`).setDescription(`**Client**: \`🟢 ONLINE\` - \`${client.ws.ping}ms\`
-        **Database**: \`${switchTo(connection.readyState)}\`\n`).addFields(
+        .setDescription(`**Client**: \`🟢 ONLINE\` - \`${client.ws.ping}ms\`\n**Database**: \`${switchTo(connection.readyState)}\`\n`)
+        .setTitle(`${client.user.tag} Status`).addFields(
             { name: "👩🏻‍🔧 Client", value: client.user.tag, inline: true },
             { name: "📆 Created", value: `<t:${parseInt(client.user.createdTimestamp / 1000)}:R>`, inline: true },
             { name: "⏰ Up Since", value: `<t:${parseInt(client.readyTimestamp / 1000)}:R>`, inline: true },
