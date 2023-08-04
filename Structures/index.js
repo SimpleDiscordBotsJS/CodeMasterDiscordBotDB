@@ -17,12 +17,10 @@ client.commands = new Collection();
 client.buttons = new Collection();
 client.cooldowns = new Collection();
 client.cookiescooldowns = new Collection();
-client.filters = new Collection();
 
 //===========================================================
 //Каналы
 
-client.filtersLog = new Collection();
 client.AntiScamLog = new Collection();
 
 //===========================================================
