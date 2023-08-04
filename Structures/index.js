@@ -16,7 +16,6 @@ const { AsciiTable3 } = require("ascii-table3");
 client.commands = new Collection();
 client.buttons = new Collection();
 client.cooldowns = new Collection();
-client.cookiescooldowns = new Collection();
 
 //===========================================================
 //Каналы
