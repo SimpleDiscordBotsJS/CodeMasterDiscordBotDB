@@ -10,7 +10,7 @@ module.exports = {
      */
     execute(client) {
         Success(`✅ Запущен от имени бота: ${client.user.tag}!`);
-        client.user.setActivity("Code Master", {type: "STREAMING"});
+        client.user.setActivity("CodeМ", {type: "STREAMING"});
     
         if(!process.env.DATABASE_URL) return Warning("Отсутствует ссылка для подключения к базе данных!");
         mongoose.connect(process.env.DATABASE_URL, {

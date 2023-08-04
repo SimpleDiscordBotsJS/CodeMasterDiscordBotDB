@@ -1,4 +1,4 @@
-# Discord-DB-Template-Bot
+# CodeM Discord Bot
 
 ---
 

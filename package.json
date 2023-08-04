@@ -1,7 +1,7 @@
 {
-  "name": "code-master-discord-bot-db",
+  "name": "codem-discord-bot-db",
   "version": "1.9.3",
-  "description": "Discord bot for the Code Master server",
+  "description": "Discord bot for the CodeM server",
   "main": "./Structures/index.js",
   "scripts": {
     "start": "node .",
