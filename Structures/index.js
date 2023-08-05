@@ -2,19 +2,21 @@ require("dotenv").config({ path: `./Structures/.env` });
 
 //===========================================================
 
-const { Client, Collection } = require("discord.js");
-const client = new Client({ intents: 131071 });
-const { Warning, Error, Success } = require("../Utilities/Logger");
-const { promisify } = require("util");
-const { glob } = require("glob");
-const PG = promisify(glob);
-const { AsciiTable3 } = require("ascii-table3");
+const { Warning, Error, Success } = require("./Utilities/Logger");
+const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
+//const { Guilds, GuildMembers, GuildMessages } = GatewayIntentBits;
+const { User, Message, GuildMember, ThreadMember } = Partials;
+const client = new Client({ 
+    intents: 131071,
+    partials: [User, Message, GuildMember, ThreadMember] 
+});
 
 //===========================================================
-//Прочее
+client.config= require("./config.json");
 
-client.commands = new Collection();
+client.events = new Collection();
 client.buttons = new Collection();
+client.commands = new Collection();
 client.cooldowns = new Collection();
 
 //===========================================================
@@ -24,9 +26,20 @@ client.AntiScamLog = new Collection();
 
 //===========================================================
 
-["Events", "Commands", "Buttons"].forEach(handler => {
-    require(`./Handlers/${handler}`)(client, PG, AsciiTable3);
+const { connect } = require("mongoose");
+if(!process.env.DATABASE_URL) return Warning("[DataBase] Нет ссылки для подключения к базе данных!");
+connect(client.config.DATABASE_URL, {}).then(() => {
+    Success("[DataBase] Клиент подключен к базе данных.")
+}).catch((error) => {
+    Warning("[DataBase] Клиенту не удалось подключиться к базе данных.");
+    Error(error);
 });
+
+const { loadEvents } = require("./Handlers/eventHandler");
+loadEvents(client);
+
+const { loadButtons } = require("./Handlers/buttonHandler");
+loadButtons(client);
 
 //===========================================================
 
@@ -64,13 +77,13 @@ process.on('exit', (code) => { Warning(
     'Code: ' + code,
     '=========================='.toUpperCase());
 });
-
+/*
 process.on('multipleResolves', (type, promise, reason) => { Warning(
     '==== multiple Resolves ===='.toUpperCase(),
     type, promise, reason,
     '==========================='.toUpperCase());
 });
-
+*/
 //===========================================================
 
 

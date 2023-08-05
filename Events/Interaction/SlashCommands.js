@@ -8,7 +8,8 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        if(interaction.isCommand() || interaction.isContextMenu()) {
+        if(!interaction.isChatInputCommand()) return;
+        if(interaction.isChatInputCommand() || interaction.isContextMenu()) {
             const command = client.commands.get(interaction.commandName);
             if(!command) return interaction.reply({embeds: [new MessageEmbed().setColor("RED")
                 .setDescription("⛔ Произошла ошибка при выполнении этой команды.")

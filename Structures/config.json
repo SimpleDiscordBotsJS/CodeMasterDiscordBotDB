@@ -1,6 +1,4 @@
 {
-    "DEBUG_EVENT": false,
-
     "ANTI_FLOOD": {
         "MESSAGE_LIMIT": 5,
         "DIFFERENCE": 5000,

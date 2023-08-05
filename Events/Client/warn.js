@@ -1,4 +1,4 @@
-const { Warning } = require("../../Utilities/Logger");
+const { Warning } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "warn",
