@@ -1,39 +1,37 @@
-require("dotenv").config({ path: `./Structures/.env` });
-
+require("dotenv").config({ path: `./Structures/Data/Configs/.env` });
 //===========================================================
-
 const { Warning, Error, Success } = require("./Utilities/Logger");
 const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
 //const { Guilds, GuildMembers, GuildMessages } = GatewayIntentBits;
 const { User, Message, GuildMember, ThreadMember } = Partials;
+
 const client = new Client({ 
     intents: 131071,
     partials: [User, Message, GuildMember, ThreadMember] 
 });
 
 //===========================================================
-client.config= require("./config.json");
+client.config= require("./Data/Configs/config.json");
 
 client.events = new Collection();
 client.buttons = new Collection();
 client.commands = new Collection();
-client.cooldowns = new Collection();
+
+//========================= Каналы ==========================
+client.antiScamLog = new Collection();
 
 //===========================================================
-//Каналы
-
-client.AntiScamLog = new Collection();
-
-//===========================================================
-
 const { connect } = require("mongoose");
-if(!process.env.DATABASE_URL) return Warning("[DataBase] Нет ссылки для подключения к базе данных!");
-connect(client.config.DATABASE_URL, {}).then(() => {
-    Success("[DataBase] Клиент подключен к базе данных.")
-}).catch((error) => {
-    Warning("[DataBase] Клиенту не удалось подключиться к базе данных.");
-    Error(error);
-});
+if(!process.env.DATABASE_URL) {
+    Warning("[DataBase] Нет ссылки для подключения к базе данных!");
+} else {
+    connect(client.config.DATABASE_URL, {}).then(() => {
+        Success("[DataBase] Клиент подключен к базе данных.");
+    }).catch((error) => {
+        Warning("[DataBase] Клиенту не удалось подключиться к базе данных.");
+        Error(error);
+    });
+}
 
 const { loadEvents } = require("./Handlers/eventHandler");
 loadEvents(client);
@@ -42,59 +40,56 @@ const { loadButtons } = require("./Handlers/buttonHandler");
 loadButtons(client);
 
 //===========================================================
-
-// Анти-краш и прочее...
+// Anti-Crash and more...
 process.on("unhandledRejection", (reason, p) => { Warning(
-    '=== unhandled Rejection ==='.toUpperCase(),
+    '=== [ Unhandled Rejection/Catch ] ==='.toUpperCase(),
     'Reason: ' + reason.stack ? String(reason.stack) : String(reason),
-    '==========================='.toUpperCase());
+    '====================================='.toUpperCase());
 });
 
 process.on("uncaughtException", (err, origin) => { Error(
-    '=== uncaught Exception ==='.toUpperCase(),
+    '=== [ Uncaught Exception ] ==='.toUpperCase(),
     'Exception: ' + err.stack ? err.stack : err,
-    '==========================='.toUpperCase());
+    '=============================='.toUpperCase());
 });
 
 process.on('uncaughtExceptionMonitor', (err, origin) => { Error(
-    '=== uncaught Exception Monitor ==='.toUpperCase());
+    '=== [ Uncaught Exception Monitor ] ==='.toUpperCase(),
+    err, origin,
+    '======================================'.toUpperCase());
 });
 
 process.on('beforeExit', (code) => { Warning(
-    '======= before Exit ======='.toUpperCase(),
+    '======= [ Before Exit ] ======='.toUpperCase(),
     'Code: ' + code,
-    '==========================='.toUpperCase());
+    '==============================='.toUpperCase());
 });
 
 process.on('warning', (code) => { Warning(
-    '========= warning ========='.toUpperCase(),
+    '========= [ Warning ] ========='.toUpperCase(),
     'Code: ' + code,
-    '==========================='.toUpperCase());
+    '==============================='.toUpperCase());
 });
 
 process.on('exit', (code) => { Warning(
-    '========== exit =========='.toUpperCase(), 
+    '========== [ Exit ] =========='.toUpperCase(), 
     'Code: ' + code,
-    '=========================='.toUpperCase());
+    '=============================='.toUpperCase());
 });
 /*
 process.on('multipleResolves', (type, promise, reason) => { Warning(
-    '==== multiple Resolves ===='.toUpperCase(),
+    '==== [ Multiple Resolves ] ===='.toUpperCase(),
     type, promise, reason,
-    '==========================='.toUpperCase());
+    '==============================='.toUpperCase());
 });
 */
 //===========================================================
-
-
 client.login(process.env.BOT_TOKEN).catch(() => {
     Error("[BOT] Неверный токен для входа от имени бота.");
     process.exit();
 });
 
 //===========================================================
-
-
 process.on("SIGINT", () => { 
     Success("SIGINT detected, exiting..."); 
     process.exit(); 
