@@ -1,7 +1,6 @@
-const { Message } = require("discord.js");
-const { addWarning, Timeout } = require("../../Utilities/ModFunctions");
-const { Warning } = require("../../Utilities/Logger");
-const { ANTI_FLOOD } = require("../../Structures/config.json");
+const { Message, EmbedBuilder } = require("discord.js");
+const { Warning } = require("../../Structures/Utilities/Logger");
+const { ANTI_FLOOD } = require("../../Structures/Data/Configs/config.json");
 
 const usersMap = new Map();
 
@@ -14,7 +13,7 @@ module.exports = {
      */
     async execute(message) {
         if(message.author.bot) return;
-        if(message.member.permissions.has(["MANAGE_MESSAGES"])) return;
+        //if(message.member.permissions.has(["ManageMessages"])) return;
 
         const { author, channel, guild, member } = message;
 
@@ -37,7 +36,7 @@ module.exports = {
             } else {
                 ++msgCount;
                 if(parseInt(msgCount) === ANTI_FLOOD.MESSAGE_LIMIT) {
-                    if(guild.me.permissionsIn(channel).has(["SEND_MESSAGES", "MANAGE_MESSAGES"])) {
+                    if(guild.members.me.permissionsIn(channel).has(["SendMessages", "ManageMessages"])) {
                         let i = 0;
                         const ToDelete = [];
                         (await Messages).filter((m) => {
@@ -46,12 +45,24 @@ module.exports = {
                                 i++;
                             }
                         });
+
                         channel.bulkDelete(ToDelete, true);
-    
-                        await addWarning(guild, member, message.client.user, "Флуд");
-                        if(member.timeout() == null) Timeout(member, 1000 * 60 * 60, "Флуд");
+
+                        await author.send({ embeds: [new EmbedBuilder()
+                        .setColor("Orange").setTitle("⌛ __**Мьют**__ ⌛")
+                        .setDescription(`Вы были __замьючены__ на сервере: **${member.guild.name}**`)
+                        .setThumbnail(member.user.displayAvatarURL({dynamic: true, size: 512}))
+                        .addFields(
+                            { name: "Пользователь:", value: `\`\`\`${member.user.tag}\`\`\``, inline: true },
+                            { name: "Время:", value: `\`\`\`24h\`\`\``, inline: true },
+                            { name: "Причина:", value: `\`\`\`Флуд\`\`\`` })
+                        .setFooter({ text: `Сервер: ${member.guild.name} | ID: ${member.user.id}` })
+                        .setTimestamp()]
+                        });
+
+                        await member.timeout(24 * 60 * 60 * 1000, "Флуд");
                     } else {
-                        Warning("У бота отсутствуют в канале необходимые права: SEND_MESSAGES & MANAGE_MESSAGES");
+                        Warning("У бота отсутствуют в канале необходимые права: SendMessages & ManageMessages");
                     }
                 } else {
                     userData.msgCount = msgCount;
