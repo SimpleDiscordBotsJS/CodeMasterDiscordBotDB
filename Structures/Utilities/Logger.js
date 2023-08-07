@@ -5,7 +5,7 @@
 //===========================================================//
 
 const fs = require("fs");
-const logFilePath = "./Structures/Logs";
+const logFilePath = `${process.cwd()}/Structures/Data/Logs`;
 const logFileName = "Latest.log";
 
 //===========================================================//

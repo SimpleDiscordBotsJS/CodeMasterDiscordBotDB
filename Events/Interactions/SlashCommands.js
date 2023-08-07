@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, EmbedBuilder } = require("discord.js");
+const { ChatInputCommandInteraction, EmbedBuilder, Client } = require("discord.js");
 
 module.exports = {
     name: "interactionCreate",

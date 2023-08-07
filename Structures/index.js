@@ -25,7 +25,7 @@ const { connect } = require("mongoose");
 if(!process.env.DATABASE_URL) {
     Warning("[DataBase] Нет ссылки для подключения к базе данных!");
 } else {
-    connect(client.config.DATABASE_URL, {}).then(() => {
+    connect(process.env.DATABASE_URL, {}).then(() => {
         Success("[DataBase] Клиент подключен к базе данных.");
     }).catch((error) => {
         Warning("[DataBase] Клиенту не удалось подключиться к базе данных.");
