@@ -1,4 +1,4 @@
-const { Message, Client, MessageEmbed } = require("discord.js");
+const { Message, Client, EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "messageCreate",
@@ -13,7 +13,7 @@ module.exports = {
         const { content, guild, author } = message;
         const messageContent = content.toLowerCase().split(" ");
 
-        const Filter = require(`../../Structures/Validation/ScamLinks.json`);
+        const Filter = require(`../../Structures/Data/ScamLinks.json`);
         if(!Filter) return;
 
         const wordsUsed = [];
@@ -29,27 +29,32 @@ module.exports = {
         if(shouldDelete) message.delete().catch(() => {});
         else return;
 
-        const Embed = new MessageEmbed().setTitle("__**Обнаружено SCAM сообщение!**__").setColor("RED")
-            .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`).setTimestamp()
-            .setDescription(`Пожалуйста, не отправляйте SCAM сообщения!`)
-            .addField("Пользователь:", `\`\`\`${author.tag} (${author.id})\`\`\``);
+        const Embed = new EmbedBuilder()
+        .setTitle("__**✋Обнаружено SCAM сообщение✋**__").setColor("Red")
+        .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`).setTimestamp()
+        .setDescription(`Пожалуйста, не отправляйте SCAM сообщения!`)
+        .addFields({ name: "Пользователь:", value: `\`\`\`${author.tag} (${author.id})\`\`\`` });
         
-        message.channel.send({embeds: [Embed]}).then((m) => setTimeout(() => m.delete(), 10000));
+        message.channel.send({ embeds: [Embed] }).then((m) => setTimeout(() => m.delete(), 10000));
 
         message.member.timeout(48 * 60 * 60 * 1000, "SCAM рассылка");
 
         if(wordsUsed.length) {
-            const channelID = client.AntiScamLog.get(guild.id);
+            const channelID = client.antiScamLog.get(guild.id);
             if(!channelID) return;
             const channelObject = guild.channels.cache.get(channelID);
             if(!channelObject) return;
 
-            const LogEmbed = new MessageEmbed().setTitle("__**Удалено SCAM сообщение!**__").setColor("RED")
+            const LogEmbed = new EmbedBuilder()
+            .setTitle("__**🛑SCAM сообщение удалено🛑**__").setColor("Red")
             .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`)
-            .addField("Пользователь:", `\`\`\`${author.tag} (${author.id})\`\`\``)
-            .addField("Контент:", `\`\`\`${content}\`\`\``).setTimestamp();
+            .addFields(
+                { name: "Пользователь:", value: `\`\`\`${author.tag} (${author.id})\`\`\`` },
+                { name: "Контент:", value: `\`\`\`${content}\`\`\`` }
+            )
+            .setTimestamp();
             
-            await channelObject.send({embeds: [LogEmbed]});
+            await channelObject.send({ embeds: [LogEmbed] });
         }
     }
 }

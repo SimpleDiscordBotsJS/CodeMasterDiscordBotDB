@@ -1,9 +1,9 @@
-const Schema = require("../Structures/Schemas/AntiScamDB");
+const Schema = require("../Data/Schemas/AntiScamDB");
 
 module.exports = (client) => {
     Schema.find().then((documents) => {
         documents.forEach((doc) => {
-            client.AntiScamLog.set(doc.GuildID, doc.ChannelID);
+            client.antiScamLog.set(doc.GuildID, doc.ChannelID);
         });
     });
 } 

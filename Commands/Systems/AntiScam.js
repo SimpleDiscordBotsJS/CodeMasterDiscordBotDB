@@ -1,18 +1,29 @@
-const { CommandInteraction, Client } = require("discord.js");
-const DB = require("../../Structures/Schemas/AntiScamDB");
+const { SlashCommandBuilder, PermissionFlagsBits, ChatInputCommandInteraction, ChannelType, Client } = require("discord.js");
+const DB = require("../../Structures/Data/Schemas/AntiScamDB");
 
 module.exports = {
-    name: "anti-scam",
-    description: "Setup Anti-Scam",
-    permission: "ADMINISTRATOR",
-    options: [{ name: "setup", description: "Anti-Scam Settings", type: "SUB_COMMAND", options: [{
-                name: "logging", description: "Выберите канал логирования.",
-                type: "CHANNEL", channelTypes: ["GUILD_TEXT"], required: true
-            }]
-        }
-    ],
+    data: new SlashCommandBuilder()
+    .setName("anti-scam")
+    .setDescription("Anti Scam system management")
+    .setDescriptionLocalizations({ "ru": "Управление системой Anti Scam" })
+    .addSubcommand((sub) => sub
+        .setName("setup")
+        .setNameLocalizations({ "ru": "установка" })
+        .setDescription("Configuring the Anti Scam system")
+        .setDescriptionLocalizations({ "ru": "Настройка системы Anti Scam" })
+        .addChannelOption((options) => options
+            .setName("logging")
+            .setNameLocalizations({ "ru": "логирование" })
+            .setDescription("Select a logging channel.")
+            .setDescriptionLocalizations({ "ru": "Выберите канал логирования." })
+            .addChannelTypes(ChannelType.GuildText)
+            .setRequired(true)
+        )
+    )
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .setDMPermission(false),
     /**
-     * @param {CommandInteraction} interaction
+     * @param {ChatInputCommandInteraction} interaction
      * @param {Client} client
      */
     async execute(interaction, client) {
@@ -29,9 +40,12 @@ module.exports = {
                     { new: true, upsert: true }
                 );
 
-                client.AntiScamLog.set(guild.id, loggingChannel);
+                client.antiScamLog.set(guild.id, loggingChannel);
 
-                interaction.reply({ content: `Канал логирования AntiScam системы, установлен на <#${loggingChannel}>`, ephemeral: true });
+                await interaction.reply({ embeds: [new EmbedBuilder().addFields({ name: "Канал", value: LogChannel })
+                    .setDescription(`Канал логов системы Anti Scam успешно установлен.`)
+                    .setColor("Gold")], ephemeral: true
+                });
             }
             break;
         }
