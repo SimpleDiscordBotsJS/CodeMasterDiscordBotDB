@@ -1,4 +1,4 @@
-const { GuildScheduledEventManager, MessageEmbed, WebhookClient } = require("discord.js");
+const { GuildScheduledEventManager, EmbedBuilder, WebhookClient } = require("discord.js");
 
 module.exports = {
     name: "guildScheduledEventUpdate",
@@ -11,93 +11,111 @@ module.exports = {
         if(!logChannel) return;
         
         if(oldEvent.name !== newEvent.name) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Имя ивента было обновлено`)
-            .addField("Старое имя", `\`${oldEvent.name}\``, true)
-            .addField("Новое имя", `\`${newEvent.name}\``, true)
+            .addFields(
+                { name: "Старое имя", value: `\`${oldEvent.name}\``, inline: true },
+                { name: "Новое имя", value: `\`${newEvent.name}\``, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
 
         if(oldEvent.channel !== newEvent.channel) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Канал ивента был обновлён`)
-            .addField("Старый канал", `${oldEvent.channel ? oldEvent.channel : "None"}`, true)
-            .addField("Новый канал",`${newEvent.channel ? newEvent.channel : "None"}`, true)
+            .addFields(
+                { name: "Старый канал", value: `${oldEvent.channel ? oldEvent.channel : "None"}`, inline: true },
+                { name: "Новый канал", value: `${newEvent.channel ? newEvent.channel : "None"}`, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
 
         if(oldEvent.scheduledStartAt !== newEvent.scheduledStartAt) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Дата начала ивента была обновлена`)
-            .addField("Старая дата", `${oldEvent.scheduledStartAt ? ("<t:" + parseInt(oldEvent.scheduledStartAt / 1000) + ":R>") : "None"}`, true)
-            .addField("Новая дата", `${newEvent.scheduledStartAt ? ("<t:" + parseInt(newEvent.scheduledStartAt / 1000) + ":R>") : "None"}`, true)
+            .addFields(
+                { name: "Старая дата", value: `${oldEvent.scheduledStartAt ? ("<t:" + parseInt(oldEvent.scheduledStartAt / 1000) + ":R>") : "None"}`, inline: true },
+                { name: "Новая дата", value: `${newEvent.scheduledStartAt ? ("<t:" + parseInt(newEvent.scheduledStartAt / 1000) + ":R>") : "None"}`, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
 
         if(oldEvent.scheduledEndAt !== newEvent.scheduledEndAt) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Дата окончания ивента была обновлена`)
-            .addField("Старая дата", `${oldEvent.scheduledEndAt ? ("<t:" + parseInt(oldEvent.scheduledEndAt / 1000) + ":R>") : "None"}`, true)
-            .addField("Новая дата", `${newEvent.scheduledEndAt ? ("<t:" + parseInt(newEvent.scheduledEndAt / 1000) + ":R>") : "None"}`, true)
+            .addFields(
+                { name: "Старая дата", value: `${oldEvent.scheduledEndAt ? ("<t:" + parseInt(oldEvent.scheduledEndAt / 1000) + ":R>") : "None"}`, inline: true },
+                { name: "Новая дата", value: `${newEvent.scheduledEndAt ? ("<t:" + parseInt(newEvent.scheduledEndAt / 1000) + ":R>") : "None"}`, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
 
         if(oldEvent.description !== newEvent.description) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Описание ивента было обновлено`)
-            .addField("Старое описание", `${oldEvent.description ? oldEvent.description : "None"}`, true)
-            .addField("Новое описание", `${newEvent.description ? newEvent.description : "None"}`, true)
+            .addFields(
+                { name: "Старое описание", value: `${oldEvent.description ? oldEvent.description : "None"}`, inline: true },
+                { name: "Новое описание", value: `${newEvent.description ? newEvent.description : "None"}`, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
 
         if(oldEvent.status !== newEvent.status) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Статус ивента был обновлён`)
-            .addField("Старый статус", `${oldEvent.status}`, true)
-            .addField("Новый статус", `${newEvent.status}`, true)
+            .addFields(
+                { name: "Старый статус", value: `${oldEvent.status}`, inline: true },
+                { name: "Новый статус", value: `${newEvent.status}`, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
 
         if(oldEvent.entityType !== newEvent.entityType) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Тип ивента был обновлён`)
-            .addField("Старый тип", `\`${oldEvent.entityType}\``, true)
-            .addField("Новый тип", `\`${newEvent.entityType}\``, true)
+            .addFields(
+                { name: "Старый тип", value: `\`${oldEvent.entityType}\``, inline: true },
+                { name: "Новый тип", value: `\`${newEvent.entityType}\``, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
 
         if(oldEvent.entityMetadata !== newEvent.entityMetadata) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Место провидения ивента было обновлено`)
-            .addField("Старое место", `${oldEvent.entityMetadata?.location ? oldEvent.entityMetadata.location : "None"}`, true)
-            .addField("Новое место", `${newEvent.entityMetadata?.location ? newEvent.entityMetadata.location : "None"}`, true)
+            .addFields(
+                { name: "Старое место", value: `${oldEvent.entityMetadata?.location ? oldEvent.entityMetadata.location : "None"}`, inline: true },
+                { name: "Новое место", value: `${newEvent.entityMetadata?.location ? newEvent.entityMetadata.location : "None"}`, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
 
         if(oldEvent.privacyLevel !== newEvent.privacyLevel) {
-            const Embed = new MessageEmbed().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
+            const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
             .setDescription(`[${newEvent.name}](${newEvent}) | Уровень приватности ивента был обновлён`)
-            .addField("Старый уровень", `${oldEvent.privacyLevel}`, true)
-            .addField("Новый уровень", `${newEvent.privacyLevel}`, true)
+            .addFields(
+                { name: "Старый уровень", value: `${oldEvent.privacyLevel}`, inline: true },
+                { name: "Новый уровень", value: `${newEvent.privacyLevel}`, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]});
+            logChannel.send({ embeds: [Embed] });
         }
     }
 }

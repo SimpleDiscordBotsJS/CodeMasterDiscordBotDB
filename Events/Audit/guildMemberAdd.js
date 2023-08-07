@@ -1,4 +1,4 @@
-const { GuildMember, MessageEmbed, WebhookClient } = require("discord.js");
+const { GuildMember, EmbedBuilder, WebhookClient } = require("discord.js");
 
 module.exports = {
     name: "guildMemberAdd",
@@ -9,14 +9,16 @@ module.exports = {
         const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_MEMBER });
         if(!logChannel) return;
         
-        const Embed = new MessageEmbed().setColor("#70ec46")
+        const Embed = new EmbedBuilder().setColor("#70ec46")
         .setAuthor({name: member.user.username, iconURL: member.user.avatarURL()})
         .setTitle("🙂 __**Новый пользователь**__ 🙂")
         .setDescription(`${member} присоединился к серверу`)
-        .addField("Пользователь", `${member}`, true)
-        .addField("Создан", `<t:${parseInt(member.user.createdAt / 1000)}:R>`, true)
+        .addFields(
+            { name: "Пользователь", value: `${member}`, inline: true },
+            { name: "Создан", value: `<t:${parseInt(member.user.createdAt / 1000)}:R>`, inline: true }
+        )
         .setTimestamp();
 
-        logChannel.send({embeds: [Embed]});
+        logChannel.send({ embeds: [Embed] });
     }
 }

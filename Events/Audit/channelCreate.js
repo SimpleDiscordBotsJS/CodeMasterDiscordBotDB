@@ -1,4 +1,4 @@
-const { ChannelManager, MessageEmbed, WebhookClient } = require("discord.js");
+const { ChannelManager, EmbedBuilder, WebhookClient } = require("discord.js");
 
 module.exports = {
     name: "channelCreate",
@@ -14,12 +14,12 @@ module.exports = {
         const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_CHANNEL });
         if(!logChannel) return;
 
-        const Embed = new MessageEmbed().setColor("#70ec46")
+        const Embed = new EmbedBuilder().setColor("#70ec46")
         .setTitle("🔰 __**Канал создан**__ 🔰")
         .setDescription(`**${channel.name}** был успешно создан`)
-        .addField(`Канал`, `${channel}`, true)
+        .addFields({ name: `Канал`, value: `${channel}`, inline: true })
         .setTimestamp();
 
-        logChannel.send({embeds: [Embed]});
+        logChannel.send({ embeds: [Embed] });
     }
 }

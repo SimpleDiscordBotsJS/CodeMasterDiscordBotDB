@@ -1,4 +1,4 @@
-const { ThreadChannel, MessageEmbed, WebhookClient } = require("discord.js");
+const { ThreadChannel, EmbedBuilder, WebhookClient } = require("discord.js");
 
 module.exports = {
     name: "threadUpdate",
@@ -13,58 +13,68 @@ module.exports = {
         if(!logChannel) return;
         
         if (oldThread.name !== newThread.name) {
-            const Embed = new MessageEmbed()
+            const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
             .setDescription(`${oldThread} | Имя было обновлено`)
-            .addField("Старое имя", `\`${oldThread.name}\``, true)
-            .addField("Новое имя", `\`${newThread.name}\``, true)
+            .addFields(
+                { name: "Старое имя", value: `\`${oldThread.name}\``, inline: true },
+                { name: "Новое имя", value: `\`${newThread.name}\``, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]})
+            logChannel.send({ embeds: [Embed] })
         }
 
         if(oldThread.type !== newThread.type) {
-            const Embed = new MessageEmbed()
+            const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
             .setDescription(`${oldThread} | Тип был обновлён`)
-            .addField("Старый тип", `\`${oldThread.type}\``, true)
-            .addField("Новый тип", `\`${newThread.type}\``, true)
+            .addFields(
+                { name: "Старый тип", value: `\`${oldThread.type}\``, inline: true },
+                { name: "Новый тип", value: `\`${newThread.type}\``, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]})
+            logChannel.send({ embeds: [Embed] })
         }
 
         if(oldThread.rateLimitPerUser !== newThread.rateLimitPerUser) {
-            const Embed = new MessageEmbed()
+            const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
             .setDescription(`${oldThread} | Ограничение скорости было обновлено`)
-            .addField("Старая скорость", `\`${oldThread.rateLimitPerUser}\``, true)
-            .addField("Новая скорость", `\`${newThread.rateLimitPerUser}\``, true)
+            .addFields(
+                { name: "Старая скорость", value: `\`${oldThread.rateLimitPerUser}\``, inline: true },
+                { name: "Новая скорость", value: `\`${newThread.rateLimitPerUser}\``, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]})
+            logChannel.send({ embeds: [Embed] })
         }
 
         if(oldThread.parent !== newThread.parent) {
-            const Embed = new MessageEmbed()
+            const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
             .setDescription(`${oldThread} | Родитель был обновлен`)
-            .addField("Старый родитель", `\`${oldThread.parent}\``, true)
-            .addField("Новый родитель", `\`${newThread.parent}\``, true)
+            .addFields(
+                { name: "Старый родитель", value: `\`${oldThread.parent}\``, inline: true },
+                { name: "Новый родитель", value: `\`${newThread.parent}\``, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]})
+            logChannel.send({ embeds: [Embed] })
         }
 
         if(oldThread.archived !== newThread.archived) {
-            const Embed = new MessageEmbed()
+            const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
             .setDescription(`${oldThread} | Значение архивации было обновлено`)
-            .addField("Старое значение", `\`${oldThread.archived}\``, true)
-            .addField("Новое значение", `\`${newThread.archived}\``, true)
+            .addFields(
+                { name: "Старое значение", value: `\`${oldThread.archived}\``, inline: true },
+                { name: "Новое значение", value: `\`${newThread.archived}\``, inline: true }
+            )
             .setTimestamp()
 
-            logChannel.send({embeds: [Embed]})
+            logChannel.send({ embeds: [Embed] })
         }
     }
 }

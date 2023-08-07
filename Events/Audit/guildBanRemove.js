@@ -1,4 +1,4 @@
-const { GuildBanManager, MessageEmbed, WebhookClient } = require("discord.js");
+const { GuildBanManager, EmbedBuilder, WebhookClient } = require("discord.js");
 
 module.exports = {
     name: "guildBanRemove",
@@ -9,14 +9,16 @@ module.exports = {
         const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_BAN });
         if(!logChannel) return;
 
-        const Embed = new MessageEmbed()
+        const Embed = new EmbedBuilder()
         .setColor("#70ec46")
         .setTitle("🔨 __**Пользователь разбанен**__ 🔨")
         .setDescription(`**${ban.user.tag}** был успешно разбанен`)
-        .addField(`Пользователь`, `${ban.user}`, true)
-        .addField(`Причина`, `\`${ban.reason ? ban.reason : "Не указана"}\``, true)
+        .addFields(
+            { name: `Пользователь`, value: `${ban.user}`, inline: true },
+            { name: `Причина`, value: `\`${ban.reason ? ban.reason : "Не указана"}\``, inline: true }
+        )
         .setTimestamp();
 
-        channel.send({embeds: [Embed]});
+        channel.send({ embeds: [Embed] });
     }
 }

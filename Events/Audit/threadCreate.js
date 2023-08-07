@@ -1,4 +1,4 @@
-const { ThreadChannel, MessageEmbed, WebhookClient } = require("discord.js");
+const { ThreadChannel, EmbedBuilder, WebhookClient } = require("discord.js");
 
 module.exports = {
     name: "threadCreate",
@@ -11,13 +11,15 @@ module.exports = {
         const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_THREAD });
         if(!logChannel) return;
         
-        const Embed = new MessageEmbed()
+        const Embed = new EmbedBuilder()
         .setColor("#70ec46").setTitle("🌳 __**Ветка создана**__ 🌳")
         .setDescription(`${thread} была успешно создана`)
-        .addField(`Ветка`, `${thread}`, true)
-        .addField("Создатель", `<@${thread.ownerId}>`, true)
+        .addFields(
+            { name: `Ветка`, value: `${thread}`, inline: true },
+            { name: "Создатель", value: `<@${thread.ownerId}>`, inline: true }
+        )
         .setTimestamp();
 
-        logChannel.send({embeds: [Embed]});
+        logChannel.send({ embeds: [Embed] });
     }
 }

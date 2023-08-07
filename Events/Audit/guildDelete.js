@@ -1,5 +1,5 @@
 const { GuildManager } = require("discord.js");
-const { Info } = require("../../Utilities/Logger");
+const { Info } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "guildDelete",

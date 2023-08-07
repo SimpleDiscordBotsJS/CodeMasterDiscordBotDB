@@ -1,4 +1,4 @@
-const { ThreadChannel, MessageEmbed, WebhookClient } = require("discord.js");
+const { ThreadChannel, EmbedBuilder, WebhookClient } = require("discord.js");
 
 module.exports = {
     name: "threadDelete",
@@ -11,12 +11,12 @@ module.exports = {
         const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_THREAD });
         if(!logChannel) return;
         
-        const Embed = new MessageEmbed()
+        const Embed = new EmbedBuilder()
         .setColor("#ea4e4e").setTitle("🌳 __**Ветка удалена**__ 🌳")
         .setDescription(`**${thread.name}** была успешно удалена`)
-        .addField(`Ветка`, `\`${thread.name}\``, true)
+        .addFields({ name: `Ветка`, value: `\`${thread.name}\``, inline: true })
         .setTimestamp();
 
-        logChannel.send({embeds: [Embed]});
+        logChannel.send({ embeds: [Embed] });
     }
 }

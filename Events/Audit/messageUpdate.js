@@ -1,4 +1,4 @@
-const { MessageEmbed, Message, WebhookClient } = require("discord.js");
+const { EmbedBuilder, Message, WebhookClient } = require("discord.js");
 
 // TODO: Обновить лог изменения сообщения
 
@@ -14,7 +14,7 @@ module.exports = {
         if(oldMessage.content === newMessage.content) return;
 
         //Проверка на наличие вебхука
-        const logChannel = new WebhookClient({url: process.env.WEBHOOK_MESSAGE_EDIT});
+        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_MESSAGE_EDIT });
         if(!logChannel) return;
 
         const Count = 1950;
@@ -22,18 +22,23 @@ module.exports = {
         const Original = oldMessage.content.slice(0, Count) + (oldMessage.content.length > 1950 ? " ..." : "");
         const Edited = newMessage.content.slice(0, Count) + (newMessage.content.length > 1950 ? " ..." : "");
     
-        const Log = new MessageEmbed().setColor("#36393f")
-        .setDescription(`📘 [Сообщение](${newMessage.url}) было **изменено**.\n
-        **Оригинал**: \n \`\`\`${Original}\`\`\` \n**Измененное**:\n \`\`\`${Edited}\`\`\``.slice("0", "4096"))
-        .addField(`**Автор**`, `${newMessage.author}`, true)
-        .setFooter({text: `Пользователь: ${newMessage.author.tag} | ID: ${newMessage.author.id}`}).setTimestamp();
+        const Log = new EmbedBuilder().setColor("#36393f")
+        .setDescription([
+            `📘 [Сообщение](${newMessage.url}) было **изменено**.`,
+            `**Оригинал**: `,
+            `\`\`\`${Original}\`\`\``.slice("0", "2048"),
+            `**Измененное**:`,
+            `\`\`\`${Edited}\`\`\``.slice("0", "2048")
+        ].join("\n"))
+        .addFields({ name: `**Автор**`, value: `${newMessage.author}`, inline: true })
+        .setFooter({ text: `Пользователь: ${newMessage.author.tag} | ID: ${newMessage.author.id}` }).setTimestamp();
 
         if(newMessage.channel.isThread()) {
-            Log.addField(`**Ветка**`, `<#${newMessage.channel.id}>`, true);
+            Log.addFields({ name: `**Ветка**`, value: `<#${newMessage.channel.id}>`, inline: true });
         } else {
-            Log.addField(`**Канал**`, `<#${newMessage.channel.id}>`, true);
+            Log.addFields({ name: `**Канал**`, value: `<#${newMessage.channel.id}>`, inline: true });
         }
 
-        return logChannel.send({embeds: [Log]});
+        return logChannel.send({ embeds: [Log] });
     }
 }
