@@ -7,16 +7,19 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName("reload")
     .setDescription("Reload your commands/events.")
-    .setDescriptionLocalizations({ ru: "Перезагрузите свои команды/ивенты." })
+    .setDescriptionLocalizations({ "ru": "Перезагрузите свои команды/ивенты." })
+    .addSubcommand((options) => options
+        .setName("events")
+        .setDescription("Reload your events.")
+        .setDescriptionLocalizations({ "ru": "Перезагрузите свои ивенты." })
+    )
+    .addSubcommand((options) => options
+        .setName("commands")
+        .setDescription("Reload your commands.")
+        .setDescriptionLocalizations({ "ru": "Перезагрузите свои команды." })
+    )
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
-    .addSubcommand((options) => options
-    .setName("events")
-    .setDescription("Reload your events.")
-    .setDescriptionLocalizations({ ru: "Перезагрузите свои ивенты." }))
-    .addSubcommand((options) => options
-    .setName("commands")
-    .setDescription("Reload your commands.")
-    .setDescriptionLocalizations({ ru: "Перезагрузите свои команды." })),
+    .setDMPermission(false),
     /**
      * @param {ChatInputCommandInteraction} interaction 
      * @param {Client} client 
