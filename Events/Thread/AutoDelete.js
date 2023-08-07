@@ -1,5 +1,5 @@
 const { ThreadChannel } = require("discord.js");
-const { DELETE_THREAD_TO_CHANNELS } = require("../../Structures/config.json");
+const { DELETE_THREAD_TO_CHANNELS } = require("../../Structures/Data/Configs/config.json");
 
 module.exports = {
     name: "threadCreate",

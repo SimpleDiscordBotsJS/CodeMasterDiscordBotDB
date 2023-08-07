@@ -1,5 +1,5 @@
 const { Message } = require("discord.js");
-const { CREATE_THREAD_TO_CHANNELS, NEWS_THREAD_CREATE_TO_CHANNELS } = require("../../Structures/config.json");
+const { CREATE_THREAD_TO_CHANNELS, NEWS_THREAD_CREATE_TO_CHANNELS } = require("../../Structures/Data/Configs/config.json");
 
 module.exports = {
     name: "messageCreate",
