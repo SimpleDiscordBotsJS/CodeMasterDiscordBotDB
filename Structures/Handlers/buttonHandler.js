@@ -6,7 +6,7 @@ const table = new AsciiTable3().setHeading("Buttons", "Status");
 async function loadButtons(client) {
     console.time("Buttons Loaded");
 
-    const files = await loadFiles("../../Buttons");
+    const files = await loadFiles("./Buttons");
 
     for (const file of files) { 
         try { 

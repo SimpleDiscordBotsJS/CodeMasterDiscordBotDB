@@ -25,7 +25,7 @@ async function loadEvents(client) {
         }
     }
 
-    Info("\n" + table.toString() + "\nEvents Loaded.");
+    Info("\n" + table.toString() + "\nLoaded Events.");
     table.clearRows();
     console.timeEnd("Events Loaded");
 }
