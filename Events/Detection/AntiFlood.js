@@ -13,7 +13,7 @@ module.exports = {
      */
     async execute(message) {
         if(message.author.bot) return;
-        //if(message.member.permissions.has(["ManageMessages"])) return;
+        if(message.member.permissions.has(["ManageMessages"])) return;
 
         const { author, channel, guild, member } = message;
 
