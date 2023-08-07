@@ -1,25 +1,29 @@
-const { CommandInteraction, MessageEmbed } = require("discord.js");
+const { ChatInputCommandInteraction, SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require("discord.js");
 
 module.exports = {
-    name: "clear",
-    nameLocalizations: {
-        "ru": "очистить-чат"
-    },
-    description: "Clear chat.",
-    descriptionLocalizations: {
-        "ru": "Очистить чат."
-    },
-    permission: "MANAGE_MESSAGES",
-    options: [
-        { name: "amount", description: "Количество сообщений, которое вы хотите удалить.",
-            type: "NUMBER", required: true
-        },
-        { name: "target", description: "Пользователь, сообщения которого, вы хотите удалить.",
-            type: "USER", required: false
-        }
-    ],
+    data: new SlashCommandBuilder()
+    .setName("clear")
+    .setNameLocalizations({ "ru": "очистить" })
+    .setDescription("Clear chat.")
+    .setDescriptionLocalizations({ "ru": "Очистить чат." })
+    .addNumberOption((options) => options
+        .setName("amount")
+        .setNameLocalizations({ "ru": "количество" })
+        .setDescription("Number of messages you want to delete.")
+        .setDescriptionLocalizations({ "ru": "Количество сообщений, которое вы хотите удалить." })
+        .setRequired(true)
+    )
+    .addUserOption((options) => options
+        .setName("target")
+        .setNameLocalizations({ "ru": "цель" })
+        .setDescription("The user whose messages you want to delete.")
+        .setDescriptionLocalizations({ "ru": "Пользователь, сообщения которого, вы хотите удалить." })
+        .setRequired(false)
+    )
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
+    .setDMPermission(false),
     /**
-     * @param {CommandInteraction} interaction
+     * @param {ChatInputCommandInteraction} interaction
      */
     async execute(interaction) {
         const { channel, options } = interaction;
@@ -29,7 +33,7 @@ module.exports = {
 
         const Messages = await channel.messages.fetch();
 
-        const Response = new MessageEmbed().setColor("LUMINOUS_VIVID_PINK");
+        const Response = new EmbedBuilder().setColor("LuminousVividPink");
 
         if(Target) {
             let i = 0;
@@ -43,12 +47,12 @@ module.exports = {
 
             await channel.bulkDelete(filtered, true).then(messages => {
                 Response.setDescription(`🧹 Удалено ${messages.size} сообщений от ${Target}`);
-                interaction.reply({embeds: [Response], ephemeral: true});
+                interaction.reply({ embeds: [Response], ephemeral: true });
             })
         } else {
             await channel.bulkDelete(Amount, true).then(messages => {
                 Response.setDescription(`🧹 Удалено \`${messages.size}\` сообщений`);
-                interaction.reply({embeds: [Response], ephemeral: true});
+                interaction.reply({ embeds: [Response], ephemeral: true });
             })
         }
         return;

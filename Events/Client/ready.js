@@ -9,13 +9,11 @@ module.exports = {
      * @param {Client} client 
      */
     execute(client) {
-        Success(`✅ Запущен от имени бота: ${client.user.tag}!`);
+        Success(`[BOT] Запущен от имени бота: ${client.user.tag}`);
         client.user.setActivity("CodeМ", {type: "STREAMING"});
 
         loadCommands(client);
 
-        require("../../Systems/CooldownsSys")(client);
-        require("../../Systems/AntiScamSys")(client);
-        require("../../Systems/WarningSys")(client);
+        require("../../Structures/Systems/AntiScamSystem")(client);
     }
 }
