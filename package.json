@@ -1,6 +1,6 @@
 {
   "name": "codem-discord-bot-db",
-  "version": "1.9.3",
+  "version": "2.0.0",
   "description": "Discord bot for the CodeM server",
   "main": "./Structures/index.js",
   "scripts": {
