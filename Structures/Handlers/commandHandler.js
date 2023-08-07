@@ -15,15 +15,11 @@ async function loadCommands(client) {
     for (const file of files) { 
         try { 
             const command = require(file);
-            if (command.data) {
-                client.commands.set(command.data.name, command);
-                commandsArray.push(command.data.toJSON());
-                table.addRow(command.data.name, "✔");
-            } else {
-                client.commands.set(command.name, command);
-                commandsArray.push(command);
-                table.addRow(command.name, "✔");
-            }
+            client.commands.set(command.data.name, command);
+        
+            commandsArray.push(command.data.toJSON());
+        
+            table.addRow(command.data.name, "✔");
         } catch (error) {
             table.addRow(file.split("/").pop().slice(0, -3), "✘");
             console.log(error)
