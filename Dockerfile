@@ -25,10 +25,10 @@ ENV WEBHOOK_AUDIT_THREAD=
 RUN apk add --no-cache git
 
 # Install python3
-# RUN apk add --no-cache python3
+RUN apk add --no-cache python3
 
 # Install libs for node-canvas build
-# RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
+RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
 
 
 RUN mkdir -p /home/codembot
