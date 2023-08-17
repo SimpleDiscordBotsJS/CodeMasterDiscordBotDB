@@ -24,22 +24,17 @@ ENV WEBHOOK_AUDIT_THREAD=
 
 RUN apk add --no-cache git
 
-# Install font
-RUN apk update
-RUN apk add --no-cache msttcorefonts-installer
-RUN update-ms-fonts
-
 # Install python3
-RUN apk add --no-cache python3
+# RUN apk add --no-cache python3
 
 # Install libs for node-canvas build
-RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
+# RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
 
 
-RUN mkdir -p /home/codebot
-WORKDIR /home/codebot
+RUN mkdir -p /home/codembot
+WORKDIR /home/codembot
 
-COPY package.json /home/codebot
+COPY package.json /home/codembot
 RUN npm install --build-from-source
-COPY . /home/codebot
+COPY . /home/codembot
 CMD ["node", "."]

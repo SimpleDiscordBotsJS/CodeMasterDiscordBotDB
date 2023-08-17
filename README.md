@@ -20,8 +20,15 @@
 >  WEBHOOK_JOIN = 
 >  WEBHOOK_EXIT = 
 > 
->  WEBHOOK_MESSAGE_EDIT = 
->  WEBHOOK_MESSAGE_DELETE = 
+>  
+>  # Audit webhooks
+>  WEBHOOK_AUDIT_CHANNEL=
+>  WEBHOOK_AUDIT_BAN=
+>  WEBHOOK_AUDIT_EVENT=
+>  WEBHOOK_AUDIT_MEMBER=
+>  WEBHOOK_AUDIT_MESSAGE=
+>  WEBHOOK_AUDIT_ROLE=
+>  WEBHOOK_AUDIT_THREAD=
 > ```
 >  The bot token can be copied in the Bot section of [your application](https://discord.com/developers/applications)
 > </details>
@@ -29,12 +36,6 @@
 
 ## To run locally, you need Node.JS
  - [Download Node.JS](https://nodejs.org/en/) - 16.14.2 or above
-
-## Install to VPS/VDS dependencies
-Debian/Ubuntu
-```sh
-apt-get install ttf-mscorefonts-installer
-```
 
 ## Start
  ```sh
@@ -58,7 +59,7 @@ apt-get install ttf-mscorefonts-installer
 > 
 > ## Starting
 >  ```sh
->  pm2 start . --name "Code bot" --watch
+>  pm2 start . --name "CodeM bot" --watch
 >  ```
 > 
 > ## Base commands for Neophyte's

@@ -16,6 +16,7 @@ client.config= require("./Data/Configs/config.json");
 client.events = new Collection();
 client.buttons = new Collection();
 client.commands = new Collection();
+client.modals = new Collection();
 
 //========================= Каналы ==========================
 client.antiScamLog = new Collection();
@@ -38,6 +39,9 @@ loadEvents(client);
 
 const { loadButtons } = require("./Handlers/buttonHandler");
 loadButtons(client);
+
+const { loadModals } = require("./Handlers/ModalHandler");
+loadModals(client);
 
 //===========================================================
 // Anti-Crash and more...

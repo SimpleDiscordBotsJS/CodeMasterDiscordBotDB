@@ -39,12 +39,12 @@ module.exports = {
         const Suggestion = options.getString("suggestion");
 
         const Embed = new EmbedBuilder().setColor("Navy")
-        .setAuthor({name: user.tag, iconURL: user.displayAvatarURL({dynamic: true})})
+        .setAuthor({name: user.tag, iconURL: user.displayAvatarURL({ dynamic: true })})
         .addFields(
-            {name: "Предложение:", value: Suggestion, inline: false},
-            {name: "Тип:", value: Type, inline: true},
-            {name: "Статус", value: "Ожидает", inline: true}
-        ).setFooter({text: `Guild ID: ${guildId}`})
+            { name: "Предложение:", value: Suggestion, inline: false },
+            { name: "Тип:", value: Type, inline: true },
+            { name: "Статус", value: "Ожидает", inline: true }
+        ).setFooter({ text: `Guild ID: ${guildId}` })
         .setTimestamp();
         
         const Buttons = new ActionRowBuilder();
@@ -55,13 +55,14 @@ module.exports = {
             .setLabel("⛔ Отклонить").setStyle(ButtonStyle.Danger)
         );
 
-        const SuggestSetupDB = await SetupDB.findOne({GuildID: guildId});
+        const SuggestSetupDB = await SetupDB.findOne({ GuildID: guildId });
 
-        if(!SuggestSetupDB) return interaction.reply({embeds: [new EmbedBuilder().setColor("Red")
-            .setDescription("Этот сервер не настроил систему предложений.")], ephemeral: true});
+        if(!SuggestSetupDB) return interaction.reply({ embeds: [new EmbedBuilder().setColor("Red")
+            .setDescription("Этот сервер не настроил систему предложений.")
+        ], ephemeral: true });
 
         try {
-            const M = await interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID).send({embeds: [Embed], components: [Buttons], fetchReply: true});
+            const M = await interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID).send({ embeds: [Embed], components: [Buttons], fetchReply: true });
             await M.react('✅');
             await M.react('⛔');
 
@@ -76,8 +77,8 @@ module.exports = {
             await DB.create({GuildID: guildId, MessageID: M.id, Details: [
                 { MemberID: member.id, Type: Type, Suggestion: Suggestion }
             ]});
-            interaction.reply({embeds: [new EmbedBuilder().setColor("Gold")
-                .setDescription(`✅ Ваше [предложение](${M.url}) было добавлено в ${interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID)}`).setTimestamp()], ephemeral: true});
+            interaction.reply({ embeds: [new EmbedBuilder().setColor("Gold")
+                .setDescription(`✅ Ваше [предложение](${M.url}) было добавлено в ${interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID)}`).setTimestamp()], ephemeral: true });
         } catch (err) {
             Error(err);
         }
