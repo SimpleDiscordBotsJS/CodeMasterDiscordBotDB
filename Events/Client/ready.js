@@ -1,4 +1,4 @@
-const { Client } = require("discord.js");
+const { ActivityType, Client } = require("discord.js");
 const { Success } = require("../../Structures/Utilities/Logger");
 const { loadCommands } = require("../../Structures/Handlers/commandHandler");
 
@@ -10,7 +10,10 @@ module.exports = {
      */
     execute(client) {
         Success(`[BOT] Запущен от имени бота: ${client.user.tag}`);
-        client.user.setActivity("CodeМ", {type: "STREAMING"});
+        client.user.setPresence({
+            activities: [{ name: "CodeМ", type: ActivityType.Watching }],
+            status: "dnd",
+        });
 
         loadCommands(client);
 
