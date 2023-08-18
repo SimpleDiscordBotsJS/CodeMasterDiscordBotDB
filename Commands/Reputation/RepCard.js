@@ -31,7 +31,8 @@ module.exports = {
 
         const embed = new EmbedBuilder().setColor("Aqua")
         .setThumbnail(target.avatarURL({ size: 512 }))
-        .setDescription(`Ваша текущая репутация: \`\`${repPositive + repNegative}\`\``)
+        .setAuthor({ name: `${target.displayName}` })
+        .setDescription(`Текущая репутация пользователя: \`\`${repPositive + repNegative}\`\``)
         .addFields(
             { name: "Положительная", value: `\`\`\`${repPositive}\`\`\``, inline: true },
             { name: "Отрицательная", value: `\`\`\`${repNegative}\`\`\``, inline: true }
