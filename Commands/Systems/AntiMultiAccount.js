@@ -28,9 +28,9 @@ module.exports = {
         await DB.findOneAndUpdate({ GuildID: guild.id }, { LogsChannel: LogChannel.id }, { new: true, upsert: true })
         .catch((err) => Error(err));
 
-        await interaction.reply({ embeds: [new EmbedBuilder().addFields({ name: "Канал", value: LogChannel })
+        await interaction.reply({ embeds: [new EmbedBuilder().setColor("Gold")
             .setDescription("Канал логов системы Anti Multi Account успешно установлен.")
-            .setColor("Gold")], ephemeral: true
+            .addFields({ name: "Канал", value: `${LogChannel}` })], ephemeral: true
         });
         
         return;

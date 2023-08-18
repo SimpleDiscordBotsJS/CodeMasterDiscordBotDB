@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits, ChatInputCommandInteraction, ChannelType, Client } = require("discord.js");
+const { SlashCommandBuilder, PermissionFlagsBits, ChatInputCommandInteraction, ChannelType, Client, EmbedBuilder } = require("discord.js");
 const DB = require("../../Structures/Data/Schemas/AntiScamDB");
 
 module.exports = {
@@ -32,17 +32,18 @@ module.exports = {
 
         switch (SubCommand) {
             case "setup": {
-                const loggingChannel = options.getChannel("logging").id;
+                const LogChannel = options.getChannel("logging");
 
                 await DB.findOneAndUpdate(
                     { GuildID: guild.id }, 
-                    { ChannelID: loggingChannel },
+                    { ChannelID: LogChannel.id },
                     { new: true, upsert: true }
                 );
 
-                client.antiScamLog.set(guild.id, loggingChannel);
+                client.antiScamLog.set(guild.id, LogChannel.id);
 
-                await interaction.reply({ embeds: [new EmbedBuilder().addFields({ name: "Канал", value: LogChannel })
+                await interaction.reply({ embeds: [new EmbedBuilder()
+                    .addFields({ name: "Канал", value: `${LogChannel}` })
                     .setDescription(`Канал логов системы Anti Scam успешно установлен.`)
                     .setColor("Gold")], ephemeral: true
                 });
