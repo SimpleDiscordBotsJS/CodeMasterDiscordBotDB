@@ -1,6 +1,7 @@
 const { ChatInputCommandInteraction, SlashCommandBuilder, PermissionFlagsBits, Client } = require("discord.js");
 
 module.exports = {
+    cooldown: 5, // in seconds
     data: new SlashCommandBuilder()
     .setName("emit")
     .setDescription("Emit the guildMemberAdd/Remove events.")

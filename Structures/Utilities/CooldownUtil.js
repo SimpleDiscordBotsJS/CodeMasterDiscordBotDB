@@ -1,4 +1,4 @@
-class CooldownSystem {
+class CooldownUtil {
     constructor() {
         this.cooldowns = new Map()
     }
@@ -22,4 +22,6 @@ class CooldownSystem {
     }
 }
 
-module.exports = new CooldownSystem()
+const cooldownUtil = new CooldownUtil()
+
+module.exports = cooldownUtil
