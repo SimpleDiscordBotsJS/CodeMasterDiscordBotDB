@@ -1,6 +1,5 @@
 const { ChatInputCommandInteraction, EmbedBuilder, Client } = require("discord.js");
 const cooldownUtil = require("../../Structures/Utilities/CooldownUtil");
-const { iterate } = require("glob");
 
 module.exports = {
     name: "interactionCreate",
@@ -22,11 +21,9 @@ module.exports = {
         if(cooldownUtil.inCooldown(userId, interaction.commandName)) {
             const remainingTime = cooldownUtil.getCooldown(userId, interaction.commandName)
 
-            return interaction.reply({
-                embeds: [
-                    new EmbedBuilder().setDescription(`Подождите ${remainingTime / 1000} сек. прежде чем использовать эту команду снова.`).setColor("#e15050")
-                ],
-                ephemeral: true
+            return interaction.reply({ embeds: [new EmbedBuilder().setColor("#e15050")
+                    .setDescription(`Подождите ${remainingTime / 1000} сек. прежде чем использовать эту команду снова.`)
+                ], ephemeral: true
             })
         }
 

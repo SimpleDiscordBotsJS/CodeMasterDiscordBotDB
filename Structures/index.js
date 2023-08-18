@@ -11,7 +11,7 @@ const client = new Client({
 });
 
 //===========================================================
-client.config= require("./Data/Configs/config.json");
+client.config = require("./Data/Configs/config.json");
 
 client.events = new Collection();
 client.buttons = new Collection();
