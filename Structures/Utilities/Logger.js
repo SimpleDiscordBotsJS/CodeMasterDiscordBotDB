@@ -62,12 +62,7 @@ function Warning() {
 
 //===========================================================//
 
-exports.Debug = Debug;
-exports.Error = Error;
-exports.Info = Info;
-exports.Message = Message;
-exports.Success = Success;
-exports.Warning = Warning;
+module.exports = { Debug, Error, Info, Message, Success, Warning };
 
 //===========================================================//
 function writeFile(content) {
