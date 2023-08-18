@@ -12,15 +12,15 @@ module.exports = {
         if(!interaction.isChatInputCommand()) return;
 
         const command = client.commands.get(interaction.commandName);
-        if (!command) return interaction.reply({
+        if(!command) return interaction.reply({
             embeds: [new EmbedBuilder().setDescription("Это команда устарела!").setColor("#e15050")], ephemeral: true
         });
 
         const cooldownTime = command.cooldown || 0
         const userId = interaction.user.id
 
-        if (cooldownSystem.inCooldown(userId, interaction.commandName)) {
-            const remainingTime = cooldownSystem.getCooldown(userId, interaction.commandName)
+        if(cooldownUtil.inCooldown(userId, interaction.commandName)) {
+            const remainingTime = cooldownUtil.getCooldown(userId, interaction.commandName)
 
             return interaction.reply({
                 embeds: [
@@ -30,15 +30,15 @@ module.exports = {
             })
         }
 
-        if (command.developer && interaction.user.id !== client.config.DEV_ID) return interaction.reply({
+        if(command.developer && interaction.user.id !== client.config.DEV_ID) return interaction.reply({
             embeds: [new EmbedBuilder().setDescription("Эта команда, только для разработчиков!")
             .setColor("#e15050")], ephemeral: true
         });
 
         command.execute(interaction, client);
 
-        if (cooldownTime > 0) {
-            cooldownSystem.setCooldown(userId, interaction.commandName, command.cooldown)
+        if(cooldownTime > 0) {
+            cooldownUtil.setCooldown(userId, interaction.commandName, command.cooldown)
         }
     }
 }
