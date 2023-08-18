@@ -37,7 +37,7 @@ module.exports = {
 }
 
 function switchTo(val) {
-    var status = " ";
+    let status = " ";
     switch(val) {
         case 0 : status = `🔴 DISCONNECTED`
         break;

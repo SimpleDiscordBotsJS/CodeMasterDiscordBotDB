@@ -1,12 +1,12 @@
 const { GuildMember, EmbedBuilder, AttachmentBuilder } = require("discord.js");
 const { Error } = require("../../Structures/Utilities/Logger");
-const Canvas = require("canvas");
+const Canvas = require("@napi-rs/canvas");
 
 module.exports = {
     name: "guildMemberUpdate",
     /**
-     * @param {GuildMember} oldMember 
-     * @param {GuildMember} newMember 
+     * @param {GuildMember} oldMember
+     * @param {GuildMember} newMember
      */
     async execute(oldMember, newMember) {
         const { guild } = newMember;
@@ -30,7 +30,7 @@ module.exports = {
             ctx.fillText(newMember.displayName, canvas.width /2, canvas.height / 1.2);
 
             const avatar = await Canvas.loadImage(newMember.user.displayAvatarURL({ format: "jpg" }));
-            
+
             ctx.beginPath();
             ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
             ctx.closePath();
