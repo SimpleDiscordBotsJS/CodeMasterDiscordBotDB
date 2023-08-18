@@ -40,7 +40,7 @@ loadEvents(client);
 const { loadButtons } = require("./Handlers/buttonHandler");
 loadButtons(client);
 
-const { loadModals } = require("./Handlers/ModalHandler");
+const { loadModals } = require("./Handlers/modalHandler");
 loadModals(client);
 
 //===========================================================
