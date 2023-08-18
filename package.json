@@ -21,6 +21,7 @@
   "dependencies": {
     "@napi-rs/canvas": "^0.1.43",
     "ascii-table3": "^0.8.2",
+    "cron": "^2.4.1",
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "glob": "^10.3.3",
