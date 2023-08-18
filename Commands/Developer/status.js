@@ -17,7 +17,7 @@ module.exports = {
     async execute(interaction, client) {
         const getChannelTypeSize = (type) => client.channels.cache.filter((channel) => type.includes(channel.type)).size;
 
-        const Response = new EmbedBuilder().setColor("Aqua").setThumbnail(client.user.displayAvatarURL({dynamic: true}))
+        const Response = new EmbedBuilder().setColor("Aqua").setThumbnail(client.user.displayAvatarURL({ size: 512 }))
         .setDescription(`**Client**: \`🟢 ONLINE\` - \`${client.ws.ping}ms\`\n**Database**: \`${switchTo(connection.readyState)}\`\n`)
         .setTitle(`${client.user.tag} Status`)
         .addFields(

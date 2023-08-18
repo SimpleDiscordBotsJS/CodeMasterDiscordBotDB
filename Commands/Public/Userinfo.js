@@ -25,7 +25,7 @@ module.exports = {
             return `https://i.imgur.com/${statusType[status] || statusType["invisible"]}`;
         };
     
-        const Response = new EmbedBuilder().setColor("Aqua").setThumbnail(target.user.avatarURL({ dynamic: true }))
+        const Response = new EmbedBuilder().setColor("Aqua").setThumbnail(target.user.avatarURL({ size: 512 }))
         .setAuthor({ name: target.user.tag, iconURL: getPresence(target.presence?.status) })
         .addFields(
             { name: "ID", value: `${target.user.id}`, inline: true },

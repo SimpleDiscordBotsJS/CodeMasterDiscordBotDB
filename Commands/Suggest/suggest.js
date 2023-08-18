@@ -39,7 +39,7 @@ module.exports = {
         const Suggestion = options.getString("suggestion");
 
         const Embed = new EmbedBuilder().setColor("Navy")
-        .setAuthor({name: user.tag, iconURL: user.displayAvatarURL({ dynamic: true })})
+        .setAuthor({name: user.tag, iconURL: user.displayAvatarURL({ size:  512 })})
         .addFields(
             { name: "Предложение:", value: Suggestion, inline: false },
             { name: "Тип:", value: Type, inline: true },

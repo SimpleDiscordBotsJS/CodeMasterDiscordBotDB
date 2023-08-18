@@ -51,7 +51,7 @@ module.exports = {
                         await author.send({ embeds: [new EmbedBuilder()
                         .setColor("Orange").setTitle("⌛ __**Мьют**__ ⌛")
                         .setDescription(`Вы были __замьючены__ на сервере: **${member.guild.name}**`)
-                        .setThumbnail(member.user.displayAvatarURL({dynamic: true, size: 512}))
+                        .setThumbnail(member.user.displayAvatarURL({ size: 512 }))
                         .addFields(
                             { name: "Пользователь:", value: `\`\`\`${member.user.tag}\`\`\``, inline: true },
                             { name: "Время:", value: `\`\`\`24h\`\`\``, inline: true },

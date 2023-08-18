@@ -16,8 +16,8 @@ module.exports = {
         const Welcomer = new WebhookClient({ url: process.env.WEBHOOK_JOIN });
 
         const Welcome = new EmbedBuilder().setColor("Aqua")
-        .setAuthor({ name: user.tag, iconURL: user.avatarURL({ dynamic: true, size: 512 }) })
-        .setThumbnail(user.avatarURL({ dynamic: true, size: 512 }))
+        .setAuthor({ name: user.tag, iconURL: user.avatarURL({ size: 512 }) })
+        .setThumbnail(user.avatarURL({ size: 512 }))
         .setDescription([
             `Рады приветствовать ${member} на **${guild.name}**!`,
             ``,

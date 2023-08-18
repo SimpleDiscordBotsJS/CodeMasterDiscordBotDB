@@ -12,7 +12,7 @@ module.exports = {
         const { guild } = newMember;
 
         const Thankyou = new EmbedBuilder().setColor("Purple")
-        .setAuthor({ name: "SERVER BOOSTED", iconURL: guild.iconURL({ dynamic: true, size: 512 }) });
+        .setAuthor({ name: "SERVER BOOSTED", iconURL: guild.iconURL({ size: 512 }) });
 
         if(!oldMember.premiumSince && newMember.premiumSince) {
             const canvas = Canvas.createCanvas(800, 250);

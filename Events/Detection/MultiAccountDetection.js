@@ -18,7 +18,7 @@ module.exports = {
             if(!ChannelID) return;
     
             const Embed = new EmbedBuilder().setColor("Red").setTitle("__**Мульти аккаунт!**__")
-            .setAuthor({ name: member.user.tag, iconURL: member.user.displayAvatarURL({dynamic: true}) })
+            .setAuthor({ name: member.user.tag, iconURL: member.user.displayAvatarURL({ size: 512 }) })
             .addFields(
                 { name: "**Пользователь**", value: `\`${member.user.tag}\` (${member.id})` },
                 { name: "**Действие**", value: `Kick (Automatic)`, inline: true },
