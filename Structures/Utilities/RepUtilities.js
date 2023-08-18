@@ -1,40 +1,57 @@
-const { Guild, User } = require("discord.js");
 const dataBase = require("../Data/Schemas/ReputationDB");
 //===========================================================//
 
 /**
- * @param {Guild} Guild
- * @param {User} User
+ * @param {String} GuildID
+ * @param {String} UserID
  * @param {Number} Amount
  */
-async function repAdd(Guild, User, Amount) {
-    let data = await dataBase.findOne({ GuildID: Guild.id, UserID: User.id });
-    if(!data) {
-        data = await createUserInDB(Guild.id, User.id);
+async function repAdd(GuildID, UserID, Amount) {
+    try {
+        const data = await getData(GuildID, UserID);
+
+        data.Reputation.Positive += Amount;
+        await data.save();
+
+        return data;
+    } catch (error) {
+        throw error;
     }
-
-    data.Reputation.Positive += Amount;
-    await data.save();
-
-    return data;
 }
 
 
 /**
- * @param {Guild} Guild
- * @param {User} User
+ * @param {String} GuildID
+ * @param {String} UserID
  * @param {Number} Amount
  */
-async function repRemove(Guild, User, Amount) {
-    let data = await dataBase.findOne({ GuildID: Guild.id, UserID: User.id });
-    if(!data) {
-        data = await createUserInDB(Guild.id, User.id);
+async function repRemove(GuildID, UserID, Amount) {
+    try {
+        const data = await getData(GuildID, UserID);
+
+        data.Reputation.Negative -= Amount;
+        await data.save();
+
+        return data;
+    } catch(error) {
+        throw error;
     }
+}
 
-    data.Reputation.Negative -= Amount;
-    await data.save();
 
-    return data;
+/**
+ * @param {String} GuildID
+ * @param {String} UserID
+ */
+async function getData(GuildID, UserID) {
+    try {
+        let data = await dataBase.findOne({ GuildID: GuildID, UserID: UserID });
+        if(!data) data = await createUserInDB(GuildID, UserID);
+
+        return data;
+    } catch(error) {
+        throw error;
+    }
 }
 
 
@@ -43,14 +60,17 @@ async function repRemove(Guild, User, Amount) {
  * @param {String} UserID
  */
 async function createUserInDB(GuildID, UserID) {
-    const data = await dataBase.create({ 
-        GuildID: GuildID,
-        UserID: UserID, 
-        Reputation: { Positive: 0,  Negative: 0 }
-    });
+    try {
+        const data = await dataBase.create({
+            GuildID: GuildID, UserID: UserID, 
+            Reputation: { Positive: 0,  Negative: 0 }
+        });
 
-    return  data;
+        return data;
+    } catch(error) {
+        throw error;
+    }
 }
 
 //===========================================================//
-module.exports = { repAdd, repRemove }
+module.exports = { repAdd, repRemove, getData }

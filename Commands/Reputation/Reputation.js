@@ -53,16 +53,16 @@ module.exports = {
      * @param {ChatInputCommandInteraction} interaction 
      */
     async execute(interaction) {
-        const { guild, options, user } = interaction;
+        const { guild, options } = interaction;
         const subCommand = options.getSubcommand();
         const target = options.getUser("user");
         const amount = options.getNumber("amount");
 
-        if(user.bot) return interaction.reply({ content: "Lol, what?", ephemeral: true });
+        if(target.bot) return interaction.reply({ content: "Lol, what?", ephemeral: true });
 
         switch(subCommand) {
             case "add" : {
-                await repAdd(guild, target, amount);
+                await repAdd(guild.id, target.id, amount);
 
                 interaction.reply({ embeds: [new EmbedBuilder()
                     .setDescription("Репутация успешно добавлена")
@@ -73,7 +73,7 @@ module.exports = {
             }
             break;
             case "remove" : {
-                await repRemove(guild, target, amount);
+                await repRemove(guild.id, target.id, amount);
 
                 interaction.reply({ embeds: [new EmbedBuilder()
                     .setDescription("Репутация успешно уменьшена")
