@@ -36,6 +36,10 @@ module.exports = {
             await message.startThread({ name: name, autoArchiveDuration: 1440 }).then((thread) => {
                 thread.setLocked(true);
             });
+
+            //Авто лайки успешно перенесены, из автоответчика, сюда.
+            await message.react("👍");
+            await message.react("👎");
         });
 
 
