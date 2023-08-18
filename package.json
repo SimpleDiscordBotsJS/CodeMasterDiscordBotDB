@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/SimpleDiscordBotsJS/CodeMasterDiscordBotDB",
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.43",
     "ascii-table3": "^0.8.2",
-    "canvas": "^2.11.2",
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "glob": "^10.3.3",
