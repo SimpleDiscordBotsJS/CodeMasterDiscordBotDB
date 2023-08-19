@@ -1,5 +1,5 @@
 const { AttachmentBuilder, Client, EmbedBuilder } = require("discord.js");
-const { Error } = require("./Utilities/Logger");
+const { Error } = require("../../Structures/Utilities/Logger");
 const { CronJob } = require('cron');
 const { glob } = require('glob');
 
@@ -22,7 +22,7 @@ module.exports = {
         const files = await glob(pattern);
         if(!files) return;
 
-        const job = new CronJob("30 12 * * *", sendAhegao(), null, false, "Europe/Moscow");
+        const job = new CronJob("0 0 12 * * *", () => sendAhegao(), null, true, "Europe/Moscow");
 
         async function sendAhegao() {
             try {
