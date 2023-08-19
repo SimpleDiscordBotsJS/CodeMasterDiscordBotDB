@@ -22,7 +22,7 @@ module.exports = {
         const files = await glob(pattern);
         if(!files) return;
 
-        const job = new CronJob({ cronTime: "0 12 * * *", timeZone: "Europe/Moscow" , onTick: sendAhegao() });
+        const job = new CronJob("30 12 * * *", sendAhegao(), null, false, "Europe/Moscow");
 
         async function sendAhegao() {
             try {
