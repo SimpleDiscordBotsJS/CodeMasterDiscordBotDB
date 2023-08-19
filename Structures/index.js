@@ -52,21 +52,15 @@ process.on("unhandledRejection", (reason, p) => { Warning(
 });
 
 process.on("uncaughtException", (err, origin) => { Error(
-    '=== [ Uncaught Exception ] ==='.toUpperCase(),
+    '=== [ Uncaught Exception/Catch ] ==='.toUpperCase(),
     'Exception: ' + err.stack ? err.stack : err,
-    '=============================='.toUpperCase());
+    '===================================='.toUpperCase());
 });
 
 process.on('uncaughtExceptionMonitor', (err, origin) => { Error(
     '=== [ Uncaught Exception Monitor ] ==='.toUpperCase(),
     err, origin,
     '======================================'.toUpperCase());
-});
-
-process.on('beforeExit', (code) => { Warning(
-    '======= [ Before Exit ] ======='.toUpperCase(),
-    'Code: ' + code,
-    '==============================='.toUpperCase());
 });
 
 process.on('warning', (code) => { Warning(
@@ -80,13 +74,6 @@ process.on('exit', (code) => { Warning(
     'Code: ' + code,
     '=============================='.toUpperCase());
 });
-/*
-process.on('multipleResolves', (type, promise, reason) => { Warning(
-    '==== [ Multiple Resolves ] ===='.toUpperCase(),
-    type, promise, reason,
-    '==============================='.toUpperCase());
-});
-*/
 //===========================================================
 client.login(process.env.BOT_TOKEN).catch(() => {
     Error("[BOT] Неверный токен для входа от имени бота.");

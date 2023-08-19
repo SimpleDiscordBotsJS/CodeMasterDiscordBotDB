@@ -17,7 +17,7 @@ module.exports = {
         const data = await getData(guild.id, member.id);
         if(!data) return;
 
-        const rep = data.Reputation.Positive;
+        const rep = data.Reputation.Positive + data.Reputation.Negative;
         const rolesToAdd = [];
 
         if(rep >= 100 && rep <= 149 && REP_ROLE_1) {
