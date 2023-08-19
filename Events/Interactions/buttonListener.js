@@ -21,7 +21,7 @@ module.exports = {
         const userId = interaction.user.id
 
         if(cooldownUtil.inCooldown(userId, button.customId)) {
-            const remainingTime = cooldownUtil.getCooldown(userId, interaction.customId)
+            const remainingTime = cooldownUtil.getCooldown(userId, interaction.customId);
 
             return interaction.reply({ embeds: [new EmbedBuilder().setColor("#e15050")
                     .setDescription(`Подождите ${remainingTime / 1000} сек. прежде чем использовать кнопку снова.`)
@@ -47,7 +47,7 @@ module.exports = {
         button.execute(interaction, client);
 
         if(cooldownTime > 0) {
-            cooldownUtil.setCooldown(userId, button.customId, button.cooldown)
+            cooldownUtil.setCooldown(userId, button.customId, button.cooldown);
         }
     },
 };

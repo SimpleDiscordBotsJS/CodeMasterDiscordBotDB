@@ -15,11 +15,11 @@ module.exports = {
             embeds: [new EmbedBuilder().setDescription("Это команда устарела!").setColor("#e15050")], ephemeral: true
         });
 
-        const cooldownTime = command.cooldown || 0
-        const userId = interaction.user.id
+        const cooldownTime = command.cooldown || 0;
+        const userId = interaction.user.id;
 
         if(cooldownUtil.inCooldown(userId, interaction.commandName)) {
-            const remainingTime = cooldownUtil.getCooldown(userId, interaction.commandName)
+            const remainingTime = cooldownUtil.getCooldown(userId, interaction.commandName);
 
             return interaction.reply({ embeds: [new EmbedBuilder().setColor("#e15050")
                     .setDescription(`Подождите ${remainingTime / 1000} сек. прежде чем использовать эту команду снова.`)
@@ -35,7 +35,7 @@ module.exports = {
         command.execute(interaction, client);
 
         if(cooldownTime > 0) {
-            cooldownUtil.setCooldown(userId, interaction.commandName, command.cooldown)
+            cooldownUtil.setCooldown(userId, interaction.commandName, command.cooldown);
         }
     }
 }

@@ -16,11 +16,11 @@ module.exports = {
             ], ephemeral: true
         });
 
-        const cooldownTime = modal.cooldown || 0
-        const userId = interaction.user.id
+        const cooldownTime = modal.cooldown || 0;
+        const userId = interaction.user.id;
 
         if(cooldownUtil.inCooldown(userId, interaction.customId)) {
-            const remainingTime = cooldownUtil.getCooldown(userId, interaction.customId)
+            const remainingTime = cooldownUtil.getCooldown(userId, interaction.customId);
 
             return interaction.reply({ embeds: [new EmbedBuilder().setColor("#e15050")
                     .setDescription(`Подождите ${remainingTime / 1000} сек. прежде чем отправить форму снова.`)
@@ -36,7 +36,7 @@ module.exports = {
         modal.execute(interaction, client);
 
         if(cooldownTime > 0) {
-            cooldownUtil.setCooldown(userId, modal.customId, modal.cooldown)
+            cooldownUtil.setCooldown(userId, modal.customId, modal.cooldown);
         }
     }
 }

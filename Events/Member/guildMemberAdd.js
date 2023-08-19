@@ -10,10 +10,9 @@ module.exports = {
 
         //member.roles.add("");
 
-        //Проверка на наличие вебхука
         if(!process.env.WEBHOOK_JOIN) return;
 
-        const Welcomer = new WebhookClient({ url: process.env.WEBHOOK_JOIN });
+        const webhook = new WebhookClient({ url: process.env.WEBHOOK_JOIN });
 
         const Welcome = new EmbedBuilder().setColor("Aqua")
         .setAuthor({ name: user.tag, iconURL: user.avatarURL({ size: 512 }) })
@@ -31,6 +30,6 @@ module.exports = {
         )
         .setFooter({ text: `ID: ${user.id}` }).setTimestamp();
 
-        await Welcomer.send({ embeds: [Welcome] });
+        await webhook.send({ embeds: [Welcome] });
     }
 }

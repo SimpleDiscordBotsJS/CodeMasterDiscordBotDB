@@ -8,10 +8,9 @@ module.exports = {
     async execute(member) {
         const { user, guild } = member;
 
-        //Проверка на наличие вебхука
         if(!process.env.WEBHOOK_EXIT) return;
 
-        const Logger = new WebhookClient({ url: process.env.WEBHOOK_EXIT });
+        const webhook = new WebhookClient({ url: process.env.WEBHOOK_EXIT });
 
         const Welcome = new EmbedBuilder().setColor("Aqua")
         .setAuthor({ name: user.tag, iconURL: user.avatarURL({ size: 512 }) })
@@ -24,6 +23,6 @@ module.exports = {
         ].join("\n"))
         .setFooter({ text: `ID: ${user.id}` }).setTimestamp();
 
-        await Logger.send({ embeds: [Welcome] });
+        await webhook.send({ embeds: [Welcome] });
     }
 }
