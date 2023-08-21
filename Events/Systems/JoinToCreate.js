@@ -21,7 +21,7 @@ module.exports = {
         if(!data) return;
 
         const channelId = data.ChannelID;
-        const channel = client.channels.cache.get(channelId);
+        const channel = await client.channels.fetch(channelId);
         if(!channel) return;
         
         const userLimit = data.UserLimit;
@@ -45,7 +45,7 @@ module.exports = {
             });
 
             setTimeout(() => {
-                newChannel.permissionOverwrites.delete(member)
+                newChannel.permissionOverwrites.delete(member);
             }, 30 * 1000);
 
             return setTimeout(() => {
@@ -62,7 +62,7 @@ module.exports = {
                 let randomMember = guild.members.cache.get(randomId);
 
                 randomMember.voice.setChannel(oldChannel).then(() => {
-                    oldChannel.setName(`Канал ${randomMember.user.username}`);
+                    oldChannel.setName(`Канал ${randomMember.user.username}`).catch((error) => console.log(error));
                     oldChannel.permissionOverwrites.edit(randomMember, {
                         Connect: true,
                         ManageChannels: true
@@ -73,7 +73,7 @@ module.exports = {
                 voiceManager.set(randomMember.id, oldChannel.id);
             } else {
                 voiceManager.set(member.id, null);
-                oldChannel.delete();
+                oldChannel.delete().catch((error) => console.log(error));
             }
         }
     }
