@@ -17,7 +17,7 @@ module.exports = {
         const oldChannel = oldState.channel;
         const newChannel = newState.channel;
 
-        const data = await schema.findOne({ GuildID: guild.id });
+        const data = await schema.findOne({ GuildID: newState.guild.id });
         if(!data) return;
 
         const channelId = data.ChannelID;
