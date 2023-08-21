@@ -25,8 +25,8 @@ module.exports = {
         const iq = Math.floor(Math.random() * 200) + 1;
 
         const embed = new EmbedBuilder().setTitle("🧠 IQ")
-        .setDescription(`>>> **Уровень IQ пользователя ${user} равен \`${iq}\`!**`)
-        .setColor("DarkBlue").setThumbnail(user.displayAvatarURL({ size: 256 }));
+        .setDescription(`>>> **Уровень IQ пользователя ${target} равен \`${iq}\`!**`)
+        .setColor("DarkBlue").setThumbnail(target.displayAvatarURL({ size: 256 }));
 
         interaction.reply({ embeds: [embed] });
     }
