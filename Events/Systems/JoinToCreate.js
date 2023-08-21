@@ -3,6 +3,7 @@ const schema = require("../../Structures/Data/Schemas/JoinToCreateDB");
 const voiceManager = new Collection();
 
 //TODO: По возможности, обновить/улучшить.
+//TODO: Найти причину - TypeError: Cannot read properties of null (reading 'id')
 
 module.exports = {
     name: "voiceStateUpdate",
@@ -17,11 +18,11 @@ module.exports = {
         const oldChannel = oldState.channel;
         const newChannel = newState.channel;
 
-        const data = await schema.findOne({ GuildID: newState.guild.id });
+        const data = await schema.findOne({ GuildID: guild.id });
         if(!data) return;
 
         const channelId = data.ChannelID;
-        const channel = await client.channels.fetch(channelId);
+        const channel = client.channels.cache.get(channelId);
         if(!channel) return;
         
         const userLimit = data.UserLimit;
