@@ -3,14 +3,9 @@
 /* Logger version 1.3.2 */
 
 //===========================================================//
-
 const fs = require("fs");
 const logFilePath = `./Structures/Data/Logs`;
 const logFileName = "Latest.log";
-
-//===========================================================//
-
-//var time = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '').split(" ")[1]; - Old time var
 
 //===========================================================//
 function Debug() {

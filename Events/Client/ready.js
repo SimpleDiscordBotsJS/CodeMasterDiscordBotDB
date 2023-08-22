@@ -1,6 +1,8 @@
 const { ActivityType, Client } = require("discord.js");
 const { Success } = require("../../Structures/Utilities/Logger");
 const { loadCommands } = require("../../Structures/Handlers/commandHandler");
+const { loadPlayerEvents } = require("../../Structures/Handlers/playerHandler");
+const { Player } = require("discord-player");
 
 module.exports = {
     name: "ready",
@@ -15,6 +17,10 @@ module.exports = {
             status: "dnd",
         });
 
+        const player = new Player(client);
+        player.extractors.loadDefault();
+
+        loadPlayerEvents(player);
         loadCommands(client);
 
         require("../../Structures/Systems/AntiScamSystem")(client);
