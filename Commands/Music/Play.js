@@ -30,7 +30,15 @@ module.exports = {
         await interaction.deferReply();
 
         try {
-            const { track } = await player.play(channel, query, { nodeOptions: { metadata: interaction } });
+            const { track } = await player.play(channel, query, { nodeOptions: { 
+                metadata: interaction,
+                leaveOnEmptyCooldown: 30000,
+				leaveOnEmpty: true,
+                leaveOnEndCooldown: 30000,
+                leaveOnStopCooldown: 60000,
+                pauseOnEmpty: true,
+                volume: 75
+            } });
             if(!track) return await interaction.followUp({ content: "Произошла ошибка при поиске трека!" });
 
             return await interaction.followUp({ embeds: [new EmbedBuilder().setColor("Gold")
