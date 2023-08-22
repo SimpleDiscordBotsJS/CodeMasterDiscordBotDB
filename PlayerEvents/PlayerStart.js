@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const { GuildQueue, Track } = require("discord-player");
+const { Info } = require("../Structures/Utilities/Logger");
 
 module.exports = {
     name: "playerStart",
@@ -9,7 +10,9 @@ module.exports = {
      */
     async execute(queue, track) {
         const { metadata, guild } = queue;
-        const { member, user, channel } = metadata;
+        const { member, user } = metadata;
+        const channel = member.voice.channel;
+        if(!channel) return Error(`[Music] Канал не найден!`);
 
         try {
             await channel.send({ embeds: [new EmbedBuilder()
@@ -22,6 +25,8 @@ module.exports = {
                 ].join("\n")).setColor("Green").setTimestamp()
                 .setFooter({ text: `Запустил: ${member.nickname || user.displayName}`, iconURL: user.avatarURL() })]
             });
+
+            Info(`[Music] Плеер на сервере [${guild.name}] играет трек [${track.title}] в канале [${channel.name}]`);
         } catch(error) {
             throw error;
         }

@@ -2,7 +2,7 @@ const { GuildQueue } = require("discord-player");
 const { Info, Error } = require("../Structures/Utilities/Logger");
 
 module.exports = {
-    name: "connection",
+    name: "disconnect",
     /**
      * @param {GuildQueue} queue 
      */
@@ -12,7 +12,7 @@ module.exports = {
         if(!channel) return Error(`[Music] Канал не найден!`);
 
         try {
-            Info(`[Music] Плеер на сервере [${queue.guild.name}] подключен к каналу [${channel.name}]`);
+            Info(`[Music] Отключено от канала [${channel.name}]`);
         } catch(error) {
             return Error(`[Music] ${error}`);
         }
