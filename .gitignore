@@ -1,8 +1,5 @@
 # DEBUG
-Events/Debug/
-Commands/Debug/
-Interaction/Buttons/Debug/
-Interaction/Modals/Debug/
+**/Debug
 
 #То, что пока не добавлю или не добавлю в принципе
 Structures/Data/Images/Ahegao
