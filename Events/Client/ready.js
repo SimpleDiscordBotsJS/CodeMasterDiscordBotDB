@@ -24,5 +24,6 @@ module.exports = {
         loadCommands(client);
 
         require("../../Structures/Systems/AntiScamSystem")(client);
+        require("../../Structures/Systems/AutoRoleSystem")(client);
     }
 }

@@ -21,6 +21,9 @@ client.modals = new Collection();
 //========================= Каналы ==========================
 client.antiScamLog = new Collection();
 
+//========================== Роли ===========================
+client.autoRole = new Collection();
+
 //===========================================================
 const { connect } = require("mongoose");
 if(!process.env.DATABASE_URL) {

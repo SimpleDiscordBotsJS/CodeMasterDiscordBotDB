@@ -10,6 +10,7 @@ class CooldownUtil {
 
         this.cooldowns.set(userId, user)
     }
+    
     getCooldown(userId, action) {
         const user = this.cooldowns.get(userId) || {}
         const cooldownTime = user[action] || 0
