@@ -6,7 +6,7 @@ const table = new AsciiTable3().setHeading("Modals", "Status");
 async function loadModals(client) {
     console.time("Modals Loaded");
 
-    const files = await loadFiles("./Modals");
+    const files = await loadFiles("./Interaction/Modals");
 
     for (const file of files) { 
         try { 

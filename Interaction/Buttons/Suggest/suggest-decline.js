@@ -1,5 +1,5 @@
 const { ButtonInteraction, PermissionFlagsBits, EmbedBuilder } = require("discord.js");
-const DB = require("../../Structures/Data/Schemas/Suggest/SuggestDB");
+const DB = require("../../../Structures/Data/Schemas/Suggest/SuggestDB");
 
 module.exports = {
     id: "suggest-decline",

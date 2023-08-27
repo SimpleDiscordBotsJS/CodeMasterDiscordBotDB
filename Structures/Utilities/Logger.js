@@ -62,16 +62,16 @@ module.exports = { Debug, Error, Info, Message, Success, Warning };
 //===========================================================//
 function writeFile(content) {
     let newContent = content;
-    let path = logFilePath + '/' + logFileName;
+    const fullPath = `${logFilePath}/${logFileName}`;
 
     try {
         if(!fs.existsSync(logFilePath)) {
             fs.mkdirSync(logFilePath);
-            fs.writeFileSync(path, new Date().toLocaleDateString() + '\r\n\r\n');
+            fs.writeFileSync(fullPath, new Date().toLocaleDateString() + '\r\n\r\n');
             Info(`Folder Created Successfully.`);
         }
-        else if(fs.existsSync(path)) {
-            fs.readFile(path, 'utf-8', (err, data) => {
+        else if(fs.existsSync(fullPath)) {
+            fs.readFile(fullPath, 'utf-8', (err, data) => {
                 if(err) return Error(err);
                 newContent = data + content;
             });
@@ -82,7 +82,7 @@ function writeFile(content) {
 
     const date = new Date().toLocaleDateString();
     const time = new Date().toLocaleTimeString();
-    fs.appendFile(path, `[ ${date} ][ ${time} ]` + newContent + "\r\n", function(err) {
+    fs.appendFile(fullPath, `[ ${date} ][ ${time} ]` + newContent + "\r\n", function(err) {
         if(err) return Error(err);
     });
 }
