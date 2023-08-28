@@ -17,6 +17,7 @@ client.events = new Collection();
 client.buttons = new Collection();
 client.commands = new Collection();
 client.modals = new Collection();
+client.selects = new Collection();
 
 //========================= Каналы ==========================
 client.antiScamLog = new Collection();
@@ -45,6 +46,9 @@ loadButtons(client);
 
 const { loadModals } = require("./Handlers/modalHandler");
 loadModals(client);
+
+const { loadSelects } = require("./Handlers/selectHandler");
+loadSelects(client);
 
 //===========================================================
 // Anti-Crash and more...
