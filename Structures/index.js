@@ -21,9 +21,14 @@ client.selects = new Collection();
 
 //========================= Каналы ==========================
 client.antiScamLog = new Collection();
+client.webHooks = new Collection();
 
 //========================== Роли ===========================
 client.autoRole = new Collection();
+
+//==================== WebHooks Loading =====================
+require("../Structures/Systems/WebHooksLoad")(client);
+Success("[WebHooks] Load webhooks...");
 
 //===========================================================
 const { connect } = require("mongoose");
