@@ -15,20 +15,6 @@
 > 
 >  # MongoDB url
 >  DATABASE_URL = 
-> 
->  # Webhooks
->  WEBHOOK_JOIN = 
->  WEBHOOK_EXIT = 
-> 
->  
->  # Audit webhooks
->  WEBHOOK_AUDIT_CHANNEL=
->  WEBHOOK_AUDIT_BAN=
->  WEBHOOK_AUDIT_EVENT=
->  WEBHOOK_AUDIT_MEMBER=
->  WEBHOOK_AUDIT_MESSAGE=
->  WEBHOOK_AUDIT_ROLE=
->  WEBHOOK_AUDIT_THREAD=
 > ```
 >  The bot token can be copied in the Bot section of [your application](https://discord.com/developers/applications)
 > </details>
