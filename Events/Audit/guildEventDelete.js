@@ -1,13 +1,19 @@
-const { GuildScheduledEventManager, EmbedBuilder, WebhookClient } = require("discord.js");
+const { GuildScheduledEventManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
 
 module.exports = {
     name: "guildScheduledEventDelete",
     /**
      * @param {GuildScheduledEventManager} guildScheduledEvent
+     * @param {Client} client
      */
-    async execute(guildScheduledEvent) {
-        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_EVENT });
-        if(!logChannel) return;
+    async execute(guildScheduledEvent, client) {
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
+
+        const { WebHookID, WebHookToken } = webHookData.AUDIT_EVENT_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
         const Embed = new EmbedBuilder().setColor("#ea4e4e").setTitle("🎊 __**Ивент удалён**__ 🎊")
         .setDescription(`**${guildScheduledEvent.name}** был успешно удалён: ${guildScheduledEvent.description}`)
@@ -23,6 +29,6 @@ module.exports = {
             Embed.addFields({ name: "Канал", value: `${guildScheduledEvent.channel}`, inline: true });
         }
 
-        logChannel.send({ embeds: [Embed] });
+        webhook.send({ embeds: [Embed] });
     }
 }

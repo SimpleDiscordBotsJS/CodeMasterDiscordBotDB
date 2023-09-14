@@ -1,16 +1,21 @@
-const { EmbedBuilder, WebhookClient, GuildMember } = require("discord.js");
+const { EmbedBuilder, WebhookClient, GuildMember, Client } = require("discord.js");
 
 module.exports = {
     name: "guildMemberRemove",
     /**
      * @param {GuildMember} member
+     * @param {Client} client
      */
-    async execute(member) {
+    async execute(member, client) {
         const { user, guild } = member;
 
-        if(!process.env.WEBHOOK_EXIT) return;
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
 
-        const webhook = new WebhookClient({ url: process.env.WEBHOOK_EXIT });
+        const { WebHookID, WebHookToken } = webHookData.EXIT_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
 
         const Welcome = new EmbedBuilder().setColor("Aqua")
         .setAuthor({ name: user.tag, iconURL: user.avatarURL({ size: 512 }) })

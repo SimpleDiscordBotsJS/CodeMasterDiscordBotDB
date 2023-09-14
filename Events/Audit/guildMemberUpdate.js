@@ -1,18 +1,24 @@
-const { GuildMember, EmbedBuilder, WebhookClient } = require("discord.js");
+const { GuildMember, EmbedBuilder, WebhookClient, Client } = require("discord.js");
 
 module.exports = {
     name: "guildMemberUpdate",
     /**
-     * @param {GuildMember} oldMember 
-     * @param {GuildMember} newMember 
+     * @param {GuildMember} oldMember
+     * @param {GuildMember} newMember
+     * @param {Client} client
      */
-    async execute(oldMember, newMember) {
+    async execute(oldMember, newMember, client) {
 
         let oldTimeOut = oldMember.communicationDisabledUntilTimestamp;
         let newTimeOut = newMember.communicationDisabledUntilTimestamp;
 
-        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_MEMBER });
-        if(!logChannel) return;
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
+
+        const { WebHookID, WebHookToken } = webHookData.AUDIT_MEMBER_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
 
         if(oldTimeOut !== newTimeOut && newTimeOut != null && newTimeOut > Date.now()) {
             const Embed = new EmbedBuilder().setColor("#ea4e4e")
@@ -22,7 +28,7 @@ module.exports = {
             .addFields({ name: "До", value: `<t:${parseInt(newTimeOut / 1000)}:R>`, inline: false })
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldTimeOut !== newTimeOut && newTimeOut == null) {
@@ -32,7 +38,7 @@ module.exports = {
             .setDescription(`${newMember} был __размьючен__`)
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldMember.nickname !== newMember.nickname) {
@@ -45,7 +51,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldMember.avatar !== newMember.avatar) {
@@ -58,7 +64,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldMember.user.username !== newMember.user.username) {
@@ -71,7 +77,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldMember.roles.cache.size !== newMember.roles.cache.size) {
@@ -85,7 +91,7 @@ module.exports = {
                 .addFields({ name: "Роль", value: `${difference.map(r => r).join(" ")}` })
                 .setTimestamp();
 
-                logChannel.send({ embeds: [Embed] });
+                webhook.send({ embeds: [Embed] });
             } else {
                 difference = newMember.roles.cache.filter(r => !oldMember.roles.cache.has(r.id));
 
@@ -95,7 +101,7 @@ module.exports = {
                 .addFields({ name: "Роль", value: `${difference.map(r => r).join(" ")}` })
                 .setTimestamp();
 
-                logChannel.send({ embeds: [Embed] });
+                webhook.send({ embeds: [Embed] });
             }
         }
     }

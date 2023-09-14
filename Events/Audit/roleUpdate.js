@@ -1,14 +1,20 @@
-const { RoleManager, EmbedBuilder, WebhookClient } = require("discord.js");
+const { RoleManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
 
 module.exports = {
     name: "roleUpdate",
     /**
-     * @param {RoleManager} oldRole 
-     * @param {RoleManager} newRole 
+     * @param {RoleManager} oldRole
+     * @param {RoleManager} newRole
+     * @param {Client} client
      */
-    async execute(oldRole, newRole) {
-        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_ROLE });
-        if(!logChannel) return;
+    async execute(oldRole, newRole, client) {
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
+
+        const { WebHookID, WebHookToken } = webHookData.AUDIT_ROLE_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
         if(oldRole.name !== newRole.name) {
             const Embed = new EmbedBuilder()
@@ -20,7 +26,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
         if(oldRole.hexColor !== newRole.hexColor) {
             const Embed = new EmbedBuilder()
@@ -32,7 +38,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
         if(oldRole.hoist !== newRole.hoist) {
             const Embed = new EmbedBuilder()
@@ -44,7 +50,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
         if(oldRole.icon !== newRole.icon) {
             const Embed = new EmbedBuilder()
@@ -56,7 +62,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
         if(oldRole.mentionable !== newRole.mentionable) {
             const Embed = new EmbedBuilder()
@@ -68,7 +74,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
         if(oldRole.position !== newRole.position) {
             const Embed = new EmbedBuilder()
@@ -80,7 +86,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
     }
 }

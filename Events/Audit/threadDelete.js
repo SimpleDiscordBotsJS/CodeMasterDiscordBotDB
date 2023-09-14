@@ -1,15 +1,21 @@
-const { ThreadChannel, EmbedBuilder, WebhookClient } = require("discord.js");
+const { ThreadChannel, EmbedBuilder, WebhookClient, Client } = require("discord.js");
 
 module.exports = {
     name: "threadDelete",
     /**
-     * @param {ThreadChannel} thread 
+     * @param {ThreadChannel} thread
+     * @param {Client} client
      */
-    async execute(thread) {
+    async execute(thread, client) {
         if(thread.type !== "GUILD_NEWS_THREAD" && thread.type !== "GUILD_PUBLIC_THREAD" && thread.type !== "GUILD_PRIVATE_THREAD ") return;
 
-        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_THREAD });
-        if(!logChannel) return;
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
+
+        const { WebHookID, WebHookToken } = webHookData.AUDIT_THREAD_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
         const Embed = new EmbedBuilder()
         .setColor("#ea4e4e").setTitle("🌳 __**Ветка удалена**__ 🌳")
@@ -17,6 +23,6 @@ module.exports = {
         .addFields({ name: `Ветка`, value: `\`${thread.name}\``, inline: true })
         .setTimestamp();
 
-        logChannel.send({ embeds: [Embed] });
+        webhook.send({ embeds: [Embed] });
     }
 }

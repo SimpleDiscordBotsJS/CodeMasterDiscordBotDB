@@ -1,19 +1,25 @@
-const { ChannelManager, EmbedBuilder, WebhookClient } = require("discord.js");
+const { ChannelManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
 
 module.exports = {
     name: "channelUpdate",
     /**
      * @param {ChannelManager} oldChannel
      * @param {ChannelManager} newChannel
+     * @param {Client} client
      */
-    async execute(oldChannel, newChannel) {
+    async execute(oldChannel, newChannel, client) {
         if(!oldChannel.guild) return;
         if(oldChannel.type === "GUILD_NEWS_THREAD") return;
         if(oldChannel.type === "GUILD_PUBLIC_THREAD") return;
         if(oldChannel.type === "GUILD_PRIVATE_THREAD ") return;
 
-        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_CHANNEL });
-        if(!logChannel) return;
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
+
+        const { WebHookID, WebHookToken } = webHookData.AUDIT_CHANNEL_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
 
         if(oldChannel.name !== newChannel.name) {
             const Embed = new EmbedBuilder()
@@ -25,7 +31,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldChannel.topic !== newChannel.topic) {
@@ -38,7 +44,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldChannel.position !== newChannel.position) {
@@ -51,7 +57,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldChannel.type !== newChannel.type) {
@@ -64,7 +70,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldChannel.nsfw !== newChannel.nsfw) {
@@ -77,7 +83,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldChannel.bitrate !== newChannel.bitrate) {
@@ -90,7 +96,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldChannel.userLimit !== newChannel.userLimit) {
@@ -103,7 +109,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldChannel.rateLimitPerUser !== newChannel.rateLimitPerUser) {
@@ -116,7 +122,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldChannel.parent !== newChannel.parent) {
@@ -129,7 +135,7 @@ module.exports = {
             )
             .setTimestamp();
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
     }
 }

@@ -1,16 +1,22 @@
-const { ThreadChannel, EmbedBuilder, WebhookClient } = require("discord.js");
+const { ThreadChannel, EmbedBuilder, WebhookClient, Client } = require("discord.js");
 
 module.exports = {
     name: "threadUpdate",
     /**
-     * @param {ThreadChannel} oldThread 
-     * @param {ThreadChannel} newThread 
+     * @param {ThreadChannel} oldThread
+     * @param {ThreadChannel} newThread
+     * @param {Client} client
      */
-    async execute(oldThread, newThread) {
+    async execute(oldThread, newThread, client) {
         if(oldThread.type !== "GUILD_NEWS_THREAD" && oldThread.type !== "GUILD_PUBLIC_THREAD" && oldThread.type !== "GUILD_PRIVATE_THREAD") return;
 
-        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_THREAD });
-        if(!logChannel) return;
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
+
+        const { WebHookID, WebHookToken } = webHookData.AUDIT_THREAD_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
         if (oldThread.name !== newThread.name) {
             const Embed = new EmbedBuilder()
@@ -22,7 +28,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] })
         }
 
         if(oldThread.type !== newThread.type) {
@@ -35,7 +41,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] })
         }
 
         if(oldThread.rateLimitPerUser !== newThread.rateLimitPerUser) {
@@ -48,7 +54,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] })
         }
 
         if(oldThread.parent !== newThread.parent) {
@@ -61,7 +67,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] })
         }
 
         if(oldThread.archived !== newThread.archived) {
@@ -74,7 +80,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] })
         }
     }
 }

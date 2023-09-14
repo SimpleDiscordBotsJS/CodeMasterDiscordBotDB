@@ -1,18 +1,24 @@
-const { ChannelManager, EmbedBuilder, WebhookClient } = require("discord.js");
+const { ChannelManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
 
 module.exports = {
     name: "channelDelete",
     /**
      * @param {ChannelManager} channel
+     * @param {Client} client
      */
-    async execute(channel) {
+    async execute(channel, client) {
         if(!channel.guild) return;
         if(channel.type === "GUILD_NEWS_THREAD") return;
         if(channel.type === "GUILD_PUBLIC_THREAD") return;
         if(channel.type === "GUILD_PRIVATE_THREAD ") return;
     
-        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_CHANNEL });
-        if(!logChannel) return;
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
+
+        const { WebHookID, WebHookToken } = webHookData.AUDIT_CHANNEL_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
     
         const Embed = new EmbedBuilder().setColor("#e15050")
         .setTitle("🔰 __**Канал удалён**__ 🔰")
@@ -20,6 +26,6 @@ module.exports = {
         .addFields({ name: `Канал`, value: `\`${channel.name}\``, inline: true })
         .setTimestamp();
 
-        logChannel.send({ embeds: [Embed] });
+        webhook.send({ embeds: [Embed] });
     }
 }

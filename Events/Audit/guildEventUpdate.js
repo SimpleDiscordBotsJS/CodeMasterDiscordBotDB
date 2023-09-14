@@ -1,14 +1,20 @@
-const { GuildScheduledEventManager, EmbedBuilder, WebhookClient } = require("discord.js");
+const { GuildScheduledEventManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
 
 module.exports = {
     name: "guildScheduledEventUpdate",
     /**
-     * @param {GuildScheduledEventManager} oldEvent 
-     * @param {GuildScheduledEventManager} newEvent 
+     * @param {GuildScheduledEventManager} oldEvent
+     * @param {GuildScheduledEventManager} newEvent
+     * @param {Client} client
      */
-    async execute(oldEvent, newEvent) {
-        const logChannel = new WebhookClient({ url: process.env.WEBHOOK_AUDIT_EVENT });
-        if(!logChannel) return;
+    async execute(oldEvent, newEvent, client) {
+        const webHookData = await client.webHooks.get(guild.id);
+        if(!webHookData) return;
+
+        const { WebHookID, WebHookToken } = webHookData.AUDIT_EVENT_WEBHOOK;
+        if(!(WebHookID || WebHookToken)) return;
+
+        const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
         if(oldEvent.name !== newEvent.name) {
             const Embed = new EmbedBuilder().setColor("#3ccffa").setTitle("🎊 __**Ивент обновлён**__ 🎊")
@@ -19,7 +25,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldEvent.channel !== newEvent.channel) {
@@ -31,7 +37,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldEvent.scheduledStartAt !== newEvent.scheduledStartAt) {
@@ -43,7 +49,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldEvent.scheduledEndAt !== newEvent.scheduledEndAt) {
@@ -55,7 +61,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldEvent.description !== newEvent.description) {
@@ -67,7 +73,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldEvent.status !== newEvent.status) {
@@ -79,7 +85,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldEvent.entityType !== newEvent.entityType) {
@@ -91,7 +97,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldEvent.entityMetadata !== newEvent.entityMetadata) {
@@ -103,7 +109,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
 
         if(oldEvent.privacyLevel !== newEvent.privacyLevel) {
@@ -115,7 +121,7 @@ module.exports = {
             )
             .setTimestamp()
 
-            logChannel.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] });
         }
     }
 }
