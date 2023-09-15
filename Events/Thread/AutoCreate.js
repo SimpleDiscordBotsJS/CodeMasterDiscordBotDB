@@ -22,7 +22,7 @@ module.exports = {
 
             await message.startThread({ name: `${capitalizeFirstLetter(Content).substring(0, 50)}...`, autoArchiveDuration: 60 })
             .then((thread) => {
-                thread.setLocked(true);
+                thread.setLocked(false);
             });
         });
 
@@ -34,7 +34,7 @@ module.exports = {
             let name = `${new Date().getHours()}.${new Date().getMinutes()} - ${new Date().getDate()}.${new Date().getMonth() + 1}.${new Date().getFullYear()}`;
 
             await message.startThread({ name: name, autoArchiveDuration: 1440 }).then((thread) => {
-                thread.setLocked(true);
+                thread.setLocked(false);
             });
 
             //Авто лайки успешно перенесены, из автоответчика, сюда.
