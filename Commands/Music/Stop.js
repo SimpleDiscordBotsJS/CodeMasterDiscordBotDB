@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, Client } = require("discord.js");
 const { useQueue } = require("discord-player");
 
 module.exports = {
@@ -10,8 +10,9 @@ module.exports = {
     .setDMPermission(false),
     /**
      * @param {ChatInputCommandInteraction} interaction
+     * @param {Client} client
      */
-    async execute(interaction) {
+    async execute(interaction, client) {
         const { member, user, guild } = interaction;
         const channel = member.voice.channel;
         if(!channel) return interaction.reply('Вы не подключены к голосовому каналу!');
@@ -21,6 +22,10 @@ module.exports = {
         await interaction.deferReply();
 
         try {
+            if(!queue) {
+                return interaction.followUp({ content: `Меня нет в голосовом канале`, ephemeral: true });
+            }
+
             if(!queue.deleted) {
                 queue.setRepeatMode(0);
                 queue.clear();
@@ -28,7 +33,7 @@ module.exports = {
             }
 
             return await interaction.followUp({ embeds: [new EmbedBuilder()
-                .setAuthor({ name: "Плеер остановлен", iconURL: guild.client.user.avatarURL() })
+                .setAuthor({ name: "Плеер остановлен", iconURL: client.config.MUSIC_ICON_URL })
                 .setDescription([
                     `Остановка плеера и очистка очереди дорожек.`,
                     `__Последний трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,

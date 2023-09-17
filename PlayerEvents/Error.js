@@ -1,4 +1,4 @@
-const { GuildQueue, } = require("discord-player");
+const { GuildQueue } = require("discord-player");
 const { Error } = require("../Structures/Utilities/Logger");
 
 module.exports = {
@@ -7,6 +7,6 @@ module.exports = {
      * @param {GuildQueue} queue
      */
     execute(queue, error) {
-        return Error(`[Music] ${error}`);
+        return Error(`[MUSIC] ${error}`);
     }
 }

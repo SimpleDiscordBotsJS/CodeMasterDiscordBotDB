@@ -1,4 +1,5 @@
-const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 const { useMainPlayer } = require("discord-player");
 
 module.exports = {
@@ -17,8 +18,9 @@ module.exports = {
     .setDMPermission(false),
     /**
      * @param {ChatInputCommandInteraction} interaction
+     * @param {Client} client
      */
-    async execute(interaction) {
+    async execute(interaction, client) {
         const { member, user, options } = interaction;
 
         const channel = member.voice.channel;
@@ -30,24 +32,34 @@ module.exports = {
         await interaction.deferReply();
 
         try {
-            const { track } = await player.play(channel, query, { nodeOptions: { 
-                metadata: interaction,
-                leaveOnEmptyCooldown: 30000,
-				leaveOnEmpty: true,
-                leaveOnEndCooldown: 30000,
-                leaveOnStopCooldown: 60000,
-                pauseOnEmpty: true,
-                volume: 75
-            } });
+            const { track } = await player.play(channel, query, {
+                nodeOptions: { 
+                    metadata: interaction,
+                    leaveOnEmptyCooldown: 30000,
+                    leaveOnEmpty: true,
+                    leaveOnEndCooldown: 30000,
+                    leaveOnStopCooldown: 60000,
+                    pauseOnEmpty: false,
+                    volume: 75
+                }
+            });
             if(!track) return await interaction.followUp({ content: "Произошла ошибка при поиске трека!" });
 
+            const position = track.player.queues.get(interaction.guildId);
+
             return await interaction.followUp({ embeds: [new EmbedBuilder().setColor("Gold")
-                .setDescription(`Трек **[[${track.title}](${track.url})]** добавлен в проигрыватель!`).setTimestamp()
-                .setFooter({ text: `Запросил: ${member.nickname || user.username}`, iconURL: user.avatarURL() })]
+                .setAuthor({ name: "Трек добавлен в плейлист", iconURL: client.config.MUSIC_ICON_URL })
+                .setDescription(`[${track.title}](${track.url})`)
+                .addFields(
+                    { name: "Автор", value: `${track.author}`, inline: true },
+                    { name: "Длится", value: `\`${track.duration}\``, inline: true },
+                    { name: "Позиция", value: `${position.size + 1}`, inline: true }
+                ).setTimestamp()
+                .setFooter({ text: `Запросил: ${user.displayName || member.displayName}`, iconURL: user.avatarURL() })]
             });
         } catch (e) {
-            await interaction.followUp(e);
-            throw e;
+            Error(e);
+            return interaction.followUp(e);
         }
     }
 }

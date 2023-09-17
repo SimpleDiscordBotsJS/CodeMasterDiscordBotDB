@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, Client } = require("discord.js");
 const { useQueue } = require("discord-player");
 
 module.exports = {
@@ -10,8 +10,9 @@ module.exports = {
     .setDMPermission(false),
     /**
      * @param {ChatInputCommandInteraction} interaction
+     * @param {Client} client
      */
-    async execute(interaction) {
+    async execute(interaction, client) {
         const { member, user, guild } = interaction;
         const channel = member.voice.channel;
         if(!channel) return interaction.reply('Вы не подключены к голосовому каналу!');
@@ -32,7 +33,7 @@ module.exports = {
             queue.node.skip();
 
             return await interaction.followUp({ embeds: [new EmbedBuilder()
-                .setAuthor({ name: "Пропуск трека", iconURL: guild.client.user.avatarURL() })
+                .setAuthor({ name: "Пропуск трека", iconURL: client.config.MUSIC_ICON_URL })
                 .setDescription([
                     `Трек был пропущен.`,
                     `__Пропущенный трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,

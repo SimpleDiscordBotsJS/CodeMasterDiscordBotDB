@@ -1,14 +1,15 @@
 const { EmbedBuilder } = require("discord.js");
-const { GuildQueue, Track } = require("discord-player");
+const { GuildQueue, Track, Player } = require("discord-player");
 const { Info, Error } = require("../Structures/Utilities/Logger");
 
 module.exports = {
     name: "playerStart",
     /**
      * @param {GuildQueue} queue 
-     * @param {Track} track 
+     * @param {Track} track
+     * @param {Player} player
      */
-    async execute(queue, track) {
+    async execute(queue, track, player) {
         const { metadata, guild } = queue;
         const { member, user, channel } = metadata;
         const voiceChannel = member.voice.channel;
@@ -16,7 +17,7 @@ module.exports = {
 
         try {
             await channel.send({ embeds: [new EmbedBuilder()
-                .setAuthor({ name: `Да будет музыка!`, iconURL: guild.client.user.avatarURL() })
+                .setAuthor({ name: `Да будет музыка!`, iconURL: player.client.config.MUSIC_ICON_URL })
                 .setDescription([
                     `Плеер начал воспроизводить музыку!`,
                     `__Текущий трек__: **[[${track.title}](${track.url})]**`,

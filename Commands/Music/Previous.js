@@ -1,4 +1,4 @@
-const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, Client } = require("discord.js");
 const { useQueue, useHistory } = require("discord-player");
 
 module.exports = {
@@ -10,8 +10,9 @@ module.exports = {
     .setDMPermission(false),
     /**
      * @param {ChatInputCommandInteraction} interaction
+     * @param {Client} client
      */
-    async execute(interaction) {
+    async execute(interaction, client) {
         const { member, user, guild } = interaction;
         const channel = member.voice.channel;
         if(!channel) return interaction.reply('Вы не подключены к голосовому каналу!');
@@ -30,7 +31,7 @@ module.exports = {
             
             await history.previous();
             return interaction.reply({ embeds: [new EmbedBuilder()
-                .setAuthor({ name: `🔁 | Прошлый трек`, iconURL: guild.client.user.avatarURL() })
+                .setAuthor({ name: `🔁 | Прошлый трек`, iconURL: client.config.MUSIC_ICON_URL })
                 .setColor("Green").setDescription([
                     `Плеер проигрывает предыдущий трек.`,
                     `__Текущий трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
