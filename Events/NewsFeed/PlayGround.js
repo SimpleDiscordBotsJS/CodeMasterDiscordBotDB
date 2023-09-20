@@ -14,7 +14,9 @@ module.exports = {
         checkOneHour();
         
         async function checkOneHour() {
-            const feed = await posts.parseURL(`http://www.playground.ru/rss/news.xml`);
+            const feed = await posts.parseURL(`http://www.playground.ru/rss/news.xml`).catch(e => {
+                setTimeout(checkOneHour, 1000 * 60)
+            });
 
             const channel = await client.channels.fetch(client.config.FEEDS_CHANNELS.PLAYGROUND).catch(e => {
                 return Error("[FEED][PLAYGROUND] Не удалось определить канал!");
@@ -54,7 +56,7 @@ module.exports = {
             
             // ======================================================================== //
             
-            setTimeout(checkOneHour, 1000 * 60 * 5);
+            setTimeout(checkOneHour, 1000 * 60 * 10);
         }
     }
 }
