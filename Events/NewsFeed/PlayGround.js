@@ -2,7 +2,7 @@ const { EmbedBuilder, Client, ChannelType } = require("discord.js");
 const { Error, Success } = require("../../Structures/Utilities/Logger");
 const dataBase = require("../../Structures/Data/Schemas/FeedsDB");
 const Parser = require("rss-parser");
-const posts = new Parser();
+const posts = new Parser({ timeout: 120000 });
 
 module.exports = {
     name: "ready",
