@@ -33,10 +33,10 @@ module.exports = {
             return interaction.reply({ embeds: [new EmbedBuilder()
                 .setAuthor({ name: `🔁 | Прошлый трек`, iconURL: client.config.MUSIC_ICON_URL })
                 .setColor("Green").setDescription([
-                    `Плеер проигрывает предыдущий трек.`,
-                    `__Текущий трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
+                    `\`•\` Плеер проигрывает предыдущий трек.`,
+                    `\`•\` __Текущий трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
                     ``,
-                    `Для пропуска музыки, используйте: **\`/skip\`**`
+                    `\`•\` Для пропуска музыки, используйте: **\`/skip\`**`
                 ].join("\n")).setTimestamp()
                 .setFooter({ text: `Запросил: ${member.nickname || user.displayName}`, iconURL: user.avatarURL() })]
             });

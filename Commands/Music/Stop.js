@@ -35,10 +35,10 @@ module.exports = {
             return await interaction.followUp({ embeds: [new EmbedBuilder()
                 .setAuthor({ name: "Плеер остановлен", iconURL: client.config.MUSIC_ICON_URL })
                 .setDescription([
-                    `Остановка плеера и очистка очереди дорожек.`,
-                    `__Последний трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
+                    `\`•\` Остановка плеера и очистка очереди дорожек.`,
+                    `\`•\` __Последний трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
                     ``,
-                    `Для проигрывания музыки, используйте: **\`/play\`**`
+                    `\`•\` Для проигрывания музыки, используйте: **\`/play\`**`
                 ].join("\n")).setColor("Green").setTimestamp()
                 .setFooter({ text: `Остановил: ${member.nickname || user.displayName}`, iconURL: user.avatarURL() })]
             });

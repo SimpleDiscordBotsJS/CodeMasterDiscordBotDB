@@ -19,10 +19,10 @@ module.exports = {
             await channel.send({ embeds: [new EmbedBuilder()
                 .setAuthor({ name: `Да будет музыка!`, iconURL: player.client.config.MUSIC_ICON_URL })
                 .setDescription([
-                    `Плеер начал воспроизводить музыку!`,
-                    `__Текущий трек__: **[[${track.title}](${track.url})]**`,
+                    `\`•\` Плеер начал воспроизводить музыку!`,
+                    `\`•\` __Текущий трек__: **[[${track.title}](${track.url})]**`,
                     ``,
-                    `Для остановки музыки, используйте: **\`/pause\`**`
+                    `\`•\` Для остановки музыки, используйте: **\`/pause\`**`
                 ].join("\n")).setColor("Green").setTimestamp()
                 .setFooter({ text: `Запустил: ${member.nickname || user.displayName}`, iconURL: user.avatarURL() })]
             });

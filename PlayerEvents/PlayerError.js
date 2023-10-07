@@ -20,7 +20,7 @@ module.exports = {
         Error(error);
 
 		return await metadata.channel.send({ embeds: [new EmbedBuilder().setColor("DarkRed").setTimestamp()
-            .setDescription(`Возникла ошибка с ${track.title}`)]
+            .setDescription(`\`•\` Возникла ошибка с ${track.title}`)]
         });
     }
 }

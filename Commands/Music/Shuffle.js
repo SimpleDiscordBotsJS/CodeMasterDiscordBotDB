@@ -33,10 +33,10 @@ module.exports = {
             return interaction.reply({ embeds: [new EmbedBuilder()
                 .setAuthor({ name: `Перемешивание треков`, iconURL: client.config.MUSIC_ICON_URL })
                 .setColor("Green").setDescription([
-                    `Треки успешно перемешаны.`,
-                    `__Текущий трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
+                    `\`•\` Треки успешно перемешаны.`,
+                    `\`•\` __Текущий трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
                     ``,
-                    `Для перемешивания треков, используйте: **\`/shuffle\`**`
+                    `\`•\` Для перемешивания треков, используйте: **\`/shuffle\`**`
                 ].join("\n")).setTimestamp()
                 .setFooter({ text: `Перемешал: ${member.nickname || user.displayName}`, iconURL: user.avatarURL() })]
             });

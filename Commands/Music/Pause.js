@@ -37,10 +37,10 @@ module.exports = {
             return await interaction.followUp({ embeds: [new EmbedBuilder()
                 .setAuthor({ name: `Плеер ${state ? 'остановлен' : 'продолжен'}`, iconURL: client.config.MUSIC_ICON_URL })
                 .setDescription([
-                    `${state ? 'Плеер остановлен' : 'Плеер продолжает воспроизведение'}`,
-                    `__Текущий трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
+                    `\`•\` ${state ? 'Плеер остановлен' : 'Плеер продолжает воспроизведение'}`,
+                    `\`•\` __Текущий трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
                     ``,
-                    `Для ${state ? 'продолжения' : 'остановки'} музыки, используйте: **\`/pause\`**`
+                    `\`•\` Для ${state ? 'продолжения' : 'остановки'} музыки, используйте: **\`/pause\`**`
                 ].join("\n")).setColor(state ? "DarkGold" : "Green").setTimestamp()
                 .setFooter({ text: `${state ? 'Остановил' : 'Продолжил'}: ${member.nickname || user.displayName}`, iconURL: user.avatarURL() })]
             });

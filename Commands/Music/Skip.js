@@ -35,10 +35,10 @@ module.exports = {
             return await interaction.followUp({ embeds: [new EmbedBuilder()
                 .setAuthor({ name: "Пропуск трека", iconURL: client.config.MUSIC_ICON_URL })
                 .setDescription([
-                    `Трек был пропущен.`,
-                    `__Пропущенный трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
+                    `\`•\` Трек был пропущен.`,
+                    `\`•\` __Пропущенный трек__: **[[${queue.currentTrack.title}](${queue.currentTrack.url})]**`,
                     ``,
-                    `Для игры предыдущей музыки, используйте: **\`/previous\`**`
+                    `\`•\` Для игры предыдущей музыки, используйте: **\`/previous\`**`
                 ].join("\n")).setColor("Green").setTimestamp()
                 .setFooter({ text: `Пропустил: ${member.nickname || user.displayName}`, iconURL: user.avatarURL() })]
             });

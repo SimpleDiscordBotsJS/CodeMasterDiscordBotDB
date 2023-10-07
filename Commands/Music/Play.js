@@ -49,7 +49,7 @@ module.exports = {
 
             return await interaction.followUp({ embeds: [new EmbedBuilder().setColor("Gold")
                 .setAuthor({ name: "Трек добавлен в плейлист", iconURL: client.config.MUSIC_ICON_URL })
-                .setDescription(`[${track.title}](${track.url})`)
+                .setDescription(`\`•\` [${track.title}](${track.url})`)
                 .addFields(
                     { name: "Автор", value: `${track.author}`, inline: true },
                     { name: "Длится", value: `\`${track.duration}\``, inline: true },

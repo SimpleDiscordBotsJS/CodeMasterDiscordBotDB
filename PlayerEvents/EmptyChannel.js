@@ -17,7 +17,7 @@ module.exports = {
         }
 
 		await metadata.channel.send({ embeds: [new EmbedBuilder().setColor("DarkRed").setTimestamp()
-            .setDescription("Я покинул канал через **5 минут** по причине **отсутствия активности канала**.")]
+            .setDescription(`\`•\` Я покинул канал через **5 минут** по причине **отсутствия активности канала**.`)]
         }).then((m) => setTimeout(() => m.delete(), 15000));
     }
 }
