@@ -24,12 +24,12 @@ module.exports = {
             rolesToAdd.push(REP_ROLE_1);
         }
 
-        if(rep >= 150 && rep <= 299 && REP_ROLE_2) {
+        if(rep >= 150 && rep <= 599 && REP_ROLE_2) {
             rolesToAdd.push(REP_ROLE_2);
             if(REP_ROLE_1) rolesToAdd.push(REP_ROLE_1);
         }
 
-        if(rep >= 300 && REP_ROLE_3) {
+        if(rep >= 600 && REP_ROLE_3) {
             rolesToAdd.push(REP_ROLE_3);
             if(REP_ROLE_2) rolesToAdd.push(REP_ROLE_2);
             if(REP_ROLE_1) rolesToAdd.push(REP_ROLE_1);
