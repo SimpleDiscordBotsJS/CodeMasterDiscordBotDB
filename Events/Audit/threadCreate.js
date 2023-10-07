@@ -19,7 +19,7 @@ module.exports = {
         
         const Embed = new EmbedBuilder()
         .setColor("#70ec46").setTitle("🌳 __**Ветка создана**__ 🌳")
-        .setDescription(`${thread} была успешно создана`)
+        .setDescription(`\`•\` ${thread} была успешно создана`)
         .addFields(
             { name: `Ветка`, value: `${thread}`, inline: true },
             { name: "Создатель", value: `<@${thread.ownerId}>`, inline: true }

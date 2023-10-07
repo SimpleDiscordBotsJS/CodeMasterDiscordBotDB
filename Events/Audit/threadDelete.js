@@ -19,7 +19,7 @@ module.exports = {
         
         const Embed = new EmbedBuilder()
         .setColor("#ea4e4e").setTitle("🌳 __**Ветка удалена**__ 🌳")
-        .setDescription(`**${thread.name}** была успешно удалена`)
+        .setDescription(`\`•\` **${thread.name}** была успешно удалена`)
         .addFields({ name: `Ветка`, value: `\`${thread.name}\``, inline: true })
         .setTimestamp();
 

@@ -16,7 +16,7 @@ module.exports = {
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
         const Embed = new EmbedBuilder().setColor("#70ec46").setTitle("🎊 __**Ивент создан**__ 🎊")
-        .setDescription(`**${guildScheduledEvent.name}** был успешно создан: ${guildScheduledEvent.description}`)
+        .setDescription(`\`•\` **${guildScheduledEvent.name}** был успешно создан: ${guildScheduledEvent.description}`)
         .addFields(
             { name: "Тип ивента", value: `\`${guildScheduledEvent.type}\``, inline: true },
             { name: "Создатель", value: `${guildScheduledEvent.creator}`, inline: true },

@@ -21,7 +21,7 @@ module.exports = {
         if (oldThread.name !== newThread.name) {
             const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
-            .setDescription(`${oldThread} | Имя было обновлено`)
+            .setDescription(`\`•\` ${oldThread} | Имя было обновлено`)
             .addFields(
                 { name: "Старое имя", value: `\`${oldThread.name}\``, inline: true },
                 { name: "Новое имя", value: `\`${newThread.name}\``, inline: true }
@@ -34,7 +34,7 @@ module.exports = {
         if(oldThread.type !== newThread.type) {
             const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
-            .setDescription(`${oldThread} | Тип был обновлён`)
+            .setDescription(`\`•\` ${oldThread} | Тип был обновлён`)
             .addFields(
                 { name: "Старый тип", value: `\`${oldThread.type}\``, inline: true },
                 { name: "Новый тип", value: `\`${newThread.type}\``, inline: true }
@@ -47,7 +47,7 @@ module.exports = {
         if(oldThread.rateLimitPerUser !== newThread.rateLimitPerUser) {
             const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
-            .setDescription(`${oldThread} | Ограничение скорости было обновлено`)
+            .setDescription(`\`•\` ${oldThread} | Ограничение скорости было обновлено`)
             .addFields(
                 { name: "Старая скорость", value: `\`${oldThread.rateLimitPerUser}\``, inline: true },
                 { name: "Новая скорость", value: `\`${newThread.rateLimitPerUser}\``, inline: true }
@@ -60,7 +60,7 @@ module.exports = {
         if(oldThread.parent !== newThread.parent) {
             const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
-            .setDescription(`${oldThread} | Родитель был обновлен`)
+            .setDescription(`\`•\` ${oldThread} | Родитель был обновлен`)
             .addFields(
                 { name: "Старый родитель", value: `\`${oldThread.parent}\``, inline: true },
                 { name: "Новый родитель", value: `\`${newThread.parent}\``, inline: true }
@@ -73,7 +73,7 @@ module.exports = {
         if(oldThread.archived !== newThread.archived) {
             const Embed = new EmbedBuilder()
             .setTitle("🌳 __**Ветка изменена**__ 🌳").setColor("#3ccffa")
-            .setDescription(`${oldThread} | Значение архивации было обновлено`)
+            .setDescription(`\`•\` ${oldThread} | Значение архивации было обновлено`)
             .addFields(
                 { name: "Старое значение", value: `\`${oldThread.archived}\``, inline: true },
                 { name: "Новое значение", value: `\`${newThread.archived}\``, inline: true }

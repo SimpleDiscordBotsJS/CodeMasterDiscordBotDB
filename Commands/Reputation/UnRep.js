@@ -30,7 +30,7 @@ module.exports = {
 
         //Успешный тыбзинг текста из гравит
         interaction.reply({ embeds: [new EmbedBuilder()
-            .setDescription(`Пользователь ${user} выражает неодобрение ${target}`)
+            .setDescription(`\`•\` Пользователь ${user} выражает неодобрение ${target}`)
             .setColor("#36393f").addFields(
                 { name: "Репутация:", value: `Репутация пользователя уменьшена на: \`\`3\`\``, inline: false },
                 { name: "Как выразить неодобрение?", value: `\`\`\`/unrep\`\`\``, inline: false }

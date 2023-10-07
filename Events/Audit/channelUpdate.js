@@ -24,7 +24,7 @@ module.exports = {
         if(oldChannel.name !== newChannel.name) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | Имя было изменено`)
+            .setDescription(`\`•\` ${oldChannel} | Имя было изменено`)
             .addFields(
                 { name: "Старое имя", value: `\`${oldChannel.name}\``, inline: true },
                 { name: "Новое имя", value: `\`${newChannel.name}\``, inline: true }
@@ -37,7 +37,7 @@ module.exports = {
         if(oldChannel.topic !== newChannel.topic) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | Тема была изменена`)
+            .setDescription(`\`•\` ${oldChannel} | Тема была изменена`)
             .addFields(
                 { name: "Старая темя", value: `\`${oldChannel.topic ? oldChannel.topic : "None"}\``, inline: true },
                 { name: "Новая тема", value: `\`${newChannel.topic ? newChannel.topic : "None"}\``, inline: true }
@@ -50,7 +50,7 @@ module.exports = {
         if(oldChannel.position !== newChannel.position) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | Позиция была изменена`)
+            .setDescription(`\`•\` ${oldChannel} | Позиция была изменена`)
             .addFields(
                 { name: "Старая позиция", value: `\`${oldChannel.position}\``, inline: true },
                 { name: "Новая позиция", value: `\`${newChannel.position}\``, inline: true }
@@ -63,7 +63,7 @@ module.exports = {
         if(oldChannel.type !== newChannel.type) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | Тип был изменён`)
+            .setDescription(`\`•\` ${oldChannel} | Тип был изменён`)
             .addFields(
                 { name: "Старый тип", value: `\`${oldChannel.type}\``, inline: true },
                 { name: "Новый тип", value: `\`${newChannel.type}\``, inline: true }
@@ -76,7 +76,7 @@ module.exports = {
         if(oldChannel.nsfw !== newChannel.nsfw) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | nsfw тип был изменён`)
+            .setDescription(`\`•\` ${oldChannel} | nsfw тип был изменён`)
             .addFields(
                 { name: "Старый nsfw", value: `\`${oldChannel.nsfw}\``, inline: true },
                 { name: "Новый nsfw", value: `\`${newChannel.nsfw}\``, inline: true }
@@ -89,7 +89,7 @@ module.exports = {
         if(oldChannel.bitrate !== newChannel.bitrate) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | Битрейт был изменён`)
+            .setDescription(`\`•\` ${oldChannel} | Битрейт был изменён`)
             .addFields(
                 { name: "Старый битрейт", value: `\`${oldChannel.bitrate}\``, inline: true },
                 { name: "Новый битрейт", value: `\`${newChannel.bitrate}\``, inline: true }
@@ -102,7 +102,7 @@ module.exports = {
         if(oldChannel.userLimit !== newChannel.userLimit) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | Лимит пользователей был изменён`)
+            .setDescription(`\`•\` ${oldChannel} | Лимит пользователей был изменён`)
             .addFields(
                 { name: "Старый лимит", value: `\`${oldChannel.userLimit}\``, inline: true },
                 { name: "Новый лимит", value: `\`${newChannel.userLimit}\``, inline: true }
@@ -115,7 +115,7 @@ module.exports = {
         if(oldChannel.rateLimitPerUser !== newChannel.rateLimitPerUser) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | Ограничение скорости было изменено`)
+            .setDescription(`\`•\` ${oldChannel} | Ограничение скорости было изменено`)
             .addFields(
                 { name: "Старая скорость", value: `\`${oldChannel.rateLimitPerUser ? oldChannel.rateLimitPerUser : "None"}\``, inline: true },
                 { name: "Новая скорость", value: `\`${newChannel.rateLimitPerUser ? newChannel.rateLimitPerUser : "None"}\``, inline: true }
@@ -128,7 +128,7 @@ module.exports = {
         if(oldChannel.parent !== newChannel.parent) {
             const Embed = new EmbedBuilder()
             .setTitle('🔰 __**Обновление канала**__ 🔰').setColor("#3ccffa")
-            .setDescription(`${oldChannel} | Родитель был изменён`)
+            .setDescription(`\`•\` ${oldChannel} | Родитель был изменён`)
             .addFields(
                 { name: "Старый родитель", value: `\`${oldChannel.parent}\``, inline: true },
                 { name: "Новый родитель", value: `\`${newChannel.parent}\``, inline: true }

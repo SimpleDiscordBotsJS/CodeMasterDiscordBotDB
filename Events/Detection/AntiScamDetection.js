@@ -32,7 +32,7 @@ module.exports = {
         const Embed = new EmbedBuilder()
         .setTitle("__**✋Обнаружено SCAM сообщение✋**__").setColor("Red")
         .setThumbnail(`${author.displayAvatarURL({ dynamic: true })}`).setTimestamp()
-        .setDescription(`Пожалуйста, не отправляйте SCAM сообщения!`)
+        .setDescription(`\`•\` Пожалуйста, не отправляйте SCAM сообщения!`)
         .addFields({ name: "Пользователь:", value: `\`\`\`${author.tag} (${author.id})\`\`\`` });
         
         message.channel.send({ embeds: [Embed] }).then((m) => setTimeout(() => m.delete(), 10000));

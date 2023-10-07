@@ -25,8 +25,8 @@ module.exports = {
         .setDescription([
             `Рады приветствовать ${member} на **${guild.name}**!`,
             ``,
-            `Аккаунт создан: <t:${parseInt(user.createdTimestamp / 1000)}:R>`,
-            `Всего на сервере: **${guild.memberCount}** человек`
+            `\`•\` Аккаунт создан: <t:${parseInt(user.createdTimestamp / 1000)}:R>`,
+            `\`•\` Всего на сервере: **${guild.memberCount}** человек`
         ].join("\n"))
         .addFields(
             { name: `**Новости:**`, value: `<#962053378584752178>`, inline: true },

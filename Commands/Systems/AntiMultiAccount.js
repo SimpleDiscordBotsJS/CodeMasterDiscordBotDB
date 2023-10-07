@@ -29,7 +29,7 @@ module.exports = {
         .catch((err) => Error(err));
 
         await interaction.reply({ embeds: [new EmbedBuilder().setColor("Gold")
-            .setDescription("Канал логов системы Anti Multi Account успешно установлен.")
+            .setDescription(`\`•\` Канал логов системы Anti Multi Account успешно установлен.`)
             .addFields({ name: "Канал", value: `${LogChannel}` })], ephemeral: true
         });
         

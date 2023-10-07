@@ -22,7 +22,7 @@ module.exports = {
     
         const Embed = new EmbedBuilder().setColor("#e15050")
         .setTitle("🔰 __**Канал удалён**__ 🔰")
-        .setDescription(`**${channel.name}** был успешно удалён`)
+        .setDescription(`\`•\` **${channel.name}** был успешно удалён`)
         .addFields({ name: `Канал`, value: `\`${channel.name}\``, inline: true })
         .setTimestamp();
 

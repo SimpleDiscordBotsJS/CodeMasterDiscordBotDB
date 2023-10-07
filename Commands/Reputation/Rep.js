@@ -30,7 +30,7 @@ module.exports = {
 
         //Успешный тыбзинг текста из гравит
         interaction.reply({ embeds: [new EmbedBuilder()
-            .setDescription(`Пользователь ${user} говорит спасибо ${target}`)
+            .setDescription(`\`•\` Пользователь ${user} говорит спасибо ${target}`)
             .setColor("#36393f").addFields(
                 { name: "Репутация:", value: `Репутация пользователя увеличена на: \`\`${2}\`\``, inline: false },
                 { name: "Как сказать спасибо?", value: `\`\`\`/rep\`\`\``, inline: false }

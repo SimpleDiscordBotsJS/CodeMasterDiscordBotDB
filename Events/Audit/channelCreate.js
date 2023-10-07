@@ -22,7 +22,7 @@ module.exports = {
 
         const Embed = new EmbedBuilder().setColor("#70ec46")
         .setTitle("🔰 __**Канал создан**__ 🔰")
-        .setDescription(`**${channel.name}** был успешно создан`)
+        .setDescription(`\`•\` **${channel.name}** был успешно создан`)
         .addFields({ name: `Канал`, value: `${channel}`, inline: true })
         .setTimestamp();
 

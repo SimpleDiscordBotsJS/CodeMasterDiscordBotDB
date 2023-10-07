@@ -18,7 +18,7 @@ module.exports = {
         const Embed = new EmbedBuilder().setColor("#70ec46")
         .setAuthor({name: member.user.username, iconURL: member.user.avatarURL()})
         .setTitle("🙂 __**Новый пользователь**__ 🙂")
-        .setDescription(`${member} присоединился к серверу`)
+        .setDescription(`\`•\` ${member} присоединился к серверу`)
         .addFields(
             { name: "Пользователь", value: `${member}`, inline: true },
             { name: "Создан", value: `<t:${parseInt(member.user.createdAt / 1000)}:R>`, inline: true }

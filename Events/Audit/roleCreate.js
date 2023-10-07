@@ -17,7 +17,7 @@ module.exports = {
         
         const Embed = new EmbedBuilder()
         .setColor("#70ec46").setTitle("🚬 __**Роль создана**__ 🚬")
-        .setDescription(`${role} была успешно создана`)
+        .setDescription(`\`•\` ${role} была успешно создана`)
         .addFields({ name: "Роль", value: `${role}`, inline: true })
         .setTimestamp();
 

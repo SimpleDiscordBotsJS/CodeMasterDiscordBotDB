@@ -44,7 +44,7 @@ module.exports = {
 
                 await interaction.reply({ embeds: [new EmbedBuilder()
                     .addFields({ name: "Канал", value: `${LogChannel}` })
-                    .setDescription(`Канал логов системы Anti Scam успешно установлен.`)
+                    .setDescription(`\`•\` Канал логов системы Anti Scam успешно установлен.`)
                     .setColor("Gold")], ephemeral: true
                 });
             }

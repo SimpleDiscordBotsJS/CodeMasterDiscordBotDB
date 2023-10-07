@@ -19,7 +19,7 @@ module.exports = {
         if(oldRole.name !== newRole.name) {
             const Embed = new EmbedBuilder()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
-            .setDescription(`${newRole} | Имя роли было обновлено`)
+            .setDescription(`\`•\` ${newRole} | Имя роли было обновлено`)
             .addFields(
                 { name: "Старое имя", value: `\`${oldRole.name}\`` },
                 { name: "Новое имя", value: `\`${newRole.name}\`` }
@@ -31,7 +31,7 @@ module.exports = {
         if(oldRole.hexColor !== newRole.hexColor) {
             const Embed = new EmbedBuilder()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
-            .setDescription(`${newRole} | Цвет роли был обновлён`)
+            .setDescription(`\`•\` ${newRole} | Цвет роли был обновлён`)
             .addFields(
                 { name: "Старый цвет", value: `\`${oldRole.hexColor}\`` },
                 { name: "Новый цвет", value: `\`${newRole.hexColor}\`` }
@@ -43,7 +43,7 @@ module.exports = {
         if(oldRole.hoist !== newRole.hoist) {
             const Embed = new EmbedBuilder()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
-            .setDescription(`${newRole} | hoist has been updated`)
+            .setDescription(`\`•\` ${newRole} | hoist has been updated`)
             .addFields(
                 { name: "Старый hoist", value: `${oldRole.hoist}` },
                 { name: "Новый hoist", value: `${newRole.hoist}` }
@@ -55,7 +55,7 @@ module.exports = {
         if(oldRole.icon !== newRole.icon) {
             const Embed = new EmbedBuilder()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
-            .setDescription(`${newRole} | Иконка роли была обновлена`)
+            .setDescription(`\`•\` ${newRole} | Иконка роли была обновлена`)
             .addFields(
                 { name: "Старая иконка", value: `${oldRole.icon ? oldRole.iconURL : "None"}` },
                 { name: "Новая иконка", value: `${newRole.icon ? newRole.iconURL : "None"}` }
@@ -67,7 +67,7 @@ module.exports = {
         if(oldRole.mentionable !== newRole.mentionable) {
             const Embed = new EmbedBuilder()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
-            .setDescription(`${newRole} | Параметр упоминания был обновлён`)
+            .setDescription(`\`•\` ${newRole} | Параметр упоминания был обновлён`)
             .addFields(
                 { name: "Старый параметр", value: `\`${oldRole.mentionable}\`` },
                 { name: "Новый параметр", value: `\`${newRole.mentionable}\`` }
@@ -79,7 +79,7 @@ module.exports = {
         if(oldRole.position !== newRole.position) {
             const Embed = new EmbedBuilder()
             .setColor("#3ccffa").setTitle("🚬 __**Роль изменена**__ 🚬")
-            .setDescription(`${newRole} | Позиция роли была обновлена`)
+            .setDescription(`\`•\` ${newRole} | Позиция роли была обновлена`)
             .addFields(
                 { name: "Старая позиция", value: `\`${oldRole.position}\`` },
                 { name: "Новая позиция", value: `\`${newRole.position}\`` }

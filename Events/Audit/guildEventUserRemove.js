@@ -17,7 +17,7 @@ module.exports = {
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
 
         const Embed = new EmbedBuilder().setColor("#ea4e4e").setTitle("🎊 __**Пользователь удалён из ивента**__ 🎊")
-        .setDescription(`**${guildScheduledEvent.name}** Пользователь успешно удалён из ивента`)
+        .setDescription(`\`•\` **${guildScheduledEvent.name}** Пользователь успешно удалён из ивента`)
         .addFields(
             { name: "Ивент", value: `\`${guildScheduledEvent.name}\``, inline: true },
             { name: "Пользователь", value: `${user}`, inline: true }

@@ -69,7 +69,7 @@ module.exports = {
                     .setDescription(`❌ Этот сервер не настроил систему предложений.`)]});
                 } else {
                     interaction.reply({embeds: [new EmbedBuilder().setColor("Aqua")
-                    .setDescription(`В настоящее время, каналом предложений является <#${suggestion.ChannelID}>`)]});
+                    .setDescription(`\`•\` В настоящее время, каналом предложений является <#${suggestion.ChannelID}>`)]});
                 }
             }
             break;

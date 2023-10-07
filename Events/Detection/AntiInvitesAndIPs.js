@@ -28,7 +28,7 @@ module.exports = {
                 message.delete().catch(() => {})
 
                 Embed.setTitle("__**Обнаружен IP адрес!**__")
-                .setDescription(`Пожалуйста, не отправляйте IP адреса!`);
+                .setDescription(`\`•\` Пожалуйста, не отправляйте IP адреса!`);
             
                 return await message.channel.send({ embeds: [Embed] }).then((m) => setTimeout(() => m.delete(), 15000));
             } else {
@@ -45,7 +45,7 @@ module.exports = {
                 message.delete();
 
                 Embed.setTitle("__**Обнаружено приглашение на другой сервер!**__")
-                .setDescription(`Пожалуйста, не отправляйте приглашения!`);
+                .setDescription(`\`•\` Пожалуйста, не отправляйте приглашения!`);
             
                 return await message.channel.send({ embeds: [Embed] }).then((m) => setTimeout(() => m.delete(), 7000));
             } else {

@@ -18,7 +18,7 @@ module.exports = {
         const Embed = new EmbedBuilder()
         .setColor("#e15050")
         .setTitle("🔨 __**Пользователь забанен**__ 🔨")
-        .setDescription(`**${ban.user.tag}** был успешно забанен`)
+        .setDescription(`\`•\` **${ban.user.tag}** был успешно забанен`)
         .addFields(
             { name: `Пользователь`, value: `${ban.user}`, inline: true },
             { name: `Причина`, value: `\`${ban.reason ? `${ban.reason}` : "Не указана"}\``, inline: true }
