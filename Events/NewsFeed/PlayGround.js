@@ -11,7 +11,7 @@ module.exports = {
      */
     async execute(client) {
 
-        checkOneHour();
+        everyTenMinutes();
 
         /**
          * Check exist and get guild channel
@@ -45,12 +45,14 @@ module.exports = {
                 return false;
             }
         }
+
         
-        
-        async function checkOneHour() {
+        async function everyTenMinutes() {
             const feed = await posts.parseURL(`http://www.playground.ru/rss/news.xml`).catch(e => {
-                setTimeout(checkOneHour, 1000 * 60)
+                Error(`[FEED][PLAYGROUND] Не удалось загрузить ленту! Причина: \n${e}`);
+                setTimeout(everyTenMinutes, 1000 * 60);
             });
+            if(!feed) return Info(`[FEED][PLAYGROUND] Производится попытка восстановления работоспособности через перезапуск!`);
 
             const channel = await checkExistAndGetChannel(client, client.config.FEEDS_CHANNELS.PLAYGROUND);
             if(!channel) return Info(`[FEED][PLAYGROUND] Отправка новостной ленты остановлена!`);
@@ -85,7 +87,7 @@ module.exports = {
             
             // ======================================================================== //
             
-            setTimeout(checkOneHour, 1000 * 60 * 10);
+            setTimeout(everyTenMinutes, 1000 * 60 * 10);
         }
     }
 }
