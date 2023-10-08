@@ -1,5 +1,5 @@
 const { EmbedBuilder, Client, ChannelType } = require("discord.js");
-const { Error, Success } = require("../../Structures/Utilities/Logger");
+const { Error, Info, Success } = require("../../Structures/Utilities/Logger");
 const dataBase = require("../../Structures/Data/Schemas/FeedsDB");
 const Parser = require("rss-parser");
 const posts = new Parser({ timeout: 120000 });
@@ -12,19 +12,48 @@ module.exports = {
     async execute(client) {
 
         checkOneHour();
+
+        /**
+         * Check exist and get guild channel
+         * @param {Client} client Discord bot Client
+         * @param {String} channelId Discord Guild Channel ID
+         * @returns Return guild channel or error
+         */
+        async function checkExistAndGetChannel(client, channelId) {
+            try {
+                const checkChannel = await client.channels.fetch(channelId).catch(e => {
+                    Error(`[FEED][PLAYGROUND] Не удалось определить канал! Причина: \n${e}`);
+                });
+
+                if(!checkChannel) {
+                    Error(`[FEED][PLAYGROUND] Канал не найден! Остановка отправки...`);
+                    return false;
+                }
+
+                if(checkChannel.type === ChannelType.GuildText) {
+                    //Info(`[FEED][PLAYGROUND] Канал успешно определён!`);
+                    return checkChannel;
+                } else if(checkChannel.type === ChannelType.GuildAnnouncement) {
+                    //Info(`[FEED][PLAYGROUND] Канал успешно определён!`);
+                    return checkChannel;
+                } else {
+                    Error(`[FEED][PLAYGROUND] Найденный канал имеет неподходящий тип! Остановка отправки...`);
+                    return false;
+                }
+            } catch (e) {
+                Error(e);
+                return false;
+            }
+        }
+        
         
         async function checkOneHour() {
             const feed = await posts.parseURL(`http://www.playground.ru/rss/news.xml`).catch(e => {
                 setTimeout(checkOneHour, 1000 * 60)
             });
 
-            const channel = await client.channels.fetch(client.config.FEEDS_CHANNELS.PLAYGROUND).catch(e => {
-                return Error("[FEED][PLAYGROUND] Не удалось определить канал!");
-            });
-            if(!channel) return Error("[FEED][PLAYGROUND] Канал не найден!");
-            if(channel.type !== ChannelType.GuildText) {
-                return Error("[FEED][PLAYGROUND] Найденный канал имеет неподходящий тип!");
-            }
+            const channel = await checkExistAndGetChannel(client, client.config.FEEDS_CHANNELS.PLAYGROUND);
+            if(!channel) return Info(`[FEED][PLAYGROUND] Отправка новостной ленты остановлена!`);
 
             let data = await dataBase.findOne({ GuildID: channel.guildId });
             if(!data) data = await dataBase.create({ GuildID: channel.guildId });
