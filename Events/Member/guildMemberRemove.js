@@ -23,8 +23,8 @@ module.exports = {
         .setDescription([
             `${member} покинул нас, аминь.`,
             ``,
-            `\`•\` Присоединился к нам: <t:${parseInt(member.joinedTimestamp / 1000)}:R>`,
-            `\`•\` Всего на сервере: **${guild.memberCount}** человек`
+            `\` ➥ \` Присоединился к нам: <t:${parseInt(member.joinedTimestamp / 1000)}:R>`,
+            `\` ➥ \` Всего на сервере: **${guild.memberCount}** человек`
         ].join("\n"))
         .setFooter({ text: `ID: ${user.id}` }).setTimestamp();
 
