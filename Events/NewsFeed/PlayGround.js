@@ -77,6 +77,8 @@ module.exports = {
                     channel.send({ embeds: [Embed] }).then((m) => {
                         if(m.crosspostable) m.crosspost();
                         m.startThread({ name: `${item.title.substring(0, 50)}...`});
+                    }).catch(e => {
+                        return Error(`[FEED][PLAYGROUND] Возникла ошибка при отправке сообщения:\n${e}`);
                     });
 
                     Success(`[FEED][PLAYGROUND] Отправлен пост под номером: [${id}]`);

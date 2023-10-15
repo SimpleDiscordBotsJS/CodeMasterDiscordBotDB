@@ -1,4 +1,5 @@
 const { ChannelType, Client, Collection, VoiceState } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 const schema = require("../../Structures/Data/Schemas/JoinToCreateDB");
 const voiceManager = new Collection();
 
@@ -37,13 +38,18 @@ module.exports = {
                     { id: guild.id, allow: ["Connect"] }
                 ],
                 userLimit: userLimit
+            }).catch((error) => {
+                return Error(`[Systems/JoinToCreate] Произошла ошибка при создании канала:\n${error}`);
             });
 
             voiceManager.set(member.id, voiceChannel.id);
 
             await newChannel.permissionOverwrites.edit(member, {
                 Connect: false
+            }).catch((error) => {
+                Error(`[Systems/JoinToCreate] Произошла ошибка при изменении прав:\n${error}`);
             });
+;
 
             setTimeout(() => {
                 newChannel.permissionOverwrites.delete(member);
@@ -63,18 +69,24 @@ module.exports = {
                 let randomMember = guild.members.cache.get(randomId);
 
                 randomMember.voice.setChannel(oldChannel).then(() => {
-                    oldChannel.setName(`Канал ${randomMember.user.username}`).catch((error) => console.log(error));
+                    oldChannel.setName(`Канал ${randomMember.user.username}`).catch((error) => {
+                        Error(`[Systems/JoinToCreate] Произошла ошибка при автоматическом переименовании канала:\n${error}`);
+                    });
                     oldChannel.permissionOverwrites.edit(randomMember, {
                         Connect: true,
                         ManageChannels: true
                     });
+                }).catch((error) => {
+                    return Error(`[Systems/JoinToCreate] Произошла ошибка при выдаче прав новому владельцу:\n${error}`);
                 });
 
                 voiceManager.set(member.id, null);
                 voiceManager.set(randomMember.id, oldChannel.id);
             } else {
                 voiceManager.set(member.id, null);
-                oldChannel.delete().catch((error) => console.log(error));
+                oldChannel.delete().catch((error) => {
+                    return Error(`[Systems/JoinToCreate] Произошла ошибка при удалении канала:\n${error}`);
+                });
             }
         }
     }

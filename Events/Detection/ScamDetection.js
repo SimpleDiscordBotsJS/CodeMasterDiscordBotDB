@@ -1,4 +1,5 @@
 const { Message, Client, EmbedBuilder } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "messageCreate",
@@ -54,7 +55,9 @@ module.exports = {
             )
             .setTimestamp();
             
-            await channelObject.send({ embeds: [LogEmbed] });
+            await channelObject.send({ embeds: [LogEmbed] }).catch(e => {
+                return Error(`[Detection/ScamDetection] Произошла ошибка при отправке:\n${e}`);
+            });
         }
     }
 }

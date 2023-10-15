@@ -1,5 +1,5 @@
 const { Message, EmbedBuilder } = require("discord.js");
-const { Warning } = require("../../Structures/Utilities/Logger");
+const { Warning, Error } = require("../../Structures/Utilities/Logger");
 const { ANTI_FLOOD } = require("../../Structures/Data/Configs/config.json");
 
 const usersMap = new Map();
@@ -50,9 +50,13 @@ module.exports = {
                             )
                             .setFooter({ text: `Сервер: ${member.guild.name} | ID: ${member.user.id}` })
                             .setTimestamp()]
+                        }).catch(e => {
+                            return Error(`[Detection/AntiFlood] Произошла ошибка при отправке:\n${e}`);
                         });
 
-                        await member.timeout({ duration: 24 * 60 * 60 * 1000, reason: "Флуд" });
+                        await member.timeout({ duration: 24 * 60 * 60 * 1000, reason: "Флуд" }).catch(e => {
+                            return Error(`[Detection/ScamDetection] Произошла ошибка при выполнении timeout'а:\n${e}`);
+                        });
                     } else {
                         Warning("У бота отсутствуют в канале необходимые права: SendMessages & ManageMessages");
                     }

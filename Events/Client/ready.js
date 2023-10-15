@@ -1,5 +1,5 @@
 const { ActivityType, Client } = require("discord.js");
-const { Success } = require("../../Structures/Utilities/Logger");
+const { Success, Error } = require("../../Structures/Utilities/Logger");
 const { loadCommands } = require("../../Structures/Handlers/commandHandler");
 
 module.exports = {
@@ -9,15 +9,19 @@ module.exports = {
      * @param {Client} client 
      */
     execute(client) {
-        Success(`[BOT] Запущен от имени бота: ${client.user.tag}`);
-        client.user.setPresence({
-            activities: [{ name: "CodeМ", type: ActivityType.Watching }],
-            status: "dnd",
-        });
+        try {
+            Success(`[BOT] Запущен от имени бота: ${client.user.tag}`);
+            client.user.setPresence({
+                activities: [{ name: "CodeМ", type: ActivityType.Watching }],
+                status: "dnd",
+            });
 
-        loadCommands(client);
+            loadCommands(client);
 
-        require("../../Structures/Systems/AntiScamSystem")(client);
-        require("../../Structures/Systems/AutoRoleSystem")(client);
+            require("../../Structures/Systems/AntiScamSystem")(client);
+            require("../../Structures/Systems/AutoRoleSystem")(client);
+        } catch (error) {
+            return Error(`[Client/ready] Произошла ошибка:\n${error}`);
+        }
     }
 }

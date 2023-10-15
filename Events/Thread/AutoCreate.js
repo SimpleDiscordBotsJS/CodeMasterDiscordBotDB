@@ -1,5 +1,6 @@
 const { Message } = require("discord.js");
 const { CREATE_THREAD_TO_CHANNELS, NEWS_THREAD_CREATE_TO_CHANNELS } = require("../../Structures/Data/Configs/config.json");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "messageCreate",
@@ -23,6 +24,8 @@ module.exports = {
             await message.startThread({ name: `${capitalizeFirstLetter(Content).substring(0, 50)}...`, autoArchiveDuration: 60 })
             .then((thread) => {
                 thread.setLocked(false);
+            }).catch(e => {
+                return Error(`[Thread/AutoCreate] Произошла ошибка при создании обычной ветки:\n${e}`);
             });
         });
 
@@ -35,9 +38,10 @@ module.exports = {
 
             await message.startThread({ name: name, autoArchiveDuration: 1440 }).then((thread) => {
                 thread.setLocked(false);
+            }).catch(e => {
+                return Error(`[Thread/AutoCreate] Произошла ошибка при создании новостной ветки:\n${e}`);
             });
 
-            //Авто лайки успешно перенесены, из автоответчика, сюда.
             await message.react("👍");
             await message.react("👎");
         });

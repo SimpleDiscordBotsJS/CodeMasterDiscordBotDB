@@ -19,6 +19,7 @@ module.exports = {
             const ctx = canvas.getContext("2d");
 
             const background = await Canvas.loadImage("./Structures/Data/Images/booster.png");
+            if(!background) return Error(`[Detection/Boosting] Не удалось загрузить фон!`);
             ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
             ctx.strokeStyle = "#9B59B6";
@@ -39,12 +40,16 @@ module.exports = {
 
             const attachment = new AttachmentBuilder(canvas.toBuffer(), "booster.png");
 
-            Thankyou.setDescription(`Спасибо большое, за буст сервера!`);
+            Thankyou.setDescription(`Искренне благодарим вас, за буст сервера!`);
             Thankyou.setImage('attachment://booster.png');
 
-            await guild.systemChannel.send({ embeds: [Thankyou], files: [attachment] }).catch((err) => Error(err));
+            await guild.systemChannel.send({ embeds: [Thankyou], files: [attachment] }).catch(e => {
+                Error(`[Detection/Boosting] Произошла ошибка при отправке сообщения:\n${e}`);
+            });
 
-            newMember.send({ embeds: [Thankyou] });
+            newMember.send({ embeds: [Thankyou] }).catch(e => {
+                return Error(`[Detection/Boosting] Произошла ошибка при отправке личного сообщения:\n${e}`);
+            });
         }
     }
 }

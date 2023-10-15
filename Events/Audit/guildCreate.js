@@ -7,6 +7,6 @@ module.exports = {
      * @param {GuildManager} guild 
      */
     async execute(guild) {
-        return Info(`Я был добавлен на сервер: ${guild.name} (${guild.id})!`);
+        return Info(`Я добавлен на сервер: ${guild.name} (${guild.id})!`);
     }
 }

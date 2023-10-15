@@ -1,4 +1,5 @@
 const { RoleManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "roleUpdate",
@@ -8,11 +9,11 @@ module.exports = {
      * @param {Client} client
      */
     async execute(oldRole, newRole, client) {
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(oldRole.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_ROLE_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
@@ -26,7 +27,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/roleUpdate/nameUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
         if(oldRole.hexColor !== newRole.hexColor) {
             const Embed = new EmbedBuilder()
@@ -38,7 +41,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/roleUpdate/colorUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
         if(oldRole.hoist !== newRole.hoist) {
             const Embed = new EmbedBuilder()
@@ -50,7 +55,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/roleUpdate/hoistUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
         if(oldRole.icon !== newRole.icon) {
             const Embed = new EmbedBuilder()
@@ -62,7 +69,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/roleUpdate/iconUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
         if(oldRole.mentionable !== newRole.mentionable) {
             const Embed = new EmbedBuilder()
@@ -74,7 +83,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/roleUpdate/mentionableUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
         if(oldRole.position !== newRole.position) {
             const Embed = new EmbedBuilder()
@@ -86,7 +97,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/roleUpdate/positionUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
     }
 }

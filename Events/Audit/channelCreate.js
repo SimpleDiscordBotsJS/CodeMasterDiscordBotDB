@@ -1,4 +1,5 @@
 const { ChannelManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "channelCreate",
@@ -12,11 +13,11 @@ module.exports = {
         if(channel.type === "GUILD_PUBLIC_THREAD") return;
         if(channel.type === "GUILD_PRIVATE_THREAD ") return;
 
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(channel.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_CHANNEL_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
 
@@ -26,6 +27,8 @@ module.exports = {
         .addFields({ name: `Канал`, value: `${channel}`, inline: true })
         .setTimestamp();
 
-        webhook.send({ embeds: [Embed] });
+        webhook.send({ embeds: [Embed] }).catch(e => {
+            return Error(`[Audit/channelCreate] Произошла ошибка при отправке:\n${e}`);
+        });
     }
 }

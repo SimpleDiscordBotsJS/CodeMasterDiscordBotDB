@@ -7,6 +7,6 @@ module.exports = {
      * @param {GuildManager} guild 
      */
     async execute(guild) {
-        return Info(`Я был удалён из сервера: ${guild.name} (${guild.id})!`);
+        return Info(`Я удалён c сервера: ${guild.name} (${guild.id})!`);
     }
 }

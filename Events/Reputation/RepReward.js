@@ -1,5 +1,6 @@
 const { Message, Client } = require("discord.js");
 const { getData } = require("../../Structures/Utilities/RepUtilities");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 //TODO: Переделать систему наград.
 
@@ -38,14 +39,18 @@ module.exports = {
         const memberRoles = member.roles.cache.map(role => role.id);
         rolesToAdd.forEach(roleToAdd => {
             if(!memberRoles.includes(roleToAdd)) {
-                member.roles.add(roleToAdd).catch(console.error);
+                member.roles.add(roleToAdd).catch(e => {
+                    Error(`[Reputation/RepReward] Произошла ошибка при выдаче ролей:\n${e}`);
+                });
             }
         });
 
         const rolesToRemove = [REP_ROLE_3, REP_ROLE_2, REP_ROLE_1].filter(role => role && !rolesToAdd.includes(role));
         rolesToRemove.forEach(roleToRemove => {
             if(memberRoles.includes(roleToRemove)) {
-                member.roles.remove(roleToRemove).catch(console.error);
+                member.roles.remove(roleToRemove).catch(e => {
+                    Error(`[Reputation/RepReward] Произошла ошибка при забирании ролей:\n${e}`);
+                });
             }
         });
     }

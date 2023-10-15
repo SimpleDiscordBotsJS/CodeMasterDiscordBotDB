@@ -1,4 +1,5 @@
 const { RoleManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "roleCreate",
@@ -7,11 +8,11 @@ module.exports = {
      * @param {Client} client
      */
     async execute(role, client) {
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(role.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_ROLE_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
@@ -21,6 +22,8 @@ module.exports = {
         .addFields({ name: "Роль", value: `${role}`, inline: true })
         .setTimestamp();
 
-        webhook.send({ embeds: [Embed] });
+        webhook.send({ embeds: [Embed] }).catch(e => {
+            return Error(`[Audit/roleCreate] Произошла ошибка при отправке:\n${e}`);
+        });
     }
 }

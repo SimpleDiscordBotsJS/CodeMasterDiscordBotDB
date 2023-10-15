@@ -1,6 +1,7 @@
 const { EmbedBuilder, GuildMember } = require("discord.js");
 const ms = require("ms");
 const DB = require("../../Structures/Data/Schemas/AntiMultiAccountDB");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: 'guildMemberAdd',
@@ -10,7 +11,9 @@ module.exports = {
     async execute(member) {
         if(member.user.bot) return;
         if(member.user.createdTimestamp < ms('7 day')) {
-            await member.kick("Возраст аккаунта менее семи дней");
+            await member.kick("Возраст аккаунта менее семи дней").catch(e => {
+                Error(`[Member/guildMemberAdd] Произошла ошибка при выкидывании пользователя:\n${e}`);
+            });;
 
             const Data = await DB.findOne({ GuildID: member.guild.id });
             if(!Data) return;
@@ -26,7 +29,9 @@ module.exports = {
             )
             .setFooter({ text: `Guild ID: ${member.user.id}` }).setTimestamp();
     
-            await ChannelID.send({ embeds: [Embed] });
+            return await ChannelID.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Detection/MultiAccountDetection] Произошла ошибка при отправке:\n${e}`);
+            });
         }
     }
 }

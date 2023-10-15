@@ -1,4 +1,5 @@
 const { EmbedBuilder, Message, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 // TODO: Обновить лог изменения сообщения
 
@@ -14,11 +15,11 @@ module.exports = {
 
         if(oldMessage.content === newMessage.content) return;
 
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(oldMessage.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_MESSAGE_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
 
@@ -44,6 +45,8 @@ module.exports = {
             Embed.addFields({ name: `**Канал**`, value: `<#${newMessage.channel.id}>`, inline: true });
         }
 
-        return webhook.send({ embeds: [Embed] });
+        return webhook.send({ embeds: [Embed] }).catch(e => {
+            return Error(`[Audit/messageUpdate] Произошла ошибка при отправке:\n${e}`);
+        });
     }
 }

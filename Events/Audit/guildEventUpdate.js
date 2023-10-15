@@ -1,4 +1,5 @@
 const { GuildScheduledEventManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "guildScheduledEventUpdate",
@@ -8,11 +9,11 @@ module.exports = {
      * @param {Client} client
      */
     async execute(oldEvent, newEvent, client) {
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(oldEvent.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_EVENT_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
@@ -25,7 +26,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/nameUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldEvent.channel !== newEvent.channel) {
@@ -37,7 +40,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/channelUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldEvent.scheduledStartAt !== newEvent.scheduledStartAt) {
@@ -49,7 +54,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/timeToStartUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldEvent.scheduledEndAt !== newEvent.scheduledEndAt) {
@@ -61,7 +68,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/timeToEndUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldEvent.description !== newEvent.description) {
@@ -73,7 +82,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/descriptionUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldEvent.status !== newEvent.status) {
@@ -85,7 +96,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/statusUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldEvent.entityType !== newEvent.entityType) {
@@ -97,7 +110,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/typeUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldEvent.entityMetadata !== newEvent.entityMetadata) {
@@ -109,7 +124,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/locationUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldEvent.privacyLevel !== newEvent.privacyLevel) {
@@ -121,7 +138,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildEventUpdate/privacyUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
     }
 }

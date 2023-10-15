@@ -1,4 +1,5 @@
 const { EmbedBuilder, WebhookClient, GuildMember, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "guildMemberAdd",
@@ -35,6 +36,8 @@ module.exports = {
         )
         .setFooter({ text: `ID: ${user.id}` }).setTimestamp();
 
-        await webhook.send({ embeds: [Welcome] });
+        await webhook.send({ embeds: [Welcome] }).catch(e => {
+            return Error(`[Member/guildMemberAdd] Произошла ошибка при отправке:\n${e}`);
+        });
     }
 }

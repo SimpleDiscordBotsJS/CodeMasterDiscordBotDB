@@ -1,4 +1,5 @@
 const { GuildMember, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "guildMemberUpdate",
@@ -12,11 +13,11 @@ module.exports = {
         let oldTimeOut = oldMember.communicationDisabledUntilTimestamp;
         let newTimeOut = newMember.communicationDisabledUntilTimestamp;
 
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(oldMember.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_MEMBER_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
 
@@ -28,7 +29,9 @@ module.exports = {
             .addFields({ name: "До", value: `<t:${parseInt(newTimeOut / 1000)}:R>`, inline: false })
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildMemberUpdate/mute] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldTimeOut !== newTimeOut && newTimeOut == null) {
@@ -38,7 +41,9 @@ module.exports = {
             .setDescription(`\`•\` ${newMember} был __размьючен__`)
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildMemberUpdate/unMute] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldMember.nickname !== newMember.nickname) {
@@ -51,7 +56,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildMemberUpdate/nicknameUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldMember.avatar !== newMember.avatar) {
@@ -64,7 +71,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildMemberUpdate/avatarUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldMember.user.username !== newMember.user.username) {
@@ -77,7 +86,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/guildMemberUpdate/usernameUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldMember.roles.cache.size !== newMember.roles.cache.size) {
@@ -87,11 +98,13 @@ module.exports = {
 
                 const Embed = new EmbedBuilder().setColor("#3ccffa")
                 .setTitle("🧔 __**Пользователь обновлён**__ 🧔")
-                .setDescription(`\`•\` ${newMember} | Роль удалено`)
+                .setDescription(`\`•\` ${newMember} | Роль удалена`)
                 .addFields({ name: "Роль", value: `${difference.map(r => r).join(" ")}` })
                 .setTimestamp();
 
-                webhook.send({ embeds: [Embed] });
+                webhook.send({ embeds: [Embed] }).catch(e => {
+                    return Error(`[Audit/guildMemberUpdate/roleRemove] Произошла ошибка при отправке:\n${e}`);
+                });
             } else {
                 difference = newMember.roles.cache.filter(r => !oldMember.roles.cache.has(r.id));
 
@@ -101,7 +114,9 @@ module.exports = {
                 .addFields({ name: "Роль", value: `${difference.map(r => r).join(" ")}` })
                 .setTimestamp();
 
-                webhook.send({ embeds: [Embed] });
+                webhook.send({ embeds: [Embed] }).catch(e => {
+                    return Error(`[Audit/guildMemberUpdate/roleAdded] Произошла ошибка при отправке:\n${e}`);
+                });
             }
         }
     }

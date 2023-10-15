@@ -1,4 +1,5 @@
 const { ChannelManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "channelUpdate",
@@ -13,11 +14,11 @@ module.exports = {
         if(oldChannel.type === "GUILD_PUBLIC_THREAD") return;
         if(oldChannel.type === "GUILD_PRIVATE_THREAD ") return;
 
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(oldChannel.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_CHANNEL_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
 
@@ -31,7 +32,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/nameUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldChannel.topic !== newChannel.topic) {
@@ -44,7 +47,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/topicUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldChannel.position !== newChannel.position) {
@@ -57,7 +62,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/positionUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldChannel.type !== newChannel.type) {
@@ -70,7 +77,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/typeUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldChannel.nsfw !== newChannel.nsfw) {
@@ -83,7 +92,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/nsfwUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldChannel.bitrate !== newChannel.bitrate) {
@@ -96,7 +107,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/bitrateUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldChannel.userLimit !== newChannel.userLimit) {
@@ -109,7 +122,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/userLimitUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldChannel.rateLimitPerUser !== newChannel.rateLimitPerUser) {
@@ -122,7 +137,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/rateLimitPerUserUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldChannel.parent !== newChannel.parent) {
@@ -135,7 +152,9 @@ module.exports = {
             )
             .setTimestamp();
 
-            webhook.send({ embeds: [Embed] });
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/channelUpdate/parentUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
     }
 }

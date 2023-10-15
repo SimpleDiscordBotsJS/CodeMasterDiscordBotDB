@@ -1,4 +1,5 @@
 const { GuildMember, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "guildMemberAdd",
@@ -7,11 +8,11 @@ module.exports = {
      * @param {Client} client
      */
     async execute(member, client) {
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(member.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_MEMBER_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
@@ -25,6 +26,8 @@ module.exports = {
         )
         .setTimestamp();
 
-        webhook.send({ embeds: [Embed] });
+        webhook.send({ embeds: [Embed] }).catch(e => {
+            return Error(`[Audit/guildMemberAdd] Произошла ошибка при отправке:\n${e}`);
+        });
     }
 }

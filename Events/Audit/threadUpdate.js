@@ -1,4 +1,5 @@
 const { ThreadChannel, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "threadUpdate",
@@ -10,11 +11,11 @@ module.exports = {
     async execute(oldThread, newThread, client) {
         if(oldThread.type !== "GUILD_NEWS_THREAD" && oldThread.type !== "GUILD_PUBLIC_THREAD" && oldThread.type !== "GUILD_PRIVATE_THREAD") return;
 
-        const webHookData = await client.webHooks.get(guild.id);
+        const webHookData = await client.webHooks.get(oldThread.guild.id);
         if(!webHookData) return;
 
         const { WebHookID, WebHookToken } = webHookData.AUDIT_THREAD_WEBHOOK;
-        if(!(WebHookID || WebHookToken)) return;
+        if(!WebHookID || !WebHookToken) return;
 
         const webhook = new WebhookClient({ id: WebHookID, token: WebHookToken });
         
@@ -28,7 +29,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/threadUpdate/nameUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldThread.type !== newThread.type) {
@@ -41,7 +44,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/threadUpdate/typeUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldThread.rateLimitPerUser !== newThread.rateLimitPerUser) {
@@ -54,7 +59,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/threadUpdate/rateLimitUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldThread.parent !== newThread.parent) {
@@ -67,7 +74,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/threadUpdate/parentUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
 
         if(oldThread.archived !== newThread.archived) {
@@ -80,7 +89,9 @@ module.exports = {
             )
             .setTimestamp()
 
-            webhook.send({ embeds: [Embed] })
+            webhook.send({ embeds: [Embed] }).catch(e => {
+                return Error(`[Audit/threadUpdate/archivedUpdate] Произошла ошибка при отправке:\n${e}`);
+            });
         }
     }
 }

@@ -38,7 +38,7 @@ module.exports = {
 
                 channel.send({ embeds: [embed], files: [attachment] })
             } catch (error) {
-                Error('Произошла ошибка:', error);
+                return Error(`[Fun/AutoSendAhegao] Произошла ошибка:\n${error}`);
             }
         }
 
