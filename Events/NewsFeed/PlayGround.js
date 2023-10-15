@@ -62,7 +62,7 @@ module.exports = {
             const lastId = data.FeedsData.PlayGround;
 
             feed.items.reverse().forEach(async (item) => {
-                const id = item.guid.match(/\d/g).join("");
+                const id = parseInt(item.guid.match(/\d/g).join(""));
 
                 if(lastId < id) {
                     data.FeedsData.PlayGround = id;
