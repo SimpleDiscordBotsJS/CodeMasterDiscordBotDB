@@ -10,7 +10,10 @@ module.exports = {
      */
     async execute(message, client) {
         const { author, channel, guild } = message;
+        if(author.bot) return;
+
         const channelID = client.config.REP_MSG_CHANNEL;
+        if(!channelID) return;
 
         if(channel.id !== channelID) return;
         if(CooldownUtil.inCooldown(author.id, "rep_msg_in_channel")) return;
