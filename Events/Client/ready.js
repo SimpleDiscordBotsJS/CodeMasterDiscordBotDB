@@ -1,6 +1,7 @@
 const { ActivityType, Client } = require("discord.js");
 const { Success, Error } = require("../../Structures/Utilities/Logger");
 const { loadCommands } = require("../../Structures/Handlers/commandHandler");
+const RSSManager = require("../../Structures/Utilities/RSS/RSSManager");
 
 module.exports = {
     name: "ready",
@@ -17,6 +18,8 @@ module.exports = {
             });
 
             loadCommands(client);
+            
+            client.rssManager = new RSSManager(client, "./Data/RSSFeeds");
 
             require("../../Structures/Systems/AntiScamSystem")(client);
             require("../../Structures/Systems/AutoRoleSystem")(client);
