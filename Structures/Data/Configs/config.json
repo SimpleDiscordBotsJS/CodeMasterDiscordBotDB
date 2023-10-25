@@ -8,10 +8,6 @@
     "REP_ROLE_2": "982922272769712178",
     "REP_ROLE_3": "982922620678844436",
 
-    "FEEDS_CHANNELS": {
-        "PLAYGROUND": "1152253301958660236"
-    },
-
     "MUSIC_ICON_URL": "https://raw.githubusercontent.com/SimpleDiscordBotsJS/CodeMasterDiscordBotDB/main/Structures/Data/Images/music_icon.gif",
     
     "ANTI_FLOOD": {
