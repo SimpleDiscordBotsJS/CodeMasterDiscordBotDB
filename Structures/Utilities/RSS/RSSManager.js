@@ -1,20 +1,14 @@
-const { EmbedBuilder, Client } = require("discord.js");
+const { EmbedBuilder, Client, TextChannel, NewsChannel } = require("discord.js");
 const compact = require("./LodashCompact");
 const isEqual = require("./LodashIsEqual");
 const { Error, Info } = require("../Logger");
 const fs = require("fs");
 const path = require("path");
 const RSSParser = require("rss-parser");
-const util = require("util");
 
 const to = (promise) => {
     return promise.then((data) => [null, data]).catch((err) => [err]);
 };
-
-const readdir = util.promisify(fs.readdir);
-const readFile = util.promisify(fs.readFile);
-const unlink = util.promisify(fs.unlink);
-const writeFile = util.promisify(fs.writeFile);
 
 class RSSManager {
     /**
@@ -35,13 +29,17 @@ class RSSManager {
         this.load();
     }
 
+    /**
+     * @param {TextChannel|NewsChannel} channel Discord guild text\news channel
+     * @param {URL} url Link to the RSS feed
+     */
     async subscribeTo(channel, url) {
         // Fetch current feed data
         const [err, feed] = await to(this.rssParser.parseURL(url));
         if (err) return channel.send(err + "!");
 
         // Get and sort all existing feeds
-        let files = await readdir(this.folderLocation);
+        let files = await fs.promises.readdir(this.folderLocation);
         files = files.sort((a, b) => {
             if (a === b) return 0;
             return a < b ? -1 : 1;
@@ -49,7 +47,7 @@ class RSSManager {
 
         // If the feed in the supplied channel already exists then return
         for (const file of files) {
-            const fileData = JSON.parse(await readFile(path.join(this.folderLocation, file)));
+            const fileData = JSON.parse(await fs.promises.readFile(path.join(this.folderLocation, file)));
             if (fileData.channel === channel.id && fileData.url === url) {
                 return;
             }
@@ -70,44 +68,51 @@ class RSSManager {
         };
 
         // Save to disk
-        await writeFile(path.join(this.folderLocation, nextFileName), JSON.stringify(feedData));
+        await fs.promises.writeFile(path.join(this.folderLocation, nextFileName), JSON.stringify(feedData));
         Info(`[RSSManager] Добавлена новая новостная лента. Имя дата файла: [ ${nextFileName} ]`);
 
         // Add to RSS subscription rotation
         this.fetch(feedData);
     }
 
+    /**
+     * @param {TextChannel|NewsChannel} channel Discord guild text\news channel
+     * @param {URL} url Link to the RSS feed
+     */
     async unsubscribeFrom(channel, url) {
-        let files = await readdir(this.folderLocation);
+        let files = await fs.promises.readdir(this.folderLocation);
 
         for (const file of files) {
             const fullPath = path.join(this.folderLocation, file);
-            const fileData = JSON.parse(await readFile(fullPath));
+            const fileData = JSON.parse(await fs.promises.readFile(fullPath));
             if (fileData.channel === channel.id && fileData.url === url) {
                 this.feeds.splice(this.feeds.indexOf(file), 1);
                 Info(`[RSSManager] Новостная лента удалена. Имя дата файла: [ ${file.toString()} ]`);
-                return await unlink(fullPath);
+                return await fs.promises.unlink(fullPath);
             }
         }
     }
 
     async load() {
         Info(`[RSSManager] Загрузка...`);
-        const files = (await readdir(this.folderLocation)).filter((fileName) => fileName.endsWith(".json"));
+        const files = (await fs.promises.readdir(this.folderLocation)).filter((fileName) => fileName.endsWith(".json"));
         for (const file of files) {
-            const feedData = JSON.parse(await readFile(path.join(this.folderLocation, file)));
+            const feedData = JSON.parse(await fs.promises.readFile(path.join(this.folderLocation, file)));
             this.feeds.push(file);
             this.fetch(feedData, true);
             Info(`[RSSManager] Загружена информация о новостной ленте из файла: [ ${file.toString()} ]`);
         }
     }
 
+    /**
+     * @param {Boolean} now true/false - if true, the startup will occur at the moment the function is called. If false, in a minute.
+     */
     async fetch(feedData, now) {
         setTimeout(async () => {
             if (this.feeds.indexOf(feedData.fileName) === -1) return;
 
             const channel = await this.client.channels.fetch(feedData.channel);
-            if (!channel) return Info(`[RSSManager] Отправка новостной ленты остановлена!`);
+            if (!channel) return Info(`[RSSManager] Отправка новостной ленты остановлена!\nПричина: Не удалось получить канал!\n`);
 
             const [err, newFeed] = await to(this.rssParser.parseURL(feedData.url));
             if (err) Error(`[RSSManager] произошла ошибка при получении новостной ленты: \n${err}\n`);
@@ -131,13 +136,13 @@ class RSSManager {
                         if(message.crosspostable) m.crosspost();
                         message.startThread({ name: `${embed.data.title.substring(0, 50)}...`});
                     }).catch(error => {
-                        Error(`[RSSManager] Возникла ошибка при отправке сообщения:\n${error}`);
+                        Error(`[RSSManager] Возникла ошибка при отправке сообщения:\n${error}\n`);
                     });
                 }
 
                 // Update the saved data
                 feedData.feed = newFeed;
-                await writeFile(path.join(this.folderLocation, feedData.fileName), JSON.stringify(feedData));
+                await fs.promises.writeFile(path.join(this.folderLocation, feedData.fileName), JSON.stringify(feedData));
             }
 
             this.fetch(feedData);
