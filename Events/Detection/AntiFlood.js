@@ -11,9 +11,9 @@ module.exports = {
      * @param {Message} message 
      */
     async execute(message) {
-        if(message.author.bot || message.member.permissions.has("ManageMessages")) return;
-
         const { author, channel, guild, member } = message;
+
+        if(author.bot || member.permissions.has("ManageMessages")) return;
 
         if(!cachedMessages) {
             cachedMessages = await channel.messages.fetch();

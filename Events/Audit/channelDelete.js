@@ -1,17 +1,15 @@
-const { ChannelManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Channel, EmbedBuilder, WebhookClient, Client, ChannelType } = require("discord.js");
 const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "channelDelete",
     /**
-     * @param {ChannelManager} channel
+     * @param {Channel} channel
      * @param {Client} client
      */
     async execute(channel, client) {
         if(!channel.guild) return;
-        if(channel.type === "GUILD_NEWS_THREAD") return;
-        if(channel.type === "GUILD_PUBLIC_THREAD") return;
-        if(channel.type === "GUILD_PRIVATE_THREAD ") return;
+        if(channel.type === (ChannelType.PrivateThread || ChannelType.PublicThread)) return;
     
         const webHookData = await client.webHooks.get(channel.guild.id);
         if(!webHookData) return;

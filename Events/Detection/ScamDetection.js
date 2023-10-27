@@ -1,4 +1,4 @@
-const { Message, Client, EmbedBuilder } = require("discord.js");
+const { Message, Client, EmbedBuilder, ChannelType } = require("discord.js");
 const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
@@ -8,10 +8,11 @@ module.exports = {
      * @param {Client} client
      */
     async execute(message, client) {
-        if(message.author.bot) return;
-        if(message.channel.type === "DM") return;
-        
-        const { content, guild, author } = message;
+        const { content, guild, author, channel } = message;
+
+        if(author.bot) return;
+        if(channel.type === ChannelType.DM) return;
+
         const messageContent = content.toLowerCase().split(" ");
 
         const Filter = require(`../../Structures/Data/ScamLinks.json`);
@@ -36,7 +37,7 @@ module.exports = {
         .setDescription(`\`•\` Пожалуйста, не отправляйте SCAM сообщения!`)
         .addFields({ name: "Пользователь:", value: `\`\`\`${author.tag} (${author.id})\`\`\`` });
         
-        message.channel.send({ embeds: [Embed] }).then((m) => setTimeout(() => m.delete(), 10000));
+        channel.send({ embeds: [Embed] }).then((m) => setTimeout(() => m.delete(), 10000));
 
         message.member.timeout(48 * 60 * 60 * 1000, "SCAM рассылка");
 

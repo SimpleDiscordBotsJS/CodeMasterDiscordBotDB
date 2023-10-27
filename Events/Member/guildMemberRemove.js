@@ -9,6 +9,7 @@ module.exports = {
      */
     async execute(member, client) {
         const { user, guild } = member;
+        if(user.bot) return;
 
         const webHookData = await client.webHooks.get(guild.id);
         if(!webHookData) return;

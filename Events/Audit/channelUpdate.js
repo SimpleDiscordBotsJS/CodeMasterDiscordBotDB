@@ -1,18 +1,16 @@
-const { ChannelManager, EmbedBuilder, WebhookClient, Client } = require("discord.js");
+const { Channel, EmbedBuilder, WebhookClient, Client, ChannelType } = require("discord.js");
 const { Error } = require("../../Structures/Utilities/Logger");
 
 module.exports = {
     name: "channelUpdate",
     /**
-     * @param {ChannelManager} oldChannel
-     * @param {ChannelManager} newChannel
+     * @param {Channel} oldChannel
+     * @param {Channel} newChannel
      * @param {Client} client
      */
     async execute(oldChannel, newChannel, client) {
         if(!oldChannel.guild) return;
-        if(oldChannel.type === "GUILD_NEWS_THREAD") return;
-        if(oldChannel.type === "GUILD_PUBLIC_THREAD") return;
-        if(oldChannel.type === "GUILD_PRIVATE_THREAD ") return;
+        if(oldChannel.type === (ChannelType.PrivateThread || ChannelType.PublicThread)) return;
 
         const webHookData = await client.webHooks.get(oldChannel.guild.id);
         if(!webHookData) return;
