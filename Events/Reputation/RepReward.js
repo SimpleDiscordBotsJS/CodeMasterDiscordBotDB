@@ -11,7 +11,8 @@ module.exports = {
      * @param {Client} client
      */
     async execute(message, client) {
-        const { member, guild } = message;
+        const { member, guild, author } = message;
+        if(author.bot) return;
 
         const { REP_ROLE_1, REP_ROLE_2, REP_ROLE_3 } = client.config;
 
@@ -37,7 +38,8 @@ module.exports = {
         }
 
         const memberRoles = member.roles.cache.map(role => role.id);
-        rolesToAdd.forEach(roleToAdd => {
+        rolesToAdd.forEach(async roleToAdd => {
+            if(!(await member.guild.roles.fetch(roleToAdd))) return;
             if(!memberRoles.includes(roleToAdd)) {
                 member.roles.add(roleToAdd).catch(e => {
                     Error(`[Reputation/RepReward] Произошла ошибка при выдаче ролей:\n${e}`);
@@ -46,7 +48,8 @@ module.exports = {
         });
 
         const rolesToRemove = [REP_ROLE_3, REP_ROLE_2, REP_ROLE_1].filter(role => role && !rolesToAdd.includes(role));
-        rolesToRemove.forEach(roleToRemove => {
+        rolesToRemove.forEach(async roleToRemove => {
+            if(!(await member.guild.roles.fetch(roleToRemove))) return;
             if(memberRoles.includes(roleToRemove)) {
                 member.roles.remove(roleToRemove).catch(e => {
                     Error(`[Reputation/RepReward] Произошла ошибка при забирании ролей:\n${e}`);
