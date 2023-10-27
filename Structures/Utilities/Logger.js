@@ -8,6 +8,9 @@ const logFilePath = `./Structures/Data/Logs`;
 const logFileName = "Latest.log";
 
 //===========================================================//
+/**
+ * @param  {...String} arguments 
+ */
 function Debug() {
     for(let i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;35m[  DEBUG  ]: ` + arguments[i]);
@@ -16,6 +19,9 @@ function Debug() {
 }
 
 //===========================================================//
+/**
+ * @param  {...String} arguments 
+ */
 function Error() {
     for(let i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;31m[  ERROR  ]: ` + arguments[i]);
@@ -24,6 +30,9 @@ function Error() {
 }
 
 //===========================================================//
+/**
+ * @param  {...String} arguments 
+ */
 function Info() {
     for(let i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;32m[  INFO  ]:  ` + arguments[i]);
@@ -32,6 +41,9 @@ function Info() {
 }
 
 //===========================================================//
+/**
+ * @param  {...String} arguments 
+ */
 function Message() {
     for(let i = 0; i < arguments.length; i++) {
         construct(`\x1b[0m[ MESSAGE ]: ` + arguments[i]);
@@ -40,6 +52,9 @@ function Message() {
 }
 
 //===========================================================//
+/**
+ * @param  {...String} arguments 
+ */
 function Success() {
     for(let i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;36m[ SUCCESS ]: ` + arguments[i]);
@@ -48,6 +63,9 @@ function Success() {
 }
 
 //===========================================================//
+/**
+ * @param  {...String} arguments 
+ */
 function Warning() {
     for(let i = 0; i < arguments.length; i++) {
         construct(`\x1b[1;33m[ WARNING ]: ` + arguments[i]);
