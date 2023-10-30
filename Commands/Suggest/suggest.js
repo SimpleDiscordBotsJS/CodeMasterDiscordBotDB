@@ -15,9 +15,9 @@ module.exports = {
         .setDescription("Select a type.")
         .setDescriptionLocalizations({ "ru": "Выберите тип предложения." })
         .addChoices(
-            { name: "Сервер", value: "Сервер" },
-            { name: "Дискорд бот", value: "Дискорд бот" },
-            { name: "Другое", value: "Другое" }
+            { name: "💻Сервер", value: "server" },
+            { name: "🤖Дискорд бот", value: "discordBot" },
+            { name: "🔘Другое", value: "other" }
         )
         .setRequired(true)
     )
@@ -29,23 +29,36 @@ module.exports = {
         .setMaxLength(512)
         .setRequired(true)
     ),
+    cooldown: 360000,
     /**
      * @param {ChatInputCommandInteraction} interaction 
      */
     async execute(interaction) {
-        const { options, guildId, member, user } = interaction;
+        const { options, guild, member, user } = interaction;
 
         const Type = options.getString("type");
         const Suggestion = options.getString("suggestion");
 
-        const Embed = new EmbedBuilder().setColor("Navy")
+        function switchTo(value) {
+            let status = " ";
+            switch(value) {
+                case "server" : status = `\`Сервер\``
+                break;
+                case "discordBot" : status = `\`Дискорд бот\``
+                break;
+                case "other" : status = `\`Другое\``
+                break;
+            }
+            return status;
+        }
+
+        const Embed = new EmbedBuilder().setColor("#fc6600")
         .setAuthor({name: user.tag, iconURL: user.displayAvatarURL({ size:  512 })})
         .addFields(
-            { name: "Предложение:", value: Suggestion, inline: false },
-            { name: "Тип:", value: Type, inline: true },
-            { name: "Статус", value: "Ожидает", inline: true }
-        ).setFooter({ text: `Guild ID: ${guildId}` })
-        .setTimestamp();
+            { name: "**[`💡`] Предложение:**", value: Suggestion, inline: false },
+            { name: "**[`📌`] Тип:**", value: switchTo(Type), inline: true },
+            { name: "**[`🟠`] Статус:**", value: "`Ожидает`", inline: true }
+        ).setFooter({ text: `Author ID: ${user.id}` }).setTimestamp();
         
         const Buttons = new ActionRowBuilder();
         Buttons.addComponents(
@@ -55,14 +68,14 @@ module.exports = {
             .setLabel("⛔ Отклонить").setStyle(ButtonStyle.Danger)
         );
 
-        const SuggestSetupDB = await SetupDB.findOne({ GuildID: guildId });
+        const SuggestSetupDB = await SetupDB.findOne({ GuildID: guild.id });
 
         if(!SuggestSetupDB) return interaction.reply({ embeds: [new EmbedBuilder().setColor("Red")
             .setDescription("Этот сервер не настроил систему предложений.")
         ], ephemeral: true });
 
         try {
-            const M = await interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID).send({ embeds: [Embed], components: [Buttons], fetchReply: true });
+            const M = await guild.channels.cache.get(SuggestSetupDB.ChannelID).send({ embeds: [Embed], components: [Buttons], fetchReply: true });
             await M.react('✅');
             await M.react('⛔');
 
@@ -74,11 +87,11 @@ module.exports = {
                 return string[0].toUpperCase() + string.slice(1);
             }
         
-            await DB.create({GuildID: guildId, MessageID: M.id, Details: [
+            await DB.create({GuildID: guild.id, MessageID: M.id, Details: [
                 { MemberID: member.id, Type: Type, Suggestion: Suggestion }
             ]});
             interaction.reply({ embeds: [new EmbedBuilder().setColor("Gold")
-                .setDescription(`✅ Ваше [предложение](${M.url}) было добавлено в ${interaction.guild.channels.cache.get(SuggestSetupDB.ChannelID)}`).setTimestamp()], ephemeral: true });
+                .setDescription(`✅ Ваше [предложение](${M.url}) было добавлено в ${guild.channels.cache.get(SuggestSetupDB.ChannelID)}`)], ephemeral: true });
         } catch (err) {
             Error(err);
         }
