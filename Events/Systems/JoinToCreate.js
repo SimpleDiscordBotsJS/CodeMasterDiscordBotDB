@@ -68,8 +68,8 @@ module.exports = {
                 let randomId = members[Math.floor(Math.random() * members.length)];
                 let randomMember = guild.members.cache.get(randomId);
 
-                randomMember.voice.setChannel(oldChannel).then(() => {
-                    oldChannel.setName(`Канал ${randomMember.user.username}`).catch((error) => {
+                randomMember.voice.setChannel(oldChannel).then(async () => {
+                    await oldChannel.setName(`Канал ${randomMember.user.username}`).catch((error) => {
                         Error(`[Systems/JoinToCreate] Произошла ошибка при автоматическом переименовании канала:\n${error}`);
                     });
                     oldChannel.permissionOverwrites.edit(randomMember, {
