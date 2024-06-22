@@ -13,9 +13,16 @@ module.exports = {
         try {
             Success(`[BOT] Запущен от имени бота: ${client.user.tag}`);
             client.user.setPresence({
-                activities: [{ name: "CodeМ", type: ActivityType.Watching }],
+                activities: [{ name: "Сервер - CodeМ", type: ActivityType.Custom }],
                 status: "dnd",
             });
+
+            setInterval(() => {
+                client.user.setPresence({
+                    activities: [{ name: "Сервер - CodeМ", type: ActivityType.Custom }],
+                    status: "dnd",
+                });
+            }, 60 * 60 * 1000);
 
             loadCommands(client);
             
