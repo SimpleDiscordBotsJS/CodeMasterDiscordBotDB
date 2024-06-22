@@ -38,8 +38,9 @@ if(!process.env.DATABASE_URL) {
     connect(process.env.DATABASE_URL, {}).then(() => {
         Success("[DataBase] Клиент подключен к базе данных.");
     }).catch((error) => {
-        Warning("[DataBase] Клиенту не удалось подключиться к базе данных.");
+        Warning("[DataBase] Клиенту не удалось подключиться к базе данных!");
         Error(error);
+        process.exit(0);
     });
 }
 

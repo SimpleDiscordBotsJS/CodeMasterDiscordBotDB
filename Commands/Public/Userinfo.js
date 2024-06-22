@@ -10,7 +10,7 @@ module.exports = {
      * @param {ChatInputCommandInteraction} interaction 
      */
     async execute(interaction) {
-        const target = await interaction.guild.members.fetch(interaction.targetId);
+        const target = await interaction.guild.members.fetch(interaction.user.id);
 
         if(target.user.bot) return;
 
